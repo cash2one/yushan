@@ -1,0 +1,124 @@
+<table cellspacing="30px" id="table1" class="tablesorter table-striped">
+    <thead>
+    <tr>
+        <th>关键词
+        </th>
+        <th>推广计划
+        </th>
+        <th>推广单元
+        </th>
+        <th>消费变动
+        </th>
+        <th>展现变动
+        </th>
+        <th>点击变动
+        </th>
+        <th>H5激活
+        </th>
+        <th>H5激活成本
+        </th>
+        <th>H5下载
+        </th>
+        <th>H5下载成本
+        </th>
+        <th>按钮下载
+        </th>
+        <th>按钮消费
+        </th>
+    </tr>
+    </thead>
+    <tbody class="table1 list">
+    <% for (var i in el) { %>
+    <tr>
+        <td class="keyword" style="font-weight: normal"><%=el[i].keyword_name %>
+        </td>
+        <td class="plan"><%=el[i].jihua_name %>
+        </td>
+        <td class="unit"><%=el[i].danyuan_name %>
+        </td>
+        <td class="cost_change">
+            <p class="cost_change1"><%=el[i].cost %>
+            </p>
+            <p class="cost_change2"><%=el[i].cost_change %>
+            </p>
+        </td>
+        <td class="view_change">
+            <p class="cost_change1"><%=el[i].view %>
+            </p>
+            <p class="view_change2"><%=el[i].view_change %>
+            </p>
+        </td>
+        <td class="pv_change clear">
+            <span style="float: left">
+                 <p class="cost_change1"><%=el[i].pv %>
+                 </p>
+                 <p class="pv_change2"><%=el[i].pv_change %>
+                 </p>
+            </span>
+            <span style="float: left;margin-left: 10px">
+                 <p class="cost_change1"><%=el[i].pv_rate+"%" %>
+                 </p>
+                 <p class="pv_change3"><%=el[i].pv_rate_change %>
+                 </p>
+            </span>
+
+        </td>
+
+
+        <td class="active_change clear">
+            <span style="float: left">
+                 <p class="cost_change1"><%=el[i].active %>
+                 </p>
+                 <p class="active_change2"><%=el[i].active_change %>
+                 </p>
+            </span>
+            <span style="float:left;margin-left: 10px">
+                 <p class="cost_change1"><%=el[i].active_rate+"%" %>
+                 </p>
+                 <p class="active_change3"><%=el[i].active_rate_change %>
+                 </p>
+            </span>
+        </td>
+
+        <td class="active_chengben clear">
+            <p class="cost_change1"><%=el[i].active_chengben %>
+            </p>
+            <p class="active_chengben2"><%=el[i].active_chengben_change %>
+            </p>
+        </td>
+
+        <td class="h5_cost clear">
+            <span style="float: left">
+                 <p class="cost_change1"><%=el[i].h5_down %>
+                 </p>
+                 <p class="h5_cost2"> <%=el[i].h5_down_change %>
+                </p>
+            </span>
+            <span style="float:left;margin-left: 10px">
+                 <p class="cost_change1">0</p>
+                 <p class="h5_cost3">0</p>
+             </span>
+        </td>
+        <td class="h5_chengben">
+            <p class="cost_change1"><%=el[i].h5_chengben %>
+            </p>
+            <p class="h5_chengben2"><%=el[i].h5_chengben_change %>
+            </p>
+        </td>
+        <td class="button_down">
+            <p class="cost_change1"><%=el[i].button_click %>
+            </p>
+            <p class="button_down2"><%=el[i].button_click_change %>
+            </p>
+        </td>
+        <td class="button_cost">
+            <p class="cost_change1"><%=el[i].button_cost %>
+            </p>
+            <p class="button_cost2"><%=el[i].button_cost_change %>
+            </p>
+        </td>
+    </tr>
+    <% } %>
+    </tbody>
+
+</table>

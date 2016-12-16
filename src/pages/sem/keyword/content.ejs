@@ -1,0 +1,162 @@
+<div id="page-wrapper">
+<!--<div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+</div>-->
+<div class="gai">
+    <div class="clear">
+        <!--<div class="clear" style="float: left;width: 880px;">
+            <div class="list1">
+                总览
+            </div>
+            <div class="list2">
+                分析参数设置
+            </div>
+            <div class="list3">
+                消费TOP200
+            </div>
+            <div class="list4">
+                异常词
+            </div>
+            <div class="list5">
+                优质词
+            </div>
+        </div>-->
+        <div style="margin-top:38px;margin-left:20px;float: left">
+            <img src="./images/ri.png" alt="" class="rili"/>
+            <input type="text" id="date"/>
+        </div>
+
+
+
+    </div>
+    <div class="frame clear">
+        <div class="zl">
+            <!-- <div style="margin-top: 30px;padding-left:10px;font-size: 20px;border-left: 2px solid #00a1ea;">
+                 共有关键词
+                 <span class="key"></span>
+                 个
+             </div>
+             <div style="font-size:18px;margin-top:20px;" class="clear">
+                 <p style="padding-left:10px;float: left;border-left: 2px solid #00a1ea;">异常词<span class="yc"></span>个</p>
+                 <p style="padding-left:10px;float: left;border-left: 2px solid #00a1ea;margin-left: 30px;">正常词<span class="zc"></span>个</p>
+                 <p style="padding-left:10px;float: left;border-left: 2px solid #00a1ea;margin-left: 30px;">优质词<span class="yz"></span>个</p>
+             </div>
+             <div style="font-size:18px;">
+                 <p style="margin-top: 56px;padding-left:10px;border-left: 2px solid #00a1ea;">当前分析参数：</p>
+                 <br>
+                 <p style="margin-top: 16px;padding-left:10px;float: left;border-left: 2px solid #00a1ea;">流量判断 <span class="look1">展现(or 点击 or 消费)</span> 大于 <span class="llow"></span>~<span class="lhigh"></span></p>
+                 <p style="margin-top: 16px;padding-left:10px;float: left;border-left: 2px solid #00a1ea;margin-left: 30px;">成本判断 下载 大于 <span class="clow"></span>~<span class="chigh"></span></p>
+                 <div class="clear"></div>
+             </div>-->
+            <p>共有关键词 <span class="key">Loading...</span>个</p>
+            <p>其中异常词<span class="yc">Loading...</span>个&nbsp;&nbsp;&nbsp;&nbsp;优质词<span class="yz">Loading...</span>个&nbsp;&nbsp;&nbsp;&nbsp;正常词<span class="zc">Loading...</span>个</p>
+        </div>
+        <div class="z2">
+            <p>当前参数设置：（<span class="canshu">设置</span>）</p>
+            <p style="text-indent: 28px;">流量判断 <span class="look1">展现(or 点击 or 消费)</span> 大于 <span class="llow"></span>~<span class="lhigh"></span></p>
+            <p style="text-indent: 28px;">成本判断 下载 大于 <span class="clow"></span>~<span class="chigh"></span></p>
+        </div>
+    </div>
+    <div class="choose clear">
+    <span class="cspan">
+        <p class="choose2">
+            <span class="l1 active1">消费TOP200</span><span class="l2">异常词</span><span class="l3">优质词</span>
+        </p>
+    </span>
+        <span style="margin-left: 20px;" class="cspan">
+        <p class="choose2">
+            <span class="r1 active1">下载</span><span class="r2">激活</span>
+        </p>
+    </span>
+    </div>
+    <div class="analysis">
+        <p>
+            <span style="color: #808080;">
+                <img src="images/右三角@2x.png" alt="" class="angle"/>
+                大流量下限</span>
+            <input type="text" class="symbol pv1"/>
+            <select name="" id="sele" class="symbol " style="margin-top: 50px;">
+                <option value="view">展现量</option>
+                <option value="pv">点击</option>
+                <option value="cost">消费</option>
+            </select>
+        </p>
+        <p>
+            <span style="color: #808080;">
+                <img src="images/右三角@2x.png" alt="" class="angle"/>
+                正常流量下限</span>
+            <input type="text" class="symbol pv2"/>
+            <!--<select name=""  class="symbol">
+                <option value="1">展现量</option>
+                <option value="2">点击</option>
+                <option value="3">消费</option>
+            </select>-->
+        </p>
+        <p>
+            <span style="color: #808080;">
+                <img src="images/右三角@2x.png" alt="" class="angle"/>
+                高成本下限</span>
+            <input type="text" class="symbol pv3"/>
+            <select name=""  class="symbol">
+                <!--<option value="1">展现量</option>-->
+                <!--<option value="2">点击</option>-->
+                <option value="3">下载成本</option>
+            </select>
+        </p>
+        <p>
+            <span style="color: #808080;">
+                <img src="images/右三角@2x.png" alt="" class="angle"/>
+                低成本上限</span>
+            <input type="text" class="symbol pv4"/>
+            <!--  <select name=""  class="symbol">
+                  &lt;!&ndash;<option value="1">展现量</option>&ndash;&gt;
+                  &lt;!&ndash;<option value="2">点击</option>&ndash;&gt;
+                  <option value="3">下载成本</option>
+              </select>-->
+        </p>
+        <p style="margin-top:30px;text-align: center">
+            <input type="button" value="参数保存" class="btn"/>
+            <input type="button" value="取消" class="cancel"/>
+        </p>
+    </div>
+    <div class="cost" id="users">
+        <div style="text-indent: 20px;margin-bottom: 20px;margin-top: 20px;">
+            各关键词数据统计
+            <div class="searchs">
+                <input type="text" placeholder="Search" class="search"/>
+                <span class="glyphicon glyphicon-search" style="color:#666;"></span>
+            </div>
+        </div>
+        <div id="tmp">
+
+        </div>
+    </div>
+
+    <div class="unusual" id="users1">
+        <div style="text-indent: 20px;margin-bottom: 20px;margin-top: 20px;">
+            各关键词数据统计
+            <div class="searchs">
+                <input type="text" placeholder="Search" class="searchy"/>
+                <span class="glyphicon glyphicon-search" style="color:#666;"></span>
+            </div>
+        </div>
+        <div id="tmp2">
+
+        </div>
+    </div>
+    <div class="high" id="users2">
+        <div style="text-indent: 20px;margin-bottom: 20px;margin-top: 20px;">
+            各关键词数据统计
+            <div class="searchs">
+                <input type="text" placeholder="Search" class="searchn"/>
+                <span class="glyphicon glyphicon-search" style="color:#666;"></span>
+            </div>
+        </div>
+        <div id="tmp1">
+
+        </div>
+
+    </div>
+</div>
+</div>

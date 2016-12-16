@@ -1,0 +1,25 @@
+
+<table id="myTable" class="tablesorter table">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>点击</th>
+        <th>下载</th>
+        <th>转化率</th>
+    </tr>
+    </thead>
+    <tbody class="list">
+    <% for (var i = 0; i < el.length; i++) {%>
+    <tr>
+        <td class="id"> <%=el[i]._id %>
+            </td>
+        <td class="click"> <%=el[i].pv %>
+            </td>
+        <td class="down"> <%=el[i].dl %>
+            </td>
+        <td class="rate"> <%=el[i].rate+"%" %>
+            </td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>

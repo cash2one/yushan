@@ -1,0 +1,37 @@
+<table cellspacing="30px" id="cool" class="tablesorter table-striped">
+    <thead>
+    <tr>
+        <th>序号
+        </th>
+        <th>推广计划
+        </th>
+        <th>推广单元
+        </th>
+        <th>关键词
+        </th>
+        <th>优质原因
+        </th>
+        <th>建议
+        </th>
+    </tr>
+    </thead>
+    <tbody class="cool listn">
+    <% for (var i=0; i<el.length; i++) {%>
+    <tr class="q1">
+        <td class="good_xu"> <%=i+1 %>
+        </td>
+        <td class="good_jihua"><%=el[i].jihua_name %>
+        </td>
+        <td class="good_danyuan"><%=el[i].danyuan_name %>
+        </td>
+        <td  class="good_key" style="color: #009EFE;text-decoration: underline;cursor: pointer"><%= el[i].keyword_name %>
+        </td>
+        <td  class="good_yuanyin"> <%=el[i].yuanyin %>
+        </td>
+        <td class="good_jielun"> <%=el[i].jielun %>
+        </td>
+    </tr>
+    <% } %>
+
+    </tbody>
+</table>

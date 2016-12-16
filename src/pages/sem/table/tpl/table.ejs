@@ -1,0 +1,18 @@
+<table id="myTable" class="tablesorter">
+<thead>
+<tr>
+    <th>关键词</th>
+    <th>点击数量</th>
+    <th>下载数量</th>
+</tr>
+</thead>
+<tbody>
+<% for (var word in data) {%>
+  <tr>
+      <td class="js-op" data-key="<%=word %>"><%=word %></td>
+      <td><%=data[word].count %></td>
+      <td><%=data[word].access_count %></td>
+  </tr>
+<% } %>
+</tbody>
+</table>

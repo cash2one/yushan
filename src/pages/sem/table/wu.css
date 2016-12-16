@@ -1,0 +1,128 @@
+
+table tbody tr td{
+    font-size: 16px;
+    color: #666;
+}
+tbody tr{
+    border-bottom:1px solid #bfbfbf !important;
+}
+table.tablesorter {
+    font-family:arial;
+    background-color: #CDCDCD;
+    margin:10px 0pt 15px;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+    background-color: #e6EEEE;
+    border: 1px solid #FFF;
+    font-size:14px;
+    font-weight: normal;
+    padding: 4px;
+}
+table.tablesorter thead tr .tablesorter-header-inner{
+    background-image: url(./images/bg1.png);
+    background-size: 6px;
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+table.tablesorter tbody td {
+    color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+table.tablesorter tbody tr.odd td {
+    background-color:#F0F0F6;
+}
+table.tablesorter thead tr .tablesorter-headerAsc .tablesorter-header-inner{
+    background-image: url(./images/asc1.png);
+}
+table.tablesorter thead tr .tablesorter-headerDesc .tablesorter-header-inner{
+    background-image: url(./images/desc1.png);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+table{
+    width: 100%;
+    border-width:1px;
+    border-collapse:collapse;
+    border-style:solid solid none solid;
+    border-color:#d0d0d0;
+    border-style:solid;
+}
+#tb{
+    float: left;
+    width: 500px;
+    margin-left: 100px;
+    /*margin: 30px auto;*/
+}
+#tb1{
+    float: left;
+    width: 500px;
+    margin-left:100px;
+}
+tbody td,tbody tr{
+    border: none;
+}
+tbody tr{
+    border-bottom: 1px solid #D2D2D2;
+}
+table thead tr th{
+    width: 30%;
+    color: #fff;
+    background: #4390b9 !important;
+    font-size: 13px;
+}
+input{
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+button{
+    padding: 2px 10px;
+}
+table{
+    overflow: hidden;
+    width: 100%;
+    /*margin: 20px auto;*/
+    height: 400px;
+    border-style:solid solid none solid;
+}
+thead,tbody{
+    display: block;
+}
+tbody{
+    height: 92%;
+    overflow-y: auto;
+}
+th,td{
+    width: 170px !important;
+}
+tbody::-webkit-scrollbar{
+    width: 10px;
+    background: #ebf0f1;
+}
+tbody::-webkit-scrollbar-button{
+    display: none;
+}
+tbody::-webkit-scrollbar-track{
+    background: #bfbfbf;
+}
+tbody::-webkit-scrollbar-thumb{
+    width: 15px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    box-shadow: 0px 0px 2px 3px #bfbfbf;
+}
+tbody::-webkit-scrollbar-track-piece{
+    background: #bfbfbf;
+}

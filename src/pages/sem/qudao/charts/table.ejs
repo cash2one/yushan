@@ -1,0 +1,38 @@
+<table id="myTable" class="tablesorter table-striped" name="table">
+    <thead>
+    <tr>
+        <th>渠道号</th>
+        <th>总点击</th>
+        <th>总下载</th>
+        <th class="ios_">iOS点击</th>
+        <th class="ios_">iOS下载</th>
+        <th class="ios_">iOS下载率</th>
+        <th class="android_">Android点击</th>
+        <th class="android_">Android下载</th>
+        <th class="android_">Android下载率</th>
+        <th>总激活</th>
+        <th>激活率</th>
+    </tr>
+    </thead>
+<tbody class="list">
+    <% for (var word in data) {%>
+    <tr >
+        <td class="c2" ><%=data[word]._id %></td>
+        <td class="total-click"><%=data[word].pv_total %></td>
+        <td class="total-download"><%=data[word].dl_total %></td>
+        <td class="ios-click ios_"><%=data[word].ios_pv_total %></td>
+        <td class="ios-click ios_"><%=data[word].ios_pv_total %></td>
+        <td class="ios-download ios_"><%=data[word].ios_pv_total %></td>
+        <td class="ios-downrate">
+            <span><%=data[word].ios_dl_total %></span>%
+        </td>
+        <td class="android-click android_"><%=data[word].ios_rate %></td>
+        <td class="android-download android_"><%=data[word].android_pv_total %></td>
+        <td class="android-downrate android_">
+            <span><%=data[word].android_dl_total %></span>%
+        </td>
+        <td class="total-active"><%=data[word].android_rate %></td>
+    </tr>
+    <% } %>
+</tbody>
+</table>

@@ -1,0 +1,18 @@
+<table id="myTable1" class="tablesorter">
+<thead>
+<tr>
+    <th>搜索词</th>
+    <th>点击数量</th>
+    <th>下载数量</th>
+</tr>
+</thead>
+<tbody>
+<% for (var word in data) { if(word == 'count'|| word == 'access_count') continue; %>
+  <tr>
+      <td><%=data[word].keyword %></td>
+      <td><%=data[word].count %></td>
+      <td><%=data[word].access_count %></td>
+  </tr>
+<% } %>
+</tbody>
+</table>

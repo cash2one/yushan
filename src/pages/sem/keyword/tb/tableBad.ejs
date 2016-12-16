@@ -1,0 +1,37 @@
+
+<table cellspacing="30px" id="yichang" class="tablesorter table-striped">
+    <thead>
+    <tr>
+        <th>序号
+        </th>
+        <th>推广计划
+        </th>
+        <th>推广单元
+        </th>
+        <th>关键词
+        </th>
+        <th>异常原因
+        </th>
+        <th>建议
+        </th>
+    </tr>
+    </thead>
+    <tbody class="yichang listy">
+    <% for (var j=0; j<el.length; j++) { %>
+      <tr class="q2">
+          <td class="bad_xu"> <%=j+1 %>
+              </td>
+          <td class="bad_jihua"><%=el[j].jihua_name %>
+              </td>
+          <td class="bad_danyuan"><%=el[j].danyuan_name %>
+              </td>
+          <td  class="bad_key" style="color: #009EFE;text-decoration: underline;cursor: pointer;"><%=el[j].keyword_name %>
+              </td>
+          <td class="bad_yuanyin"> <%=el[j].yuanyin %>
+              </td>
+          <td class="bad_jielun"> <%=el[j].jielun %>
+              </td>
+          </tr>
+    <% } %>
+    </tbody>
+</table>

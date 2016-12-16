@@ -1,0 +1,383 @@
+{
+  "issues": [
+    {
+      "id": 101,
+      "text": "something is not right"
+    },
+    {
+      "id": 102,
+      "text": "crash on login"
+    }
+  ],
+  "user": {
+    "userId": {
+      "id": 100,
+      "name": "userName"
+    }
+  },
+  "total": {
+    "data": {
+      "exchange_count": "10",
+      "share_count": "23",
+      "patent_count": "7",
+      "article_count": "37",
+      "exchangeRecords": []
+    },
+    "success": true
+  },
+  "twoweek": [
+    {
+      "total_pv": 17490,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 20345.13,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-11-25"
+    },
+    {
+      "total_pv": 19195,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 23453.86,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-11-26"
+    },
+    {
+      "total_pv": 19621,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 25451.78,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-11-27"
+    },
+    {
+      "total_pv": 18950,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 24482.51,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-11-28"
+    },
+    {
+      "total_pv": 20405,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 26942.12,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-11-29"
+    },
+    {
+      "total_pv": 20336,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 26998.68,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-11-30"
+    },
+    {
+      "total_pv": 20230,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 26744.03,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-12-01"
+    },
+    {
+      "total_pv": 23229,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 28341.1,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-12-02"
+    },
+    {
+      "total_pv": 23968,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 28952.49,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-12-03"
+    },
+    {
+      "total_pv": 25607,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 29989.3,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-12-04"
+    },
+    {
+      "total_pv": 23640,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 27308.07,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-12-05"
+    },
+    {
+      "total_pv": 23243,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 26763.52,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-12-06"
+    },
+    {
+      "total_pv": 22962,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 26414.44,
+      "download_rate": "0.00",
+      "active_rate": "0.00",
+      "date": "2016-12-07"
+    },
+    {
+      "total_view": "162426",
+      "total_pv": 0,
+      "total_count": 0,
+      "total_active": 0,
+      "cost": 7993.06,
+      "download_rate": "NaN",
+      "active_rate": "NaN",
+      "mobileBalance": 132418.03,
+      "date": "2016-12-08"
+    }
+  ],
+  "getweekcost": {
+    "username": "附近约爱",
+    "appid": "203e0e1622c5457e92c802cdf722621f",
+    "data": [
+      {
+        "cost": "56832.03",
+        "date": "2016-10-31----2016-11-06"
+      },
+      {
+        "cost": "107623.89",
+        "date": "2016-11-07----2016-11-13"
+      },
+      {
+        "cost": "140909.81",
+        "date": "2016-11-14----2016-11-20"
+      },
+      {
+        "cost": "161822.94",
+        "date": "2016-11-21----2016-11-27"
+      },
+      {
+        "cost": "192395.76",
+        "date": "2016-11-28----2016-12-04"
+      },
+      {
+        "cost": "80315.10",
+        "date": "2016-12-05----2016-12-07"
+      }
+    ]
+  },
+  "all": {
+    "total_view": "39548",
+    "total_pv": 2920,
+    "total_count": 734,
+    "total_active": 0,
+    "cost": 2611.49,
+    "download_rate": "25.1",
+    "active_rate": "100.0",
+    "mobileBalance": "80638",
+    "yesterdayCost": "5559",
+    "monthCost": "40291",
+    "yestoday_total_view": "79991",
+    "yestoday_total_pv": 4279,
+    "yestoday_total_count": 924,
+    "yestoday_total_active": 0,
+    "yestoday_cost": 5561.91,
+    "yestoday_download_rate": "21.6",
+    "yestoday_active_rate": "100.0"
+  },
+  "getSKWord": {
+    "data": {
+      "10天锻炼八块腹肌": {
+        "52330922777": {
+          "access_count": 1,
+          "count": 2,
+          "keyword": "锻炼软件排行榜"
+        },
+        "52518769985": {
+          "count": 1,
+          "keyword": "练习肌肉的软件"
+        },
+        "52584767363": {
+          "count": 3,
+          "keyword": "快速练腹肌"
+        },
+        "52584767465": {
+          "access_count": 1,
+          "count": 4,
+          "keyword": "8分钟腹肌锻炼"
+        },
+        "54521608451": {
+          "access_count": 1,
+          "count": 4,
+          "keyword": "10天锻炼八块腹肌"
+        },
+        "54543573705": {
+          "count": 1,
+          "keyword": "男人练腹肌的最快方法"
+        },
+        "54573684050": {
+          "access_count": 1,
+          "count": 2,
+          "keyword": "锻炼八块腹肌"
+        },
+        "54573684122": {
+          "count": 4,
+          "keyword": "八块腹肌锻炼方法"
+        },
+        "54573684284": {
+          "count": 1,
+          "keyword": "什么方法锻炼腹肌最快"
+        },
+        "54573684971": {
+          "count": 1,
+          "keyword": "简单锻炼腹肌的方法"
+        },
+        "54573684998": {
+          "access_count": 1,
+          "count": 150,
+          "keyword": "10天锻炼八块腹肌"
+        },
+        "54573685013": {
+          "count": 1,
+          "keyword": "8分钟腹肌锻炼"
+        },
+        "54596486511": {
+          "access_count": 1,
+          "count": 2,
+          "keyword": "最快的腹肌锻炼方法"
+        },
+        "55038258820": {
+          "access_count": 1,
+          "count": 5,
+          "keyword": "10天锻炼八块腹肌"
+        },
+        "55058188143": {
+          "access_count": 1,
+          "count": 48,
+          "keyword": "10天锻炼八块腹肌"
+        },
+        "55058188221": {
+          "count": 1,
+          "keyword": "八块腹肌锻炼方法"
+        },
+        "55058188407": {
+          "access_count": 1,
+          "count": 2,
+          "keyword": "简单锻炼腹肌的方法"
+        },
+        "55058188743": {
+          "count": 1,
+          "keyword": "腹肌的锻炼"
+        },
+        "55058189070": {
+          "count": 2,
+          "keyword": "锻炼腹肌的简单方法"
+        },
+        "55058189100": {
+          "count": 1,
+          "keyword": "锻炼八块腹肌"
+        },
+        "55058189340": {
+          "count": 1,
+          "keyword": "快速锻炼腹肌的方法"
+        },
+        "access_count": 43,
+        "count": 238
+      },
+      "pc肌在哪个位置": {
+        "access_count": 0,
+        "count": 1
+      },
+      "健身计划表男士初级": {
+        "54794118578": {
+          "count": 5,
+          "keyword": "健身计划表男士初级"
+        },
+        "55056534642": {
+          "count": 4,
+          "keyword": "健身计划表男士初级"
+        },
+        "access_count": 0,
+        "count": 10
+      },
+      "如何锻炼腹肌": {
+        "52584767438": {
+          "count": 1,
+          "keyword": "怎样锻炼腹肌"
+        },
+        "52584767603": {
+          "count": 1,
+          "keyword": "怎么锻炼腹肌"
+        },
+        "52584768020": {
+          "count": 1,
+          "keyword": "怎么快速练出腹肌"
+        },
+        "52584768083": {
+          "count": 5,
+          "keyword": "如何锻炼腹肌"
+        },
+        "54573683522": {
+          "count": 2,
+          "keyword": "每天6分钟完美腹肌锻炼方法"
+        },
+        "55058188317": {
+          "count": 1,
+          "keyword": "每天6分钟完美腹肌锻炼方法"
+        },
+        "55058188905": {
+          "count": 1,
+          "keyword": "锻炼腹肌最快的方法"
+        },
+        "55058190963": {
+          "count": 1,
+          "keyword": "怎样快速锻炼腹肌"
+        },
+        "55058192916": {
+          "count": 1,
+          "keyword": "如何锻炼腹肌"
+        },
+        "55058193411": {
+          "access_count": 1,
+          "count": 2,
+          "keyword": "怎么才能锻炼出腹肌"
+        },
+        "access_count": 2,
+        "count": 17
+      },
+      "户外轨迹软件": {
+        "53665124306": {
+          "count": 1,
+          "keyword": "轨迹软件"
+        },
+        "access_count": 0,
+        "count": 2
+      },
+      "胸 女生": {
+        "access_count": 0,
+        "count": 1
+      }
+    },
+    "message": "",
+    "status": "success"
+  }
+}

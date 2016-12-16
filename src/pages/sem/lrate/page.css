@@ -1,0 +1,455 @@
+/* tables */
+html{font-family:"微软雅黑",Arial,sans-serif;height:100%}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,input,button,textarea,p,th,td,b,i,strong{padding:0;margin:0;font-family:Microsoft YaHei,sans-serif,Arial;list-style: none}
+strong,b{font-weight: normal;font-size:13px;}
+fieldset,img{border:0}
+a{text-decoration:none;color:#000;outline:none}
+li{list-style:none}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+input,button,textarea,select{*font-size:100%}
+.clear:after{
+    display:block;
+    content:"clear";
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+.clear{zoom:1;}
+/***************************************************************/
+body{
+    height: 100%;
+}
+.cancel{
+    cursor: pointer;
+    line-height: 50px;
+    float: right;
+    color: #999999;
+    margin-right: 150px;
+    font-size: 14px;
+}
+.cancel img{
+    /*width: 13px;*/
+    vertical-align: 0.5px;
+}
+.title{
+    overflow: hidden;
+    width: 100%;
+    height:50px;
+    z-index: 1000;
+    /*height: 5%;*/
+    line-height: 50px;
+    position: fixed;
+    left: 0;
+    top:0;
+    background: #4390b9;
+    box-shadow: 0px 2px 14px #888;
+}
+
+.logo{
+    /*float: left;*/
+    width:50px;
+    vertical-align: middle;
+    margin-left: 25px;
+
+}
+.app-group{
+    z-index: 1000;
+    display: none;
+    position: absolute;
+    left: 106px;
+    top: 42px;
+    box-shadow: 1px 2px 3px #888;
+    width: 202px;
+}
+#us{
+    margin-left:20px;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 3px;
+    color: #ffffff;
+    border: 0;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background: #4390b9 url("./images/下拉.png") no-repeat scroll right center;
+    padding-right: 14px;
+}
+select::-ms-expand { display: none; }
+#us:link{
+    background:#4390b9 ;
+}
+#us:active{
+    background: #357397 url("./images/下拉.png") no-repeat scroll right center;
+}
+.lef span:active{
+    background: #357397;
+
+}
+.app_list {
+    background: #FFF;
+    font-size: 12px;
+    font-family: 'PingFang SC', arial, 'Microsoft YaHei';
+}
+.app-group .app-groupcont .my-app {
+    height: 30px;
+    line-height: 30px;
+    background: #e6e6e6;
+    padding: 10px 10px 10px 14px;
+    font-family: 'PingFang SC', arial, 'Microsoft YaHei', sans-serif;
+    text-align: left;
+    font-size: 14px!important;
+    position: relative;
+    -webkit-border-top-left-radius: 3px;
+    -moz-border-top-right-radius: 3px;
+}
+.app_list ul li a span.icon-bookmark {
+    content: "";
+    display: none;
+}
+.app_list ul li {
+    cursor: pointer;
+    padding-left: 10px;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+}
+.help,.feedback{
+    color: #ccc;
+    font-size: 13px;
+    /**/
+}
+.help{
+    margin-left: 950px;
+}
+.feedback{
+    margin-left: 10px;
+}
+.help:hover,.feedback:hover{
+    color: #0f77be;
+}
+
+.body{
+    width: 100%;
+    height: 100%;
+}
+.yushan_left,.yushan_right{
+    float: left;
+}
+.yushan_sidebar {
+    padding-bottom:30px;
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+    height: 90.5%;
+    /*border-top: 1px solid #30394a;*/
+    /*padding-bottom: -1px;*/
+    z-index: 10;
+    width: 100%;
+    background: #fff;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    -webkit-box-shadow: 0px 5px 8px #a4a4a4;
+    -moz-box-shadow: 0px 5px 8px #a4a4a4;
+    box-shadow: 0px 5px 8px #a4a4a4;
+    min-height: 550px;
+}
+.yushan_left{
+    background: #fff;
+    position: fixed;
+    min-width: 200px;
+    width:17%;
+    left: 0;
+    top: 0px;
+    height: 100%;
+    z-index: 5;
+    -webkit-box-shadow: 0px 5px 8px #a4a4a4;
+    -moz-box-shadow: 0px 5px 8px #a4a4a4;
+    box-shadow: 0px 5px 8px #a4a4a4;
+}
+.yushan_sidebar li {
+    cursor: pointer;
+    color: #666666;
+    /*line-height: 40px;*/
+    display: block;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    /*margin-left: 8px;*/
+    /*border-radius: 3px;*/
+    font-size: 16px;
+    font-weight: normal;
+}
+.yushan_sidebar li .icons {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    /*background: url(left_icon.png)no-repeat;*/
+}
+.yushan_sidebar .borders {
+    border-top: 1px solid #273140;
+    border-bottom: 1px solid #3e495a;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.yushan_sidebar li:hover{
+    /*color: white !important;*/
+    background:#eef4f9;
+}
+.active1{
+    color: white;
+    background: rgb(66,79,98);
+
+}
+.yushan_left .yushan_sidebar .icon_kb{
+    background-position: -244px -5px;
+}
+
+.yushan_left .yushan_sidebar .icon_gl{
+    background-position: -24px -5px;
+}
+.yushan_left .yushan_sidebar .icon_zt{
+    background-position: -86px -5px;
+}
+.yushan_left .yushan_sidebar .icon_sj{
+    background-position: -147px -5px;
+}
+.yushan_left .yushan_sidebar .icon_ld{
+    background-position: -45px -5px;
+}
+.yushan_left .yushan_sidebar .icon_lc{
+    background-position: -64px -5px;
+}
+.yushan_left .yushan_sidebar .icon_da{
+    background-position: -175px -5px;
+}
+.yushan_left .yushan_sidebar .icon_yh{
+    background-position: -107px -5px;
+}
+.yushan_left .yushan_sidebar .icon_tz{
+    background-position: -198px -5px;
+}
+.yushan_left .yushan_sidebar .icon_yq{
+    background-position: -198px -5px;
+}
+.yushan_right {
+    width:83%;
+    margin-top:3%;
+    margin-left: 17%;
+    /*margin-top: 10px;*/
+    /*margin-left: 160px;*/
+    /*background: #fa3430;*/
+    height:94%;
+    /*height: 90%;*/
+    /*padding-left: 140px;*/
+    /*overflow-y: auto;*/
+    /*min-width: 950px;*/
+    /*overflow-x: auto;*/
+}
+
+
+/*概况----------------------------------------------------------------*/
+
+table.tablesorter {
+    font-family:arial;
+    background-color: #CDCDCD;
+    margin:10px 0pt 15px;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+    background-color: #e6EEEE;
+    border: 1px solid #FFF;
+    font-size:16px;
+    font-weight: normal;
+    padding: 4px;
+}
+table.tablesorter thead tr .tablesorter-header-inner{
+    background-image: url(./images/bg1.png);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+table.tablesorter tbody td {
+    color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+    background-color:#F0F0F6;
+}
+
+table.tablesorter thead tr .tablesorter-headerAsc .tablesorter-header-inner{
+    background-image: url(./images/asc1.png);
+}
+table.tablesorter thead tr .tablesorter-headerDesc .tablesorter-header-inner{
+    background-image: url(./images/desc1.png);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+.lef{
+    color: #fff;
+    float: left;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 16px;
+}
+.lef span{
+    padding: 0px 15px;
+    display: inline-block;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.rig{
+    float: right;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    margin-right:20px;
+}
+.logo{
+    width: auto;
+    height: 45px;
+    margin-left: 20px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.table1 table{
+    height: 90%;
+    border-width:1px;
+    border-collapse:collapse;
+    border-color:#d0d0d0;
+    border-style:solid solid none solid;
+    table-layout: fixed;
+
+}
+.table1 table tbody tr:nth-child(odd) td{
+    background: #fff;
+}
+.table1 table tbody tr:nth-child(even) td{
+    background:#ebf0f1;
+}
+.table1 table tbody tr:hover td{
+    color: #43bEB9;
+}
+
+.table1 th{
+    /*color: #fff;*/
+    border:0 !important;
+    color: #000 !important ;
+    font-weight: bold !important;
+    background: #ebf0f1 !important;
+    font-size: 16px !important;
+}
+.table1 td{
+    border:0 !important;
+    font-size: 16px;
+    color: #333;
+}
+.table thead, .table tbody {
+    display: block;
+}
+.table tbody {
+    height: 95%;
+    overflow-y: auto;
+}
+
+.table td {
+    width: 460px;
+}
+.table th {
+    width:460px;
+}
+.table tbody::-webkit-scrollbar{
+    width: 10px;
+    background: #ebf0f1;
+}
+.table tbody::-webkit-scrollbar-button{
+    display: none;
+}
+.table tbody::-webkit-scrollbar-track{
+    background: #bfbfbf;
+}
+.table tbody::-webkit-scrollbar-thumb{
+    width: 15px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    box-shadow: 0px 0px 2px 3px #bfbfbf;
+}
+.table tbody::-webkit-scrollbar-track-piece{
+    background: #bfbfbf;
+}
+.table1{
+    width: 90%;
+    margin: 20px auto;
+    height: 400px;
+}
+.searchs{
+    float: right;
+    margin-left:20px;
+    line-height: 37px;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+}
+.search{
+    padding-left: 10px;
+    width: 220px;
+    height: 37px;
+    border-radius: 5px;
+    /*box-shadow: 0px 2px 2px #ccc;*/
+    list-style: none;
+    border: 1px solid #ccc;
+    padding-right: 20px;
+}
+.glyphicon{
+    left: -23px;
+}
+ul{
+    width: 90%;
+    margin: 20px auto;
+}
+
+.ce{
+    position: relative;
+    padding: 30px 20px 60px 20px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    float: left;
+    margin-left: 80px;
+    margin-bottom: 50px;
+}
+.she{
+    position: absolute;
+    top: 10px;
+    right:20px;
+    width:20px;
+    height:10px;
+    background: black;
+    border-radius:38%;
+}
+.bao1,.bao2{
+    position: absolute;
+}
+.bao1{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 1px solid black;
+    bottom: 2px;
+    left: 183.5px;
+
+}
+
