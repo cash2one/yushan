@@ -1,6 +1,7 @@
 /*eslint-disable */
 const $ = require('jquery');
-const notice = require('./notice');
+const toastr = require('static/vendor/toastr.min');
+require('static/vendor/toastr.min.css');
 
 const moduleExports = {
 
@@ -115,7 +116,8 @@ const moduleExports = {
     .done(function done(json) {
       if (json.status) {
         if (json.status !== 'success') {
-          notice('数据错误', json.message || '操作发生错误');
+          // notice('数据错误', json.message || '操作发生错误');
+          toastr.error(json.message || '操作发生错误', '数据错误')
           deferred.reject();
         } else {
           if (json.data) {
@@ -129,11 +131,11 @@ const moduleExports = {
       }
     })
     .fail(function fail() {
-      notice('加载失败', '数据加载失败');
+      toastr.error('数据加载失败', '加载失败')
       deferred.reject();
     })
     .always(function always() {
-      notice('完成', '数据请求完成');
+      toastr.success('数据请求完成', '完成')
     });
 
     return deferred.promise();
