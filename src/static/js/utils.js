@@ -140,6 +140,49 @@ const moduleExports = {
 
     return deferred.promise();
   },
+  ajaxPost(url, data, async) {
+    var deferred = $.Deferred();
+
+    if (async === false) {
+      async = false;
+    } else {
+      async = true;
+    }
+
+    $.ajax({
+      url: url,
+      type: 'post',
+      async: async,
+      dataType: 'json',
+      data: data,
+    })
+      .done(function done(json) {
+        if (json.status) {
+          if (json.status !== 'success') {
+            // notice('数据错误', json.message || '操作发生错误');
+            toastr.error(json.message || '操作发生错误', '数据错误')
+            deferred.reject();
+          } else {
+            if (json.data) {
+              deferred.resolve(json.data);
+            } else {
+              deferred.resolve(json);
+            }
+          }
+        } else {
+          deferred.resolve(json);
+        }
+      })
+      .fail(function fail() {
+        toastr.error('数据加载失败', '加载失败')
+        deferred.reject();
+      })
+      .always(function always() {
+        toastr.success('数据请求完成', '完成')
+      });
+
+    return deferred.promise();
+  },
 
   countDown(opt) {
     var btn = $(opt.selector);

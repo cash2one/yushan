@@ -23,6 +23,8 @@ const moduleExports = {
   getRate: '/landpage/pagerate',
   getLink: '/link/find',
   getWeek: '/landpage/weekpr',
+  getRiBao: '/out/ribaoview',
+  getP: '/active/set',
 };
 
 module.exports = moduleExports;

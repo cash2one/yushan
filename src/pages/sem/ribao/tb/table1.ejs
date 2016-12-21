@@ -1,0 +1,74 @@
+<table cellspacing="30px" id="table2" class="tablesorter table-striped">
+    <thead>
+    <tr>
+        <th>日期
+        </th>
+        <th>推广计划
+        </th>
+        <th>展现
+        </th>
+        <th>点击
+        </th>
+        <th>消费
+        </th>
+        <th>点击率
+        </th>
+        <th>平均点击价格
+        </th>
+        <th>按钮展现
+        </th>
+        <th>
+            按钮点击
+        </th>
+        <th>
+            按钮消费
+        </th>
+        <th>按钮展现占比
+        </th>
+        <th>按钮消费占比
+        </th>
+        <th>H5消费</th>
+        <th>H5激活</th>
+        <th>H5激活成本</th>
+        <th>按钮激活量</th>
+        <th>按钮激活成本</th>
+        <th>备注</th>
+    </tr>
+    </thead>
+    <tbody class="table1 list1">
+    <% for (var i=0; i<data.length; i++) { %>
+    <tr>
+        <td class="date"><%=data[i].date %></td>
+        <td class="name"><%=data[i].name %></td>
+        <td class="tview"><%=data[i].view %></td>
+        <td class="tpv"><%=data[i].pv %></td>
+        <td class="tcost"><%=data[i].cost %></td>
+        <td class="tclkrate"><%=data[i].pv_rate+"%" %></td>
+        <td class="tclkcost"><%=data[i].pingClk %></td>
+        <td class="tbtnview"><%=data[i].baidu_view_button %></td>
+        <td class="tbtnclk"><%=data[i].baidu_click_button %></td>
+        <td class="tbtncost"><%=data[i].button_cost %>
+        </td>
+        <td class="tviewbi"><%=data[i].btnViewBi %></td>
+        <td class="tcostbi"><%=data[i].btnCostBi %></td>
+        <td class="h5cost"><%=data[i].h5Cost %>
+        </td>
+        <td class="h5active">
+            <a href="#" class="h5_active" data-type="textarea">0</a>
+        </td>
+        <td class="h5activeben">0
+        </td>
+        <td class="btnactive">
+            <a href="#" class="btn_active" data-type="textarea">0</a>
+        </td>
+        <td class="btnactiveben">
+            0
+        </td>
+        <td class="remark">
+            <a href="#" class="remark1" data-type="textarea">无</a>
+        </td>
+    </tr>
+    <% } %>
+    </tbody>
+
+</table>

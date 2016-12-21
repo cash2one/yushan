@@ -1,0 +1,79 @@
+<table cellspacing="30px" id="table1" class="tablesorter table-striped">
+    <thead>
+    <tr>
+        <th>日期
+        </th>
+        <th>展现
+        </th>
+        <th>点击
+        </th>
+        <th>消费
+        </th>
+        <th>折后总消费
+        </th>
+        <th>点击单价
+        </th>
+        <th>点击率
+        </th>
+        <th>羽扇下载
+        </th>
+        <th>
+            折后下载成本
+        </th>
+        <th>
+            总激活
+        </th>
+        <th>激活率
+        </th>
+        <th>折后安卓消费
+        </th>
+        <th>安卓总激活</th>
+        <th>折后ios消费</th>
+        <th>ios总激活</th>
+        <th>折后安卓激活成本</th>
+        <th>折后ios激活成本</th>
+        <th>备注</th>
+    </tr>
+    </thead>
+    <tbody class="table1 list">
+    <% for (var j=0; j<data.length; j++) { %>
+    <tr>
+        <td class="time"><%=data[j].date %></td>
+        <td class="view"><%=data[j].view %></td>
+        <td class="clk"><%=data[j].total_pv %></td>
+        <td class="cost"><%=data[j].cost %></td>
+        <td class="zhecost"><%=data[j].zheCost %></td>
+        <td class="clkdan"><%=data[j].clkDan %></td>
+        <td class="clkrate"><%=data[j].clkRate+"%" %></td>
+        <td class="yushandown"><%=data[j].total_count %></td>
+        <td class="zhedown"><%=data[j].zheDown %></td>
+        <td class="totalactive">
+            <a href="#" class="tot_active" data-type="textarea"><%=data[j].total_active %></a>
+        </td>
+        <td class="activerate"><%=data[j].acRate+"%" %></td>
+        <td class="zheancost"><%=data[j].zheAnC %></td>
+        <td class="antotalactive">
+            <a href="#" class="an_total_active" data-type="textarea">0</a>
+        </td>
+        <td class="zheioscost">
+            <%=data[j].zheIoC %>
+        </td>
+        <td class="iostotalactive">
+            <a href="#" class="ios_total_active" data-type="textarea">0</a>
+            <!--<input type="text">-->
+        </td>
+        <td class="zheancheng">
+            0
+        </td>
+        <td class="zheioscheng">
+            0
+        </td>
+        <td class="shuoming">
+            <a href="#" class="beizhu" data-type="textarea">无</a>
+        </td>
+    </tr>
+    <% } %>
+
+    </tbody>
+
+</table>
