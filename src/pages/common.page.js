@@ -3,6 +3,7 @@ require('!!bootstrap-webpack!bootstrapConfig');
 require('iconfontDir/iconfont.css');
 require('lessDir/base.less');
 require('metisMenu/metisMenu.min');
+require('components/top-nav/html');
 
 $(() => {
   $('#side-menu').metisMenu();

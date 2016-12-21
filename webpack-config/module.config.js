@@ -36,7 +36,7 @@ module.exports = {
     {
       test: /\.ejs$/,
       include: dirVars.srcRootDir,
-      loader: 'ejs',
+      loader: 'underscore-template-loader',
     },
     {
       // 图片加载器，雷同file-loader，更适合图片，可以将较小的图片转成base64，减少http请求
