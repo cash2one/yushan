@@ -27,6 +27,7 @@ const moduleExports = {
   getP: '/active/set',
   getPay: '/account/pay',
   getLogin: '/login/login',
+  addKeyWords: '/out/tuoci',
 };
 
 module.exports = moduleExports;
