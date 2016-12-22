@@ -199,4 +199,18 @@ $(() => {
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
     sum($(this).val(), 'aaa', e, s)
   });
+  $('.out').click(function(){
+    var arr1 = $('#date1').val().split('/');
+    var arr2 = $('#date2').val().split('/');
+    var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
+    var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
+    utils.ajax(apiUrl.getApiUrl('getOut'), {
+      zhe: $('#zhe').val(),
+      appid: '111',
+      edate: e,
+      sdate: s,
+    }).done(function (data) {
+      console.log(data);
+    });
+  })
 });
