@@ -26,6 +26,7 @@ const moduleExports = {
   getRiBao: '/out/ribaoview',
   getP: '/active/set',
   getPay: '/account/pay',
+  getLogin: '/login/login',
 };
 
 module.exports = moduleExports;

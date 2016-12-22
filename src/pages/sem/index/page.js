@@ -11,6 +11,8 @@ const tmp = require('./tb/table.ejs');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
 
+const store = require('static/js/store');
+
 $(() => {
   var app1=document.getElementsByClassName("user")[0];
   var now = new Date()
@@ -58,8 +60,9 @@ $(() => {
     // $("dd").text(data[0].message)
   });
   utils.ajax(apiUrl.getApiUrl('getPay'), {
-    userId: '111',
+    userId: store.getUser().appid,
   }).done(function (data) {
+    store.setAccounts(data);
     var appid=[];
     var nam=[];
     var total_balance=[];

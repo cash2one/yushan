@@ -1,0 +1,24 @@
+<% if(user) {%>
+<li class="dropdown user-menu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;" style="background: #4390b9;">
+        <i class="iconfont icon-mine"></i> <span><%=user.username %></span><span>,早上好</span> <i class="iconfont icon-triangle-down"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-user">
+        <li>
+            <a href="<%= constructInsideUrl('user/modify-info') %>"><i class="iconfont icon-edit"></i> 修改个人资料</a>
+        </li>
+        <li>
+            <a href="<%= constructInsideUrl('user/edit-password') %>"><i class="iconfont icon-password"></i> 修改登录密码</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a href="javascript:;"><i class="iconfont icon-logout"></i> 登出</a>
+        </li>
+    </ul>
+    <!-- /.dropdown-user -->
+</li>
+<% } else { %>
+<li>
+    <a href="<%= constructInsideUrl('index/login') %>"><i class="iconfont icon-logout"></i>登录</a>
+</li>
+<% }%>

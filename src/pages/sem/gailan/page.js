@@ -19,15 +19,21 @@ const pieChart = require('./charts/pie');
 
 const apiUrl = require('static/js/api');
 
+const eventBus = require('static/js/eventBus');
+const store = require('static/js/store');
+
+let currentAccount = store.getCurrentAccount();
+
+eventBus.on('account_change', function () {
+  currentAccount = store.getCurrentAccount();
+});
+
 function ajax(str, name, us, flag) {
   // $('#main').show();
   console.log(flag);
   if (flag === 1) {
     utils.ajax(apiUrl.getApiUrl('getAccountTwoWeek'), {
-      appid: 'appid',
-      user: 'user',
-      us: us,
-      page: 'page',
+      c1: currentAccount.appid,
     }).done(function (el) {
       var activeRate = [];
       var days = [];
