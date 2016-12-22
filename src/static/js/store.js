@@ -22,7 +22,7 @@ const moduleExports = {
     if (accounts) {
       for (const obj of accounts) {
         if (obj.appid === appid) {
-          return accounts;
+          return obj;
         }
       }
     }
@@ -31,12 +31,14 @@ const moduleExports = {
   setCurrentAccount: function (account) {
     if (account) {
       const current = this.getCurrentAccount();
-      if (current && (current.appid === current.appid)) {
+      if (current && (current.appid === account.appid)) {
         console.log('not change');
       } else {
         localStorage.setItem('currentAccount', JSON.stringify(account));
         eventBus.fire('account_change');
       }
+    } else {
+      localStorage.removeItem('currentAccount');
     }
   },
   getCurrentAccount: function () {
