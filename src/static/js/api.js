@@ -25,6 +25,7 @@ const moduleExports = {
   getWeek: '/landpage/weekpr',
   getRiBao: '/out/ribaoview',
   getP: '/active/set',
+  getPay: '/account/pay',
 };
 
 module.exports = moduleExports;

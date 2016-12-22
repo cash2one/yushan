@@ -7,6 +7,13 @@ const utils = require('utils');
 require('static/css/reset.css');
 require('./page.css');
 
+const zeng = require('./images/增.png');
+const jian = require('./images/减.png');
+const tian1 = require('./images/颜色填充-6-拷贝@2x.png');
+const tian2 = require('./images/颜色填充-6-拷贝-5@2x.png');
+const zhuan1 = require('./images/转化icon (2).png');
+const zhuan2 = require('./images/转化icon.png');
+
 const lineChart = require('./charts/line');
 const pieChart = require('./charts/pie');
 
@@ -179,10 +186,10 @@ function upload(str, name, us, flag) {
     const tb1 = (tb * 100).toFixed(2);
     if (el.total_view - el.yestoday_total_view >= 0) {
       $('.tb').css('color', 'red');
-      $('.zeng').attr('src', './images/增.png');
+      $('.zeng').attr('src', zeng);
     } else {
       $('.tb').css('color', '#5e35b1');
-      $('.zeng').attr('src', './images/减.png');
+      $('.zeng').attr('src', jian);
     }
     $('.tb').text(tb1 + '%');
     $('.progress-bar').css('width', tb1 + '%');
@@ -203,15 +210,15 @@ $(() => {
   console.log(sessionStorage.getItem('userName'));
 
   $('.start').hover(function () {
-    $(this).attr('src', './images/颜色填充-6-拷贝@2x.png');
+    $(this).attr('src', tian1);
   }, function () {
-    $(this).attr('src', './images/颜色填充-6-拷贝-5@2x.png');
+    $(this).attr('src', tian2);
   });
 
   $('.start1').hover(function () {
-    $(this).attr('src', './images/转化icon (2).png');
+    $(this).attr('src', zhuan1);
   }, function () {
-    $(this).attr('src', './images/转化icon.png');
+    $(this).attr('src', zhuan2);
   }).click(function () {
     $('.yushan-yin2').hide();
     $('.yushan-yin1').show();

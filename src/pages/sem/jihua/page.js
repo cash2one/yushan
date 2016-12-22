@@ -6,6 +6,10 @@ require('cp');
 const tmp = require('./tb/table.ejs');
 const tmp1 = require('./tb/table1.ejs');
 const tmp2 = require('./tb/table2.ejs');
+
+const ri = require('./images/ri.png');
+const ck = require('./images/ri-ck.png');
+
 require('static/vendor/jquery-ui.min');
 require('static/vendor/jquery.tablesorter.min');
 require('static/vendor/list.min');
@@ -602,9 +606,9 @@ $(() => {
   });
   $('.rili').hover(
     function () {
-      $(this).attr('src', './images/ri-ck.png');
+      $(this).attr('src', ck);
     }, function () {
-      $(this).attr('src', './images/ri.png');
+      $(this).attr('src', ri);
     }
   );
   $('.rili').click(function () {

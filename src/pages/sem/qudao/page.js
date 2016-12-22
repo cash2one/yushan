@@ -5,12 +5,18 @@
 require('cp');
 const utils = require('utils');
 const tb = require('./charts/table.ejs');
+
+const ck = require('./images/ri-ck.png');
+const ri = require('./images/ri.png');
+
 // 引入 ECharts 主模块
 require('static/css/reset.css');
 require('./page.css');
 require('static/vendor/jquery.tablesorter.min');
 require('static/vendor/jquery-ui.min');
 require('static/css/jquery-ui.min.css');
+require('static/vendor/list.min');
+
 const apiUrl = require('static/js/api');
 var datas = {};
 var all=[];
@@ -60,21 +66,21 @@ function ajx(type,name,us) {
   var url;
   switch (type) {
     case "all": {
-      alert("all");
+      // alert("all");
       utils.ajax(apiUrl.getApiUrl('getAccountAll'), { appid: 'appid',data: 'data', user: 'user', us: 'us', page: 'page' }).done(function (el) {
         qudao_ajax(el);
       });
     }
       break;
     case "other": {
-      alert("other");
+      // alert("other");
       utils.ajax(apiUrl.getApiUrl('getAccountother'), { appid: 'appid',data: 'data', user: 'user', us: 'us', page: 'page' }).done(function (el) {
         qudao_ajax(el);
       });
     }
           break;
     case "otherbaidu": {
-      alert("otherbaidu");
+      // alert("otherbaidu");
       utils.ajax(apiUrl.getApiUrl('getAccountotherbaidu'), { appid: 'appid',data: 'data', user: 'user', us: 'us', page: 'page' }).done(function (el) {
         qudao_ajax(el);
       });
@@ -131,6 +137,7 @@ function qudao_ajax(el){
   };
 }
 $(() => {
+  $('#alert').attr('value', utils.getDateStr(-1));
   $(document).ready(function() {
     book = "all";
     ajx(book,window.name,window.us);
@@ -198,9 +205,9 @@ $(() => {
   })
   $(".rili").hover(
       function() {
-        $(this).attr("src",'./images/ri-ck.png')
+        $(this).attr("src",ck)
       },function() {
-        $(this).attr("src",'./images/ri.png')
+        $(this).attr("src",ri)
       }
   );
   $( ".time input" ).datepicker({

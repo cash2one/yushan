@@ -1,6 +1,12 @@
 require('!!bootstrap-webpack!bootstrapConfig');
 require('lessDir/base.less');
 require('./page.less');
+
+const p = require('./images/Profile.png');
+const p1 = require('./images/Profile1.png');
+const l = require('./images/Lock1.png');
+const l1 = require('./images/Lock.png');
+
 const utils = require('utils');
 const apiUrl = require('static/js/api');
 /*eslint-disable */
@@ -21,17 +27,17 @@ window.switchToPage = (page) => {
 };
 $(() => {
   $('.user').hover(function() {
-   $('.user1').attr('src','./images/Profile.png');
+   $('.user1').attr('src',p);
    $('.user').css('border-bottom','1px solid rgb(0,175,233)');
   },function() {
-   $('.user1').attr('src','./images/Profile1.png');
+   $('.user1').attr('src',p1);
    $('.user').css('border-bottom','1px solid rgb(153,153,153)');
   });
   $('.pwd').hover(function() {
-   $('.pwd1').attr('src','./images/Lock1.png');
+   $('.pwd1').attr('src',l);
    $('.pwd').css('border-bottom','1px solid rgb(0,175,233)');
   },function() {
-   $('.pwd1').attr('src','./images/Lock.png');
+   $('.pwd1').attr('src',l1);
    $('.pwd').css('border-bottom','1px solid rgb(153,153,153)');
   });
   $('.clk').click(clk);

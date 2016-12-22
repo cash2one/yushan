@@ -10,6 +10,9 @@ require('static/vendor/jquery-ui.min');
 require('static/vendor/jquery.tablesorter.min');
 require('static/vendor/list.min');
 
+const ck = require('./images/ri-ck.png');
+const ri = require('./images/ri.png');
+
 require('static/css/reset.css');
 require('static/css/jquery-ui.min.css');
 require('./page.css');
@@ -23,7 +26,7 @@ function top200(str, name, us) {
   var arr = $('#date').val().split('/');
   var date = arr[2] + '-' + arr[0] + '-' + arr[1];
    $('.q').remove();
-   $('.key').text('');
+   $('.key1').text('');
    $('.yc').text('');
    $('.zc').text('');
    $('.yz').text('');
@@ -157,7 +160,7 @@ function shua(str, date, name, us) {
   }).done(function (data) {
     var el = data;
     console.log(el);
-    $('.key').text(el.count);
+    $('.key1').text(el.count);
     $('.yc').text(el.badcount);
     $('.yz').text(el.goodcount);
     $('.zc').text(el.normalcount);
@@ -244,9 +247,9 @@ $(() => {
   });
   $('.rili').hover(
     function () {
-      $(this).attr('src', './images/ri-ck.png');
+      $(this).attr('src', ck);
     }, function () {
-    $(this).attr('src', './images/ri.png');
+    $(this).attr('src', ri);
   }
   );
   $('.rili').click(function () {

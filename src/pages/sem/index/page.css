@@ -1,0 +1,228 @@
+
+.z1{float: left;width:32%;margin-left:1%;margin-top:80px;border:1px solid #e5e5e5;border-radius: 10px;background:#ffffff;cursor: pointer;}
+.z1-1 span{display: inline-block;text-align: center;/*letter-spacing: 10px;*/width: 30%;}
+.z1-1{text-align: center;  border-bottom: 1px solid #e5e5e5;}
+
+.z1 p{font-size: 28px;text-align:center;margin-top: 10px;margin-bottom: 10px;color: #000;}
+.f{
+    color: #999999;
+}
+.cancel{
+    cursor: pointer;
+    float: right;
+    color: #999999;
+    margin-right: 100px;
+    line-height: 50px;
+    font-size: 14px;
+}
+.cancel img{
+    vertical-align: middle;
+}
+.title{
+    /*overflow: hidden;*/
+    width: 100%;
+    height: 50px;
+    z-index: 1000;
+    /*height: 5%;*/
+    line-height: 50px;
+    position: fixed;
+    left: 0;
+    top:0;
+    background: #4390b9;
+    box-shadow: 0px 3px 2px #888;
+}
+.client{
+    margin-top:110px;
+    padding-left:5%;
+    color: rgb(102,102,102);
+    font-size: 16px;
+    font-family: "Microsoft Yahei", "΢���ź�", Arial, Tahoma;
+}
+.spinner {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    margin:auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #abcf88;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: bounce 2.0s infinite ease-in-out;
+    animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    } 50% {
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+      }
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+.lef{
+    color: #fff;
+    float: left;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 16px;
+}
+.rig{
+    float: right;
+    height: 50px;
+    vertical-align: middle;
+    line-height: 50px;
+    margin-right: 40px;
+}
+.logo{
+    width: auto;
+    height: 45px;
+    margin-left: 40px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+.user{
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid #fff;
+    background: rgba(255,255,255,0.4);
+    width: 200px;
+    margin-left: 20px;
+    border-radius: 4px;
+}
+.down{
+    vertical-align: middle;
+    margin-left:10px;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #fff;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #fff;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #fff;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #fff;
+}
+.fu-mess{
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+    padding-right:20px;
+    margin-right: 20px;
+    border-right: 1px solid rgb(131,192,216);
+}
+.fu-mess img{
+    vertical-align: middle;
+}
+.userb{
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+.xuan1{
+    width: 150px;
+    cursor: pointer;
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+}
+.xuan2{
+    width: 150px;
+    cursor: pointer;
+    /*display: inline-block;*/
+    display: none;
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+}
+.img-circle{
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+dl{
+    color: #4390b9;
+    width: 94%;
+    border-radius: 4px;
+    border-left: 15px solid #4390ba;
+    font-size: 15px;
+    margin: 80px auto 30px;
+    padding-left: 15px;
+    background:#eef5fa;
+    padding: 20px 0 20px 15px;
+}
+dd{
+    text-indent: 30px;
+}
+.see{
+    width: 94%;
+    margin: 0 auto;
+}
+.three{
+    text-align: center;
+    padding: 10px 0 10px;
+    color: #eeeeee;
+    font-size: 18px;
+}
+.three span{
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+.dropdown{
+    display: inline-block;
+}
+.btn{
+    background: rgba(0,0,0,0);
+    color: #fff;
+}
+ul{
+    overflow: scroll;
+    height: 400px;
+}
+.btn:hover, .btn:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+html,body{
+    min-width: 1024px;
+    overflow-x:auto;
+}
+

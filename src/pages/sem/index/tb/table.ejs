@@ -1,0 +1,36 @@
+<% for (var j=0; j<data.length; j++) { %>
+<div class="z1" title=<%=j %>>
+    <div class="zclk">
+        <p style="font-weight: 700;font-family: KaiTi;font-size:22px;text-align:center;color: #4390b9;"  class="name"> <%=data[j].username %>
+             </p>
+        <div class="z1-1">
+            <span>
+        <p style="font-size: 20px;color: #333333;" class="p balance"> <%=data[j].mobileBalance %>
+         </p>
+        <p style="font-size: 14px;color: #999999;" class="f">账户余额</p>
+        </span>
+            <span>
+        <p style="font-size: 20px;color: #333333;" class="p"><%=data[j].yesterdayCost %>
+        </p>
+        <p style="font-size: 14px;color: #999999;" class="f">昨日消费</p>
+        </span>
+            <span>
+        <p style="font-size: 20px;color: #333333;" class="p"> <%=data[j].monthCost %>
+         </p>
+        <p style="font-size: 14px;color: #999999;" class="f">本月消费</p>
+        </span>
+            </div>
+        </div>
+    <div class="three">
+        <span class="monitor">
+        监控
+        </span>
+        <span class="activite">
+        激活
+        </span>
+        <span>
+        日报
+        </span>
+        </div>
+    </div>
+<% } %>
