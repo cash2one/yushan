@@ -4,10 +4,16 @@
 const store = require('static/js/store');
 const topUser = require('./tpl/topUser.ejs');
 const noJquery = require('withoutJqueryModule');
+const topAccounts = require('./tpl/topAccounts.ejs');
 
 $(() => {
   $('#top-menu').append(topUser({ user: store.getUser(), constructInsideUrl: noJquery.constructInsideUrl }));
+  $('#us').html(topAccounts({ accounts: store.getAccounts(), currentAccount: store.getCurrentAccount() }));
   $(document).on('change', '#us', function () {
-    store.setCurrentAccount(store.getAccountByAppid($(this).val()));
+    if ($(this).val() === 'all') {
+      store.setCurrentAccount('');
+    } else {
+      store.setCurrentAccount(store.getAccountByAppid($(this).val()));
+    }
   });
 });
