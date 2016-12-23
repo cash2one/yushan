@@ -1,0 +1,25 @@
+
+    <table class="left_table table tab table-hover tablesorter table-striped" id="table1"  name="table" cellspacing="0" cellpadding="10px" align="center">
+        <thead>
+        <tr>
+            <th><input class="all"  type="checkbox" name="all"/>全选</th>
+            <th >渠道号</th>
+            <th >总点击</th>
+            <th >总下载</th>
+            <th >点击</th>
+            <th >下载</th>
+        </tr>
+        </thead>
+        <tbody class="list">
+        <% for (var num in data) { %>
+        <tr class= "<%=qw %>-<%=num %>-<%=num  %>">
+            <td><input class="check_1" type="checkbox" name="all"  /></td>
+            <td ><%=data[num].word %></td>
+            <td ><%=data[num].recBid %></td>
+            <td ><%=data[num].mobilePV %></td>
+            <td ><%=data[num].pcPV %></td>
+            <td ><%=data[num].pv %></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>

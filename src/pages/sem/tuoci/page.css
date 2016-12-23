@@ -1,0 +1,93 @@
+.check {
+    display: inline-block;
+}
+.left_box {
+    width:50%;
+    float: left;
+}
+.left_table {
+    display:block;
+    margin:10px 0 20px 0;
+}
+.first_table input {
+    width:20px;
+    height:20px;
+}
+.left_table thead {
+    display: block;
+}
+.list {
+    width: 620px;
+    height: 300px;
+    display: block;
+    overflow: auto;
+}
+.left_table thead th {
+    width: 100px;
+    height:50px;
+    display:inline-block;
+    line-height: 50px;
+}
+.tab .list  td {
+    width:100px;
+}
+.tab1 tr th {
+    width:205px;
+}
+.tab1 .list  td {
+    width:205px;
+}
+
+
+/*右侧*/
+.right_table {
+    width: 700px;
+}
+#right_table {
+    overflow: auto;
+}
+.lead {
+    width:100%;
+    height: 100%;
+    background: white;
+    padding: 0;
+    margin:0;
+}
+.remove {
+    width: 102px;
+    height: 30px;
+}
+.right_box {
+    width:50%;
+    float: right;
+}
+.add_right_box {
+    width:100%;
+    height:100%;
+}
+.add_right_box table thead th {
+    border:1px solid black ;
+    width:100px;
+    height:50px;
+    position: relative;
+}
+.right_box table {
+    margin:10px 0 10px;
+}
+.table_hide table thead th {
+    border:1px solid black ;
+    width:100px;
+    height:50px;
+    position: relative;
+}
+#right_table {
+    overflow: auto;
+}
+.new_list {
+    height:300px;
+    border:1px solid black;
+}
+
+.table_hide {
+    display: none;
+}

@@ -1,0 +1,19 @@
+
+<table class="left_table table tab1 table-hover tablesorter table-striped" id="table1"  name="table" cellspacing="0" cellpadding="10px" align="center">
+    <thead>
+    <tr>
+        <th><input class="all_1" type="checkbox" name="all"/>全选</th>
+        <th>渠道号</th>
+        <th>总点击</th>
+    </tr>
+    </thead>
+    <tbody class="list">
+    <% for (var word in data) {%>
+    <tr class = "<%=gj %>-<%=num %>-<%=word  %>">
+        <td><input class="check" type="checkbox" name="all"  /></td>
+        <td ><%=data[word].word_ori %></td>
+        <td ><%=data[word].word_re %></td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>
