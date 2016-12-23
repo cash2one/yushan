@@ -1,4 +1,7 @@
-
+.key,.key a{
+    background:#78adca !important;
+    color: #fff !important;
+}
 #date,.symbol{
     padding-left: 10px;
     margin-left: 20px;

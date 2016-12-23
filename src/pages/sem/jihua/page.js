@@ -25,6 +25,7 @@ const store = require('static/js/store');
 
 let flag=1;
 let flow='';
+let flow1='';
 let str;
 
 const utils = require('utils');
@@ -118,6 +119,7 @@ function ajx(y, m, d, str) {
     var arr_cost = [];
     var tit = '各计划消费占比';
     $('.what').text('各计划数据统计');
+    $('.tiao').html('<span class="jh">计划</span>');
     $("input[type='checkbox']").prop('checked', true);
     for (var i = 0; i < el.length; i++) {
       arr_legend.push(el[i].name);
@@ -230,6 +232,7 @@ function unit(unit, y, m, d, str) {
     var arr_cost = [];
     var tit = '各单元消费占比';
     $('.what').text('各单元数据统计');
+    $('.tiao').html('<span class="jh">计划</span> ><span class="dy">单元</span>');
     $("input[type='checkbox']").prop('checked', true);
     for (var i = 0; i < el.length; i++) {
       arr_legend.push(el[i].danyuan);
@@ -343,6 +346,7 @@ function key(key, unit, y, m, d, str) {
     var arr_cost = [];
     var tit = '各关键词消费占比';
     $('.what').text('各关键词数据统计');
+    $('.tiao').html('<span class="jh">计划</span> ><span class="dy">单元</span>><span class="gj">关键词</span>');
     $("input[type='checkbox']").prop('checked', true);
     for (var i = 0; i < el.length; i++) {
       arr_legend.push(el[i].name);
@@ -477,7 +481,20 @@ $(() => {
   });
   $(document).on('click', '.danyuan', function () {
     var arr = $('#date').val().split('/');
+    flow1 = $(this).text();
     key($(this).text(), flow, arr[2], arr[0], arr[1], str);
+  });
+  $(document).on('click', '.jh', function () {
+    var arr = $('#date').val().split('/');
+    ajx(arr[2], arr[0], arr[1], str);
+  });
+  $(document).on('click', '.dy', function () {
+    var arr = $('#date').val().split('/');
+    unit(flow, arr[2], arr[0], arr[1], str);
+  });
+  $(document).on('click', '.gj', function () {
+    var arr = $('#date').val().split('/');
+    key(flow1, flow, arr[2], arr[0], arr[1], str);
   });
   /*function pin(){
    window.location="./page5.html?plan="+$(this).text()+"&userid="+str+"&user="+name+"&us="+us;

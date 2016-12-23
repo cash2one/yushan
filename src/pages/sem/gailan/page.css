@@ -1,6 +1,10 @@
 html{
     background:#ebf0f1;
 }
+.gailan,.gailan a{
+    background:#78adca !important;
+    color: #fff !important;
+}
 .z1{
     float: left;
     width: 20%;

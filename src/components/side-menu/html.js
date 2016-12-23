@@ -1,14 +1,17 @@
 /**
  * Created by wang on 2016/12/21.
  */
+/*eslint-disable */
 const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
-
+require('./page.css');
 let currentAccount = store.getCurrentAccount();
 
 function xin() {
-  $('.yushan-1').text(currentAccount.username);
-  $('.yushan-2 span').text(currentAccount.mobileBalance);
+  if(currentAccount){
+    $('.yushan-1').text(currentAccount.username);
+    $('.yushan-2 span').text(currentAccount.mobileBalance);
+  }
 }
 
 eventBus.on('account_change', function () {

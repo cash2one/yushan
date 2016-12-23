@@ -87,6 +87,7 @@ html,body{
     overflow-x: hidden;
 }
 .lef{
+    /*margin-left: 100px;*/
     color: #fff;
     float: left;
     height: 50px;
@@ -114,9 +115,9 @@ html,body{
     color: #fff;
     font-size: 15px;
     border: 1px solid #fff;
-    background: rgba(255,255,255,0.4);
+    background: hsl(205, 59%, 61%);;
     width: 200px;
-    margin-left: 20px;
+    margin-left: 100px;
     border-radius: 4px;
 }
 .down{

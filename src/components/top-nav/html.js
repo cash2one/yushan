@@ -12,10 +12,14 @@ $(() => {
   $('#us').html(topAccounts({ accounts: store.getAccounts(), currentAccount: store.getCurrentAccount() }));
   $(document).on('change', '#us', function () {
     if ($(this).val() === 'all') {
-      // store.setCurrentAccount('');
+      store.setCurrentAccount('');
       window.location = '/sem/index/page.html';
     } else {
       store.setCurrentAccount(store.getAccountByAppid($(this).val()));
     }
   });
+
+  $('.pull').click(function(){
+    localStorage.clear();
+  })
 });

@@ -1,3 +1,7 @@
+.jihua,.jihua a{
+    background:#78adca !important;
+    color: #fff !important;
+}
 /* tables */
 table.tablesorter {
     font-family:arial;
@@ -233,4 +237,43 @@ tbody tr{
 }
 thead th{
     width: 120px;
+}
+tbody{
+    display:block;
+    height:200px;
+    overflow-y: auto;
+}
+table thead, tbody tr {
+    display:table;
+    width:100%;
+    /*table-layout:fixed;*/
+}
+table thead {
+    width: calc( 100% - 1em )
+}
+tbody::-webkit-scrollbar{
+    width: 10px;
+    background: #ebf0f1;
+}
+tbody::-webkit-scrollbar-button{
+    display: none;
+}
+tbody::-webkit-scrollbar-track{
+    background: #bfbfbf;
+}
+tbody::-webkit-scrollbar-thumb{
+    width: 15px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    box-shadow: 0px 0px 2px 3px #bfbfbf;
+}
+tbody::-webkit-scrollbar-track-piece{
+    background: #bfbfbf;
+}
+thead tr th{
+    width: 9%;
+}
+tbody tr td{
+    width: 9%;
 }
