@@ -14,9 +14,21 @@ require('static/css/reset.css');
 require('static/css/jquery-ui.min.css');
 require('static/css/bootstrap-editable.css');
 require('./page.css');
-
+const eventBus = require('static/js/eventBus');
+const store = require('static/js/store');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
+
+let currentAccount = store.getCurrentAccount();
+
+eventBus.on('account_change', function () {
+  currentAccount = store.getCurrentAccount();
+  var arr1 = $('#date1').val().split('/');
+  var arr2 = $('#date2').val().split('/');
+  var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
+  var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
+  sum($('#zhe').val(), currentAccount.appid, e, s)
+});
 
 function sum(zhe, appid, edate, sdate) {
   utils.ajax(apiUrl.getApiUrl('getRiBao'), {
@@ -46,7 +58,7 @@ function sum(zhe, appid, edate, sdate) {
     for (var i = 0; i < data[0].length; i++) {
       data[0][i].zheCost = (data[0][i].cost / parseFloat(zhe)).toFixed(3);
       data[0][i].clkDan = (data[0][i].cost / data[0][i].total_pv).toFixed(3);
-      data[0][i].clkRate = (data[0][i].total_pv / data[0][i].view).toFixed(3) * 100;
+      data[0][i].clkRate = ((data[0][i].total_pv / parseFloat(data[0][i].view)).toFixed(3)) * 100;
       data[0][i].zheDown = (data[0][i].zheCost / data[0][i].total_count).toFixed(3);
       data[0][i].acRate = (data[0][i].total_active / data[0][i].total_pv).toFixed(3) * 100;
       data[0][i].zheAnC = (an[i] / parseFloat(zhe)).toFixed(3);
@@ -137,10 +149,10 @@ $(() => {
   });
   $(document).on('click', '.tijiao', function () {
     if ($(this).parents('td').attr('class').toString() == 'totalactive') {
-      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), '111', '', $(this).parents('td').siblings('.time').text(), '', 'all', '', false);
+      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'all', '', false);
       $(this).parents('td').siblings('.activerate').text((parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()) / parseFloat($(this).parents('td').siblings('.clk').text())).toFixed(3) * 100 + '%');
     } else if ($(this).parents('td').attr('class').toString() == 'antotalactive') {
-      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), '111', '', $(this).parents('td').siblings('.time').text(), 'android', 'all', '', false);
+      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), 'android', 'all', '', false);
 
       $(this).parents('td').siblings('.zheancheng').text((parseFloat($(this).parents('td').siblings('.zheancost').text()) / parseFloat($(this).parent().siblings('.editable-input').find('textarea').val())).toFixed(3))
 
@@ -148,7 +160,7 @@ $(() => {
         $(this).parents('td').siblings('.iostotalactive').find('.ios_total_active').text(parseFloat($(this).parents('td').siblings('.totalactive').find('.tot_active').text()) - parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()));
       }
     } else if ($(this).parents('td').attr('class').toString() == 'iostotalactive') {
-      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), '111', '', $(this).parents('td').siblings('.time').text(), 'ios', 'all', '', false);
+      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()),currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), 'ios', 'all', '', false);
 
       $(this).parents('td').siblings('.zheioscheng').text((parseFloat($(this).parents('td').siblings('.zheioscost').text()) / parseFloat($(this).parent().siblings('.editable-input').find('textarea').val())).toFixed(3))
 
@@ -156,18 +168,18 @@ $(() => {
         $(this).parents('td').siblings('.antotalactive').find('.an_total_active').text(parseFloat($(this).parents('td').siblings('.totalactive').find('.tot_active').text()) - parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()));
       }
     } else if ($(this).parents('td').attr('class').toString() == 'shuoming') {
-      pos('', '111', $(this).parent().siblings('.editable-input').find('textarea').val(), $(this).parents('td').siblings('.time').text(), '', 'all', '', false);
+      pos('', currentAccount.appid, $(this).parent().siblings('.editable-input').find('textarea').val(), $(this).parents('td').siblings('.time').text(), '', 'all', '', false);
 
     } else if ($(this).parents('td').attr('class').toString() == 'h5active') {
-      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), '111', '', $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.name').text(), false);
+      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()),currentAccount.appid, '', $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.name').text(), false);
 
       $(this).parents('td').siblings('.h5activeben').text((parseFloat($(this).parents('td').siblings('.h5cost').text()) / parseFloat($(this).parent().siblings('.editable-input').find('textarea').val())).toFixed(2))
     } else if ($(this).parents('td').attr('class').toString() == 'btnactive') {
-      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), '111', '', $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.name').text(), true);
+      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), currentAccount.appid, '', $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.name').text(), true);
 
       $(this).parents('td').siblings('.btnactiveben').text((parseFloat($(this).parents('td').siblings('.tbtncost').text()) / parseFloat($(this).parent().siblings('.editable-input').find('textarea').val())).toFixed(2))
     } else if ($(this).parents('td').attr('class').toString() == 'remark') {
-      pos('', '111', $(this).parent().siblings('.editable-input').find('textarea').val(), $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.name').text(), false);
+      pos('',currentAccount.appid, $(this).parent().siblings('.editable-input').find('textarea').val(), $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.name').text(), false);
 
     }
   });
@@ -177,40 +189,39 @@ $(() => {
   var arr2 = $('#date2').val().split('/');
   var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
   var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
-  sum(1, 'aaa', e, s)
+  sum(1,currentAccount.appid, e, s)
   $('#date1').change(function () {
     var arr1 = $('#date1').val().split('/');
     var arr2 = $('#date2').val().split('/');
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
-    sum($('#zhe').val(), 'aaa', e, s)
+    sum($('#zhe').val(),currentAccount.appid, e, s)
   });
   $('#date2').change(function () {
     var arr1 = $('#date1').val().split('/');
     var arr2 = $('#date2').val().split('/');
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
-    sum($('#zhe').val(), 'aaa', e, s)
+    sum($('#zhe').val(),currentAccount.appid, e, s)
   });
   $('#zhe').change(function () {
     var arr1 = $('#date1').val().split('/');
     var arr2 = $('#date2').val().split('/');
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
-    sum($(this).val(), 'aaa', e, s)
+    sum($(this).val(), currentAccount.appid, e, s)
   });
   $('.out').click(function(){
     var arr1 = $('#date1').val().split('/');
     var arr2 = $('#date2').val().split('/');
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
-    utils.ajax(apiUrl.getApiUrl('getOut'), {
+    utils.formSubmit(apiUrl.getApiUrl('setOut'), {
       zhe: $('#zhe').val(),
-      appid: '111',
+      appid: currentAccount.appid,
+      name: currentAccount.username,
       edate: e,
       sdate: s,
-    }).done(function (data) {
-      console.log(data);
-    });
+    })
   })
 });

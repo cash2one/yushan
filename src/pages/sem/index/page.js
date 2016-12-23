@@ -13,6 +13,11 @@ const apiUrl = require('static/js/api');
 
 const store = require('static/js/store');
 
+function ck() {
+  var curr=store.getAccounts();
+  store.setCurrentAccount(curr[$(this).parent().attr('title')]);
+  window.location = '/sem/gailan/page.html';
+}
 $(() => {
   var app1=document.getElementsByClassName("user")[0];
   var now = new Date()
@@ -26,7 +31,7 @@ $(() => {
   else if (hour < 22){$(".time").text(",晚上好！")}
   else {$(".time").text(",夜里好！")}
 
-  $(".userb-1").text('xxx');
+  $(".userb-1").text(store.getUser().username);
   var time;
   $('.xuan1').click(function(){
     $(this).hide();
@@ -52,17 +57,17 @@ $(() => {
     });*/
   })
 
-  utils.ajax(apiUrl.getApiUrl('getSKWord'), {
-    appid: $('.appid').val(),
-    date: $('.time').val(),
+  utils.ajax(apiUrl.getApiUrl('getNotice'), {
+    appid: store.getUser().appid,
   }).done(function (data) {
     console.log('dd'+data)
-    // $("dd").text(data[0].message)
+    $('dd').text(data[0].message)
   });
   utils.ajax(apiUrl.getApiUrl('getPay'), {
     userId: store.getUser().appid,
   }).done(function (data) {
     store.setAccounts(data);
+
     var appid=[];
     var nam=[];
     var total_balance=[];
@@ -83,6 +88,7 @@ $(() => {
         }
       }
       $('.see').html(tmp({data: ann}));
+      $('.zclk').click(ck);
       $(".z1").each(function(){
         $(this).hover(function(){
           $(this).find(".z1-1").css("border-bottom","1px solid #428fb8").find(".p").css("color","#4390b9");
@@ -97,7 +103,7 @@ $(() => {
 
     }
     $('.see').html(tmp({data: data}));
-
+    $('.zclk').click(ck);
     $(".z1").each(function(){
       $(this).hover(function(){
         $(this).find(".z1-1").css("border-bottom","1px solid #428fb8").find(".p").css("color","#4390b9");

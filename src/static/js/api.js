@@ -16,10 +16,12 @@ const moduleExports = {
   getKey: '/keywords/word',
   getAccountWeekCost: '/account/getweekcost',
   getAccountTwoWeek: '/account/twoweek',
+  getNotice: '/account/notice',
   // getAccountAll: '/account/all',
   getAccountother: '/landpage/other',
   getAccountotherbaidu: '/landpage/otherbaidu',
-  getAccountAll: '/landpage/all',
+  getAccountAll: '/account/all',
+  getAll: '/landpage/all',
   getRate: '/landpage/pagerate',
   getLink: '/link/find',
   getWeek: '/landpage/weekpr',
@@ -28,6 +30,7 @@ const moduleExports = {
   getPay: '/account/pay',
   getLogin: '/login/login',
   addKeyWords: '/out/tuoci',
+  setOut: '/out/ribaoout',
 };
 
 module.exports = moduleExports;

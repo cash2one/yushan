@@ -159,4 +159,38 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     list-style: none;
     border: 1px solid #ccc;
 }
+tbody{
+    display:block;
+    height:300px;
+    overflow-y: auto;
+}
+table thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+table thead {
+    width: calc( 100% - 1em )
+}
+tbody::-webkit-scrollbar{
+    width: 10px;
+    background: #ebf0f1;
+}
+tbody::-webkit-scrollbar-button{
+    display: none;
+}
+tbody::-webkit-scrollbar-track{
+    background: #bfbfbf;
+}
+tbody::-webkit-scrollbar-thumb{
+    width: 15px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    box-shadow: 0px 0px 2px 3px #bfbfbf;
+}
+tbody::-webkit-scrollbar-track-piece{
+    background: #bfbfbf;
+}
+
 

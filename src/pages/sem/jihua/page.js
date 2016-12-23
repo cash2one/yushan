@@ -20,11 +20,22 @@ require('./page.css');
 
 const pieChart = require('./charts/pie');
 
-var flag=1;
-var flow='';
+const eventBus = require('static/js/eventBus');
+const store = require('static/js/store');
+
+let flag=1;
+let flow='';
+let str;
 
 const utils = require('utils');
 const apiUrl = require('static/js/api');
+
+let currentAccount = store.getCurrentAccount();
+
+eventBus.on('account_change', function () {
+  currentAccount = store.getCurrentAccount();
+  upload(currentAccount.appid);
+});
 
 function check() {
   if ($(this).is(':checked')) {
@@ -94,15 +105,12 @@ function check() {
   }
 }
 
-function ajx(y, m, d, str, name, us) {
+function ajx(y, m, d, str) {
   flag=1;
   var date = y + '-' + m + '-' + d;
   utils.ajax(apiUrl.getApiUrl('getPlan'), {
     appid: str,
     date: date,
-    user: name,
-    us: us,
-    page: 'new_计划页',
   }).done(function (data) {
     console.log(data);
     var el = data;
@@ -111,41 +119,6 @@ function ajx(y, m, d, str, name, us) {
     var tit = '各计划消费占比';
     $('.what').text('各计划数据统计');
     $("input[type='checkbox']").prop('checked', true);
-    /* if (us == '泰佛之家' || us == '貔貅') {
-     $("#table1 thead tr th").eq(6).hide()
-     $(".active").hide()
-     $("#table1 thead tr th").eq(7).hide()
-     $(".active_chengben").hide()
-     $("#table1 thead tr th").eq(8).hide()
-     $(".btn_cost").hide()
-     $("#table1 thead tr th").eq(1).show();
-     $(".cost").show();
-     $("#table1 thead tr th").eq(2).show();
-     $(".view").show();
-     $("#table1 thead tr th").eq(3).show();
-     $(".pv").show();
-     $("#table1 thead tr th").eq(4).show();
-     $(".down").show();
-     $("#table1 thead tr th").eq(5).show();
-     $(".down_chengben").show();
-     } else {
-     $("#table1 thead tr th").eq(1).show();
-     $(".cost").show();
-     $("#table1 thead tr th").eq(2).show();
-     $(".view").show();
-     $("#table1 thead tr th").eq(3).show();
-     $(".pv").show();
-     $("#table1 thead tr th").eq(4).show();
-     $(".down").show();
-     $("#table1 thead tr th").eq(6).show();
-     $(".active").show();
-     $("#table1 thead tr th").eq(5).show();
-     $(".down_chengben").show();
-     $("#table1 thead tr th").eq(7).show();
-     $(".active_chengben").show();
-     $("#table1 thead tr th").eq(8).show();
-     $(".btn_cost").show();
-     }*/
     for (var i = 0; i < el.length; i++) {
       arr_legend.push(el[i].name);
       arr_cost.push(el[i].cost);
@@ -243,16 +216,13 @@ function ajx(y, m, d, str, name, us) {
 
 }
 
-function unit(unit, y, m, d, str, name, us) {
+function unit(unit, y, m, d, str) {
   flag=2;
   var date = y + '-' + m + '-' + d;
   utils.ajax(apiUrl.getApiUrl('getUnit'), {
     appid: str,
     plan: unit,
     date: date,
-    user: name,
-    us: us,
-    page: 'new_计划页',
   }).done(function (data) {
     console.log(data);
     var el = data;
@@ -261,41 +231,6 @@ function unit(unit, y, m, d, str, name, us) {
     var tit = '各单元消费占比';
     $('.what').text('各单元数据统计');
     $("input[type='checkbox']").prop('checked', true);
-    /* if (us == '泰佛之家' || us == '貔貅') {
-     $("#table1 thead tr th").eq(6).hide()
-     $(".active").hide()
-     $("#table1 thead tr th").eq(7).hide()
-     $(".active_chengben").hide()
-     $("#table1 thead tr th").eq(8).hide()
-     $(".btn_cost").hide()
-     $("#table1 thead tr th").eq(1).show();
-     $(".cost").show();
-     $("#table1 thead tr th").eq(2).show();
-     $(".view").show();
-     $("#table1 thead tr th").eq(3).show();
-     $(".pv").show();
-     $("#table1 thead tr th").eq(4).show();
-     $(".down").show();
-     $("#table1 thead tr th").eq(5).show();
-     $(".down_chengben").show();
-     } else {
-     $("#table1 thead tr th").eq(1).show();
-     $(".cost").show();
-     $("#table1 thead tr th").eq(2).show();
-     $(".view").show();
-     $("#table1 thead tr th").eq(3).show();
-     $(".pv").show();
-     $("#table1 thead tr th").eq(4).show();
-     $(".down").show();
-     $("#table1 thead tr th").eq(6).show();
-     $(".active").show();
-     $("#table1 thead tr th").eq(5).show();
-     $(".down_chengben").show();
-     $("#table1 thead tr th").eq(7).show();
-     $(".active_chengben").show();
-     $("#table1 thead tr th").eq(8).show();
-     $(".btn_cost").show();
-     }*/
     for (var i = 0; i < el.length; i++) {
       arr_legend.push(el[i].danyuan);
       arr_cost.push(el[i].cost);
@@ -393,7 +328,7 @@ function unit(unit, y, m, d, str, name, us) {
 
 }
 
-function key(key, unit, y, m, d, str, name, us) {
+function key(key, unit, y, m, d, str) {
   flag=3;
   var date = y + '-' + m + '-' + d;
   utils.ajax(apiUrl.getApiUrl('getKey'), {
@@ -401,9 +336,6 @@ function key(key, unit, y, m, d, str, name, us) {
     plan: unit,
     unit: key,
     date: date,
-    user: name,
-    us: us,
-    page: 'new_计划关键词',
   }).done(function (data) {
     console.log(data);
     var el = data;
@@ -412,41 +344,6 @@ function key(key, unit, y, m, d, str, name, us) {
     var tit = '各关键词消费占比';
     $('.what').text('各关键词数据统计');
     $("input[type='checkbox']").prop('checked', true);
-    /* if (us == '泰佛之家' || us == '貔貅') {
-     $("#table1 thead tr th").eq(6).hide()
-     $(".active").hide()
-     $("#table1 thead tr th").eq(7).hide()
-     $(".active_chengben").hide()
-     $("#table1 thead tr th").eq(8).hide()
-     $(".btn_cost").hide()
-     $("#table1 thead tr th").eq(1).show();
-     $(".cost").show();
-     $("#table1 thead tr th").eq(2).show();
-     $(".view").show();
-     $("#table1 thead tr th").eq(3).show();
-     $(".pv").show();
-     $("#table1 thead tr th").eq(4).show();
-     $(".down").show();
-     $("#table1 thead tr th").eq(5).show();
-     $(".down_chengben").show();
-     } else {
-     $("#table1 thead tr th").eq(1).show();
-     $(".cost").show();
-     $("#table1 thead tr th").eq(2).show();
-     $(".view").show();
-     $("#table1 thead tr th").eq(3).show();
-     $(".pv").show();
-     $("#table1 thead tr th").eq(4).show();
-     $(".down").show();
-     $("#table1 thead tr th").eq(6).show();
-     $(".active").show();
-     $("#table1 thead tr th").eq(5).show();
-     $(".down_chengben").show();
-     $("#table1 thead tr th").eq(7).show();
-     $(".active_chengben").show();
-     $("#table1 thead tr th").eq(8).show();
-     $(".btn_cost").show();
-     }*/
     for (var i = 0; i < el.length; i++) {
       arr_legend.push(el[i].name);
       arr_cost.push(el[i].cost);
@@ -544,65 +441,22 @@ function key(key, unit, y, m, d, str, name, us) {
 
 }
 
+function upload(userid) {
+  str = userid;
+  var arr = $('#date').val().split('/');
+  ajx(arr[2], arr[0], arr[1], str);
+}
+
 $(() => {
   $('input:checkbox').click(check);
   $('#date').attr('value', utils.getDateStr(-1));
   $("input[id='date']").datepicker();
-  var str;
-  var name;
-  var us;
 
-  function upload(userid, name1, us1) {
-    str = userid;
-    name = name1;
-    us = us1;
-
-    /* if (us == '泰佛之家' || us == '貔貅') {
-     $("input:checkbox").eq(4).hide()
-     $("input:checkbox").eq(6).hide()
-     $("input:checkbox").eq(7).hide()
-     $(".dou_active").hide();
-     $(".dou_acchengben").hide();
-     $(".dou_btncost").hide();
-     $(".dou_down").text("关注变动")
-     $(".dou_chengben").text("关注成本变动")
-
-     $("#table1 thead tr th").eq(4).text("关注变动")
-     $("#table1 thead tr th").eq(5).text("关注成本变动")
-     $("#table1 thead tr th").eq(6).hide()
-     $(".active").hide()
-     $("#table1 thead tr th").eq(7).hide()
-     $(".active_chengben").hide()
-     $("#table1 thead tr th").eq(8).hide()
-     $(".btn_cost").hide()
-     } else {
-
-     $("input:checkbox").eq(4).show()
-     $("input:checkbox").eq(6).show()
-     $("input:checkbox").eq(7).show()
-     $(".dou_active").show();
-     $(".dou_acchengben").show();
-     $(".dou_btncost").show();
-     $(".dou_down").text("下载变动")
-     $(".dou_chengben").text("下载成本变动")
-     $("#table1 thead tr th").eq(4).text("下载变动")
-     $("#table1 thead tr th").eq(5).text("下载成本变动")
-
-     $("#table1 thead tr th").eq(6).show()
-     $(".active").show()
-     $("#table1 thead tr th").eq(7).show()
-     $(".active_chengben").show()
-     $("#table1 thead tr th").eq(8).show()
-     $(".btn_cost").show()
-     }*/
-    var arr = $('#date').val().split('/');
-    ajx(arr[2], arr[0], arr[1], str, name, us);
-  }
-  upload('1', '2', '3');
+  upload(currentAccount.appid);
 
   $('#date').change(function () {
     var arr = $('#date').val().split('/');
-    ajx(arr[2], arr[0], arr[1], str, name, us);
+    ajx(arr[2], arr[0], arr[1], str);
   });
   $('.rili').hover(
     function () {
@@ -618,11 +472,12 @@ $(() => {
   $(document).on('click', '.jihua', function () {
     var arr = $('#date').val().split('/');
     flow = $(this).text();
-    unit($(this).text(), arr[2], arr[0], arr[1], str, name, us);
+    console.log($(this).text());
+    unit($(this).text(), arr[2], arr[0], arr[1], str);
   });
   $(document).on('click', '.danyuan', function () {
     var arr = $('#date').val().split('/');
-    key($(this).text(), flow, arr[2], arr[0], arr[1], str, name, us);
+    key($(this).text(), flow, arr[2], arr[0], arr[1], str);
   });
   /*function pin(){
    window.location="./page5.html?plan="+$(this).text()+"&userid="+str+"&user="+name+"&us="+us;

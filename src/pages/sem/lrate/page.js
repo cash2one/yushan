@@ -20,9 +20,12 @@ require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
 require('echarts/lib/component/legend');
 
-
+const eventBus = require('static/js/eventBus');
+const store = require('static/js/store');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
+
+let currentAccount = store.getCurrentAccount();
 
 Date.prototype.format = function (format) {
   var o = {
@@ -43,12 +46,9 @@ Date.prototype.format = function (format) {
   return format;
 }
 
-function ajx (usid, name, user) {
+function ajx(usid) {
   utils.ajax(apiUrl.getApiUrl('getWeek'), {
     appid: usid,
-    us: name,
-    user: user,
-    page: 'rate',
   }).done(function (el) {
     console.log('el' + el);
     var arr = [];
@@ -203,19 +203,24 @@ function ajx (usid, name, user) {
 }
 
 $(() => {
-  var us = '111';
-  var appid = '111';
-  var user = '111';
-  $('.hu').text(us);
+  var appid=currentAccount.appid;
+  $('.hu').text(currentAccount.username);
+
+  utils.ajax(apiUrl.getApiUrl('getLink'), {
+    appid: appid,
+  }).done(function (data) {
+    var datas = data;
+    console.log("datas" + datas);
+    $('ul').html(tmp2({el: datas}));
+    $('.simulation').html(tmp1({el: datas}));
+  });
+
   utils.ajax(apiUrl.getApiUrl('getRate'), {
     appid: appid,
-    us: us,
-    user: user,
-    page: 'rate',
   }).done(function (data) {
     var datas = data;
     console.log(datas);
-    ajx(appid, us, user);
+    ajx(appid);
     $('#tb').html(tmp({el: datas}));
     $('#myTable').tablesorter();
     var options = {
@@ -226,16 +231,6 @@ $(() => {
 
 
   /*------------------------------------------*/
-  utils.ajax(apiUrl.getApiUrl('getLink'), {
-    appid: appid,
-    us: us,
-    user: user,
-    page: 'rate',
-  }).done(function (data) {
-    var datas = data;
-    console.log("datas" + datas);
-    $('ul').html(tmp2({el: datas}));
-    $('.simulation').html(tmp1({el: datas}));
-  });
+
 
 });

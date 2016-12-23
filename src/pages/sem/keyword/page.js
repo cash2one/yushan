@@ -17,12 +17,22 @@ require('static/css/reset.css');
 require('static/css/jquery-ui.min.css');
 require('./page.css');
 
+const eventBus = require('static/js/eventBus');
+const store = require('static/js/store');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
 
 var i = 1;
+var user;
 
-function top200(str, name, us) {
+let currentAccount = store.getCurrentAccount();
+
+eventBus.on('account_change', function () {
+  currentAccount = store.getCurrentAccount();
+  upLoad(currentAccount.appid);
+});
+
+function top200(str) {
   var arr = $('#date').val().split('/');
   var date = arr[2] + '-' + arr[0] + '-' + arr[1];
    $('.q').remove();
@@ -35,13 +45,10 @@ function top200(str, name, us) {
    $('.lhigh').text('');
    $('.clow').text('');
    $('.chigh').text('');
-  shua(str, date, name, us);
+  shua(str, date);
   utils.ajax(apiUrl.getApiUrl('getTop'), {
     appid: str,
     date: date,
-    user: name,
-    us: us,
-    page: 'new_Top200关键词',
   }).done(function (data) {
      // console.log(data);
      var el;
@@ -148,15 +155,10 @@ function top200(str, name, us) {
      var userList = new List('users', options);
   });
 }
-function shua(str, date, name, us) {
-  $('.q1').remove();
-  $('.q2').remove();
+function shua(str, date) {
   utils.ajax(apiUrl.getApiUrl('getKeyCount'), {
     appid: str,
     date: date,
-    user: name,
-    us: us,
-    page: 'new_关键词',
   }).done(function (data) {
     var el = data;
     console.log(el);
@@ -201,11 +203,12 @@ function shua(str, date, name, us) {
   });
 }
 
+function upLoad(userid) {
+  user = userid;
+  top200(userid);
+}
 
 $(() => {
-  var user;
-  var name;
-  var us;
   $('.choose2 span').click(function () {
     $(this).addClass('active1');
     $(this).siblings().removeClass('active1');
@@ -215,35 +218,11 @@ $(() => {
   $('#date').attr('value', utils.getDateStr(-1));
   // arr = $('#date').val().split('/');
   $("input[id='date']").datepicker();
-  function upLoad(userid, name1, us1) {
-    user = userid;
-    name = name1;
-    us = us1;
-    top200(userid, name1, us1);
-    /* if (us == '泰佛之家' || us == '貔貅') {
-     $('.r1').text('关注');
-     $('.r2').hide();
-     $("#table1 thead tr th").eq(8).text('H5关注');
-     $("#table1 thead tr th").eq(9).text('H5关注成本');
-     $("#table1 thead tr th").eq(10).hide();
-     $("#table1 thead tr th").eq(11).hide();
-     $(".button_down").hide();
-     $(".button_cost").hide();
-     } else {
-     $(".r1").text("下载");
-     $(".r2").show();
-     $("#table1 thead tr th").eq(8).text("H5下载");
-     $("#table1 thead tr th").eq(9).text("H5下载成本");
-     $("#table1 thead tr th").eq(10).show();
-     $("#table1 thead tr th").eq(11).show();
-     $(".button_down").show();
-     $(".button_cost").show();
-     }*/
-  }
-  upLoad('1', '2', '4');
+
+  upLoad(currentAccount.appid);
   $('#date').unbind('change').bind('change', function () {
     // arr = $('#date').val().split('/');
-    top200(user, name, us);
+    top200(currentAccount.appid);
   });
   $('.rili').hover(
     function () {
@@ -302,15 +281,12 @@ $(() => {
       type: what,
       chengben_high: h_cost,
       chengben_low: l_cost,
-      user: name,
-      us: us,
-      page: 'new_关键词设置',
     }).done(function (data) {
       console.log(data);
       $('.analysis').hide();
       var arr1 = $('#date').val().split('/');
       var date1 = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
-      shua(user, date1, name, us);
+      shua(currentAccount.appid, date1);
     });
   });
 

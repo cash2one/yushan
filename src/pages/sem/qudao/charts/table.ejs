@@ -21,17 +21,17 @@
         <td class="total-click"><%=data[word].pv_total %></td>
         <td class="total-download"><%=data[word].dl_total %></td>
         <td class="ios-click ios_"><%=data[word].ios_pv_total %></td>
-        <td class="ios-click ios_"><%=data[word].ios_pv_total %></td>
-        <td class="ios-download ios_"><%=data[word].ios_pv_total %></td>
-        <td class="ios-downrate">
-            <span><%=data[word].ios_dl_total %></span>%
+        <td class="ios-download ios_"><%=data[word].ios_dl_total %></td>
+        <td class="ios-downrate ios_"><%=data[word].ios_rate+"%" %></td>
+        <td class="android-click android_">
+            <span><%=data[word].android_pv_total %></span>
         </td>
-        <td class="android-click android_"><%=data[word].ios_rate %></td>
-        <td class="android-download android_"><%=data[word].android_pv_total %></td>
-        <td class="android-downrate android_">
-            <span><%=data[word].android_dl_total %></span>%
+        <td class="android-download android_"><%=data[word].android_dl_total %></td>
+        <td class="android-downrate android_"><%=data[word].android_rate +"%" %></td>
+        <td class="total-active">
+            <span>0</span>
         </td>
-        <td class="total-active"><%=data[word].android_rate %></td>
+        <td class="total-activerate">0</td>
     </tr>
     <% } %>
 </tbody>

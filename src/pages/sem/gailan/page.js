@@ -1,6 +1,7 @@
 /**
  * Created by jy on 2016/12/6.
  */
+/*eslint-disable */
 require('cp');
 const utils = require('utils');
 // 引入 ECharts 主模块
@@ -22,18 +23,21 @@ const apiUrl = require('static/js/api');
 const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
 
+let flag = 1;
+
 let currentAccount = store.getCurrentAccount();
 
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
+  upload(currentAccount.appid, flag);
 });
 
-function ajax(str, name, us, flag) {
+function ajax(str,flag) {
   // $('#main').show();
   console.log(flag);
   if (flag === 1) {
     utils.ajax(apiUrl.getApiUrl('getAccountTwoWeek'), {
-      c1: currentAccount.appid,
+      c1: str,
     }).done(function (el) {
       var activeRate = [];
       var days = [];
@@ -48,9 +52,9 @@ function ajax(str, name, us, flag) {
       console.log('el' + el);
 
       for (let i = 0; i < el.length; i++) {
-        activeRate.push(el[i].active_rate);
+        activeRate.push(parseFloat(el[i].active_rate));
         days.push(el[i].date);
-        downloadRate.push(el[i].download_rate);
+        downloadRate.push(parseFloat(el[i].download_rate));
         totalCost.push(el[i].cost);
         totalPV.push(el[i].total_pv);
         totalCount.push(el[i].total_count);
@@ -82,20 +86,17 @@ function ajax(str, name, us, flag) {
         激活率: false,
       };
       legendData = ['总消费', '按钮点击', 'H5展现', '下载率', '激活率'];
-      console.log(days);
-      console.log(el);
-      console.log(line);
-      console.log(selecteder);
-      console.log(legendData);
+      // console.log(days);
+      // console.log(el);
+      // console.log(line);
+      // console.log(selecteder);
+      // console.log(legendData);
       lineChart.renderLine('main', days, selecteder, legendData, line);
       // lineChart.renderLine('main', days, selecteder, legendData, { name: '总消费', data: totalCost }, { name: 'H5展现', data: totalPV }, { name: '按钮点击', data: totalCount });
     });
   } else if (flag === 2) {
     utils.ajax(apiUrl.getApiUrl('getAccountWeekCost'), {
-      appid: 'appid',
-      user: 'user',
-      us: 'us',
-      page: 'page',
+      appid: str,
     }).done(function (el) {
       var arr = [];
       var arr2 = [];
@@ -142,19 +143,16 @@ function ajax(str, name, us, flag) {
   }
 }
 
-function upload(str, name, us, flag) {
-  ajax(str, name, us, flag);
-  if (us === '泰佛之家') {
+function upload(str, flag) {
+  ajax(str, flag);
+ /* if (us === '泰佛之家') {
     $('.dow').text('关注量');
     $('.biao2-2').text('关注率');
-  }
+  }*/
   console.log('str' + str);
 
   utils.ajax(apiUrl.getApiUrl('getAccountAll'), {
-    appid: 'appid',
-    user: 'user',
-    us: 'us',
-    page: 'page',
+    c1: str,
   }).done(function (el) {
     console.log(el);
     if (el.mobileBalance === null) {
@@ -205,8 +203,6 @@ function upload(str, name, us, flag) {
 }
 
 $(() => {
-  var flag = 1;
-
   $('#main1').hide();
 
   console.log(utils.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss'));
@@ -236,7 +232,7 @@ $(() => {
     $('#main1').hide();
     $('#main').show();
     $('#dropdownMenu1').html('近两周总体数据 <span class="caret"></span>');
-    ajax('str', 'name', 'us', flag);
+    ajax(currentAccount.appid, flag);
   });
   $('.near_week').click(function () {
     /* $('#main1').show();
@@ -245,14 +241,11 @@ $(() => {
     $('#main').hide();
     $('#main1').show();
     $('#dropdownMenu1').html('每周总消费趋势 <span class="caret"></span>');
-    ajax('str', 'name', 'us', flag);
+    ajax(currentAccount.appid, flag);
   });
-  let str = utils.getUrlParameter('username');
-  str = 'str';
-  const name = 'name';
-  const us = 'us';
-  console.log('hhhh=' + str);
+  // let str = utils.getUrlParameter('username');
+  console.log(currentAccount);
   // if (str !== undefined) {
-  upload('1', name, us, flag);
+  upload(currentAccount.appid, flag);
   // }
 });

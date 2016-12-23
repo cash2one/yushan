@@ -17,38 +17,21 @@ require('static/vendor/jquery-ui.min');
 require('static/css/jquery-ui.min.css');
 require('static/vendor/list.min');
 
+const eventBus = require('static/js/eventBus');
+const store = require('static/js/store');
 const apiUrl = require('static/js/api');
 var datas = {};
 var all=[];
-var usid,book,name,us;
-function upload(str,name1,us1) {
-  usid = str;
-  book = "all";
-  window.name = name1;
-  window.us = us1;
-  if(window.us == '泰佛之家' || window.us == '貔貅'){
-    $(".opa").hide();
-    $("#myTable thead th").eq(4).text('iOS关注');
-    $("#myTable thead th").eq(5).text('iOS关注率');
-    $("#myTable thead th").eq(7).text('Android关注');
-    $("#myTable thead th").eq(8).text('Android关注率');
-    $("#myTable thead th").eq(9).hide();
-    $("#myTable thead th").eq(10).hide();
-    $(".total-active").hide();
-    $(".total-activerate").hide();
-  }else{
-    $(".opa").show();
-    $("#myTable thead th").eq(4).text('iOS下载');
-    $("#myTable thead th").eq(5).text('iOS下载率');
-    $("#myTable thead th").eq(7).text('Android下载');
-    $("#myTable thead th").eq(8).text('Android下载率');
-    $("#myTable thead th").eq(9).show();
-    $("#myTable thead th").eq(10).show();
-    $(".total-active").show();
-    $(".total-activerate").show();
-  }
-  ajx(book,name1,us1);
-}
+var usid;
+var book;
+
+let currentAccount = store.getCurrentAccount();
+
+eventBus.on('account_change', function () {
+  currentAccount = store.getCurrentAccount();
+  ajx(book,currentAccount.appid);
+});
+
 function  obj(a,b,c,d,e,f,g,h,i) {
   this.c2 = a;
   this.total_click = b;
@@ -60,28 +43,39 @@ function  obj(a,b,c,d,e,f,g,h,i) {
   this.android_dl_total = h;
   this.android_rate = i;
 };
-function ajx(type,name,us) {
+function ajx(type, appid) {
   var arr = $("#alert").val().split("/");
   var date = arr[2] + "-" + arr[0] + "-" + arr[1];
   var url;
   switch (type) {
     case "all": {
-      // alert("all");
-      utils.ajax(apiUrl.getApiUrl('getAccountAll'), { appid: 'appid',data: 'data', user: 'user', us: 'us', page: 'page' }).done(function (el) {
+      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,date: date,type: type}).done(function (el) {
+        qudao_ajax(el);
+      });
+    }
+      break;
+    case "baidu": {
+      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,date: date,type: type}).done(function (el) {
+        qudao_ajax(el);
+      });
+    }
+      break;
+    case "search": {
+      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,date: date,type: type}).done(function (el) {
         qudao_ajax(el);
       });
     }
       break;
     case "other": {
       // alert("other");
-      utils.ajax(apiUrl.getApiUrl('getAccountother'), { appid: 'appid',data: 'data', user: 'user', us: 'us', page: 'page' }).done(function (el) {
+      utils.ajax(apiUrl.getApiUrl('getAccountother'), { appid: appid,date: date}).done(function (el) {
         qudao_ajax(el);
       });
     }
           break;
     case "otherbaidu": {
       // alert("otherbaidu");
-      utils.ajax(apiUrl.getApiUrl('getAccountotherbaidu'), { appid: 'appid',data: 'data', user: 'user', us: 'us', page: 'page' }).done(function (el) {
+      utils.ajax(apiUrl.getApiUrl('getAccountotherbaidu'), { appid: appid,date: date}).done(function (el) {
         qudao_ajax(el);
       });
     }
@@ -90,12 +84,12 @@ function ajx(type,name,us) {
 }
 
 function qudao_ajax(el){
+  $('.l1').addClass("qudao_active").siblings().removeClass("qudao_active");
   $('#myTable').tablesorter();
   datas = el;
-  $('.biao-2').html(tb({ data: datas }));
   console.log(datas);
   var total_click1= 0,total_down= 0,ios_totaldl=0,android_totaldl= 0,total_active=0;
-  $(".l1").addClass("active").siblings().removeClass("active");
+  // $(".l1").addClass("active").siblings().removeClass("active");
   for(var i = 0;i <el.length;i++) {
     all.push(new obj(el[i]._id,el[i].pv_total,el[i].dl_total,el[i].ios_pv_total,el[i].ios_dl_total,el[i].ios_rate+"%",el[i].android_pv_total,el[i].android_dl_total,el[i].android_rate+"%"));
     total_click1 += el[i].pv_total;
@@ -111,6 +105,7 @@ function qudao_ajax(el){
     };
     $("table th").show();
   }
+  $('.biao-2').html(tb({ data: datas }));
   $(".all-today").text(total_click1);
   $(".all-todaydl").text(total_down);
   $(".all-iosdl").text(ios_totaldl);
@@ -140,47 +135,48 @@ $(() => {
   $('#alert').attr('value', utils.getDateStr(-1));
   $(document).ready(function() {
     book = "all";
-    ajx(book,window.name,window.us);
+    ajx(book,currentAccount.appid);
   });
   //日历
   $("#alert").change(function() {
-    ajx(book,window.name,window.us);
+    ajx(book,currentAccount.appid);
+    $('.l1').addClass("qudao_active").siblings().removeClass("qudao_active");
   });
   //导出
-  $(".daochu").click(function() {
+  /*$(".daochu").click(function() {
     send1=JSON.stringify(all);
     console.log(send1);
     utils.ajax(apiUrl.getApiUrl('getAccountAll'), { appid: 'appid',data: 'data', user: 'user', us: 'us', page: 'page' }).done(function (el) {
       window.location="/"+us+"渠道日报.xlsx";
     });
-  });
+  });*/
   $(".tablesorter").tablesorter();
   //点击切换数据
   $(".choose2").on("click","span",function() {
     switch ($(this).text()) {
       case "全部": {
         book = "all";
-        ajx(book,window.name,window.us);
+        ajx(book,currentAccount.appid);
       }
             break;
       case "百度来源": {
-        book = "otherbaidu";
-        ajx(book,window.name,window.us);
+        book = "baidu";
+        ajx(book,currentAccount.appid);
       }
             break;
       case "搜索": {
-        book = "all";
-        ajx(book,window.name,window.us);
+        book = "search";
+        ajx(book,currentAccount.appid);
       }
             break;
       case "百度其他": {
-        book = "other";
-        ajx(book,window.name,window.us);
+        book = "otherbaidu";
+        ajx(book,currentAccount.appid);
       }
             break;
       case "其他": {
         book = "other";
-        ajx(book,window.name,window.us);
+        ajx(book,currentAccount.appid);
       }
             break;
     }
@@ -226,5 +222,4 @@ $(() => {
   $(".choose2").on("click","span",function(){
     $(this).addClass("qudao_active").siblings().removeClass("qudao_active");
   });
-  $()
 })
