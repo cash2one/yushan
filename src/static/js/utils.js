@@ -183,6 +183,36 @@ const moduleExports = {
 
     return deferred.promise();
   },
+  formSubmit: function (url, datas, method='post') {
+    var form = $('#dynamicForm');
+
+    if (form.length <= 0) {
+      form = $("<form>");
+      form.attr('id', 'dynamicForm');
+      form.attr('style', 'display:none');
+      form.attr('target', '');
+      form.attr('method', method);
+
+      $('body').append(form);
+    }
+
+    form = $('#dynamicForm');
+    form.attr('action', url);
+    form.empty();
+
+    if (datas && typeof (datas) == 'object') {
+      for (const item in datas) {
+        var $_input = $('<input>');
+        $_input.attr('type', 'hidden');
+        $_input.attr('name', item);
+        $_input.val(datas[item]);
+
+        $_input.appendTo(form);
+      }
+    }
+
+    form.submit();
+  },
 
   countDown(opt) {
     var btn = $(opt.selector);
