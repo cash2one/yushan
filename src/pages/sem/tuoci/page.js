@@ -12,7 +12,7 @@ require('static/css/reset.css');
 require('./page.css');
 require('static/vendor/jquery.tablesorter.min');
 require('static/vendor/jquery-ui.min');
-require('static/vendor/jquery-ui.min.css');
+require('static/css/jquery-ui.min.css');
 const apiUrl = require('static/js/api');
 //点击全选
     let btn = "";
