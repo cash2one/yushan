@@ -31,6 +31,10 @@ const moduleExports = {
   getLogin: '/login/login',
   addKeyWords: '/out/tuoci',
   setOut: '/out/ribaoout',
+  getAllSearch: '/keywords/ssc',
+  getWord: '/keywords/tuijian',
+  getNextWord: '/plan/allplan',
+  getElement: '/unit/allunit',
 };
 
 module.exports = moduleExports;

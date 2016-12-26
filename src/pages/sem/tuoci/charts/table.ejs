@@ -1,20 +1,20 @@
 
-    <table class="left_table table tab table-hover tablesorter table-striped" id="table1"  name="table" cellspacing="0" cellpadding="10px" align="center">
-        <thead>
+    <table class="left_table  tab table-hover scrolltable tablesorter table-striped" id="table1"  name="table" cellspacing="0" cellpadding="10px" align="center">
+        <thead style="display:block;overflow-y: scroll;">
         <tr>
             <th><input class="all"  type="checkbox" name="all"/>全选</th>
-            <th >渠道号</th>
-            <th >总点击</th>
-            <th >总下载</th>
-            <th >点击</th>
-            <th >下载</th>
+            <th >搜索词</th>
+            <th >建议出价</th>
+            <th >手机PV</th>
+            <th >PCPV</th>
+            <th >总PV</th>
         </tr>
         </thead>
-        <tbody class="list">
+        <tbody class="list" style="display:block; max-height:800px;overflow-y: scroll;">
         <% for (var num in data) { %>
         <tr class= "<%=qw %>-<%=num %>-<%=num  %>">
             <td><input class="check_1" type="checkbox" name="all"  /></td>
-            <td ><%=data[num].word %></td>
+            <td class="tc_word"><%=data[num].word %></td>
             <td ><%=data[num].recBid %></td>
             <td ><%=data[num].mobilePV %></td>
             <td ><%=data[num].pcPV %></td>

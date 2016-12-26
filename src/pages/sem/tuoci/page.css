@@ -1,54 +1,93 @@
+
 .check {
     display: inline-block;
 }
 .left_box {
     width:50%;
+    height:100%;
     float: left;
 }
-.left_table {
-    display:block;
-    margin:10px 0 20px 0;
+.left_box_header,.right_box_header {
+    width:100%;
+    height:34px;
+    margin-top: 20px;
+
+}
+.seek {
+    width:200px;
+    margin-right: 50px;
+    float: left;
+}
+.seek_form {
+    width:300px;
+    float: left;
+}
+.first_table {
+    width:100%;
+    margin-top:30px ;
+}
+
+.tab1 th {
+    width:250px;
+}
+.tab1 .list td {
+    width:250px;
+}
+
+.tab th {
+    width:160px;
+}
+.tab .list td {
+    width:160px;
 }
 .first_table input {
     width:20px;
     height:20px;
 }
-.left_table thead {
-    display: block;
-}
-.list {
-    width: 620px;
-    height: 300px;
-    display: block;
-    overflow: auto;
-}
-.left_table thead th {
-    width: 100px;
-    height:50px;
-    display:inline-block;
-    line-height: 50px;
-}
-.tab .list  td {
-    width:100px;
-}
-.tab1 tr th {
-    width:205px;
-}
-.tab1 .list  td {
-    width:205px;
-}
-
 
 /*右侧*/
-.right_table {
-    width: 700px;
+.right_box {
+    width:50%;
+    height:100%;
+    float: right;
 }
-#right_table {
-    overflow: auto;
+.add_right_box {
+    width:100%;
+    height:100%;
+}
+.add_right_box table {
+    width:450px;
+    float: left;
+    margin:30px 100px 30px 10px;
+}
+.add_right_box table thead {
+    display:block;
+}
+
+.add_right_box table thead th {
+    border:1px solid black ;
+    width:137px;
+    height:40px;
+}
+.add_right_box table thead th input {
+    width:280px;
+    height:30px;
+}
+.text_center th {
+    text-align: center;
+}
+.new_list {
+    display:block;
+    width:440px;
+    max-height:300px;
+    overflow-y: scroll;
+}
+.new_list tr td {
+    width:138px;
 }
 .lead {
     width:100%;
-    height: 100%;
+    height: 50px    ;
     background: white;
     padding: 0;
     margin:0;
@@ -56,38 +95,17 @@
 .remove {
     width: 102px;
     height: 30px;
+    background: #f0f0f0;
+    outline: none;
 }
-.right_box {
-    width:50%;
-    float: right;
+.remove_all {
+    position: absolute;
+    top: -11px;
+    right: 43px;
 }
-.add_right_box {
-    width:100%;
-    height:100%;
-}
-.add_right_box table thead th {
-    border:1px solid black ;
-    width:100px;
-    height:50px;
-    position: relative;
-}
-.right_box table {
-    margin:10px 0 10px;
-}
+
 .table_hide table thead th {
     border:1px solid black ;
     width:100px;
     height:50px;
-    position: relative;
-}
-#right_table {
-    overflow: auto;
-}
-.new_list {
-    height:300px;
-    border:1px solid black;
-}
-
-.table_hide {
-    display: none;
 }

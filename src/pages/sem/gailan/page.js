@@ -19,12 +19,10 @@ const lineChart = require('./charts/line');
 const pieChart = require('./charts/pie');
 
 const apiUrl = require('static/js/api');
+let flag = 1;
 
 const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
-
-let flag = 1;
-
 let currentAccount = store.getCurrentAccount();
 
 eventBus.on('account_change', function () {
