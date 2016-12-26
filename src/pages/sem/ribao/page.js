@@ -171,11 +171,11 @@ $(() => {
       pos('', currentAccount.appid, $(this).parent().siblings('.editable-input').find('textarea').val(), $(this).parents('td').siblings('.time').text(), '', 'all', '', false);
 
     } else if ($(this).parents('td').attr('class').toString() == 'h5active') {
-      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()),currentAccount.appid, '', $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.name').text(), false);
+      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()),currentAccount.appid, '', $(this).parents('td').siblings('.date').text(), '', 'h5', $(this).parents('td').siblings('.name').text(), false);
 
       $(this).parents('td').siblings('.h5activeben').text((parseFloat($(this).parents('td').siblings('.h5cost').text()) / parseFloat($(this).parent().siblings('.editable-input').find('textarea').val())).toFixed(2))
     } else if ($(this).parents('td').attr('class').toString() == 'btnactive') {
-      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), currentAccount.appid, '', $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.name').text(), true);
+      pos(parseFloat($(this).parent().siblings('.editable-input').find('textarea').val()), currentAccount.appid, '', $(this).parents('td').siblings('.date').text(), '', 'btn', $(this).parents('td').siblings('.name').text(), true);
 
       $(this).parents('td').siblings('.btnactiveben').text((parseFloat($(this).parents('td').siblings('.tbtncost').text()) / parseFloat($(this).parent().siblings('.editable-input').find('textarea').val())).toFixed(2))
     } else if ($(this).parents('td').attr('class').toString() == 'remark') {
