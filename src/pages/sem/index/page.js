@@ -14,8 +14,10 @@ const apiUrl = require('static/js/api');
 const store = require('static/js/store');
 
 function ck() {
-  var curr=store.getAccounts();
-  store.setCurrentAccount(curr[$(this).parent().attr('title')]);
+
+  var curr=store.getAccountByAppid($(this).parent().attr('title'));
+  console.log(curr);
+  store.setCurrentAccount(curr);
   window.location = '/sem/gailan/page.html';
 }
 $(() => {
