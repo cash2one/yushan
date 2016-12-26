@@ -232,8 +232,8 @@ $(".get_plane").change(function(){
                 console.log(kw);
             }
             let a = {};
-            a.plan = $(".palne").eq(i).text();
-            a.unit =  $(".form").eq(i).text();
+            a.plan = $(".palne").eq(i).val();
+            a.unit =  $(".form").eq(i).val();
             a.url = $(".planUrl").eq(i).val();
             a.matchModel ='短语-同义包含';
             a.isuse = '启用';
