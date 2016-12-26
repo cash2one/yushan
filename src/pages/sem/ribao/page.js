@@ -60,11 +60,11 @@ function sum(zhe, appid, edate, sdate) {
       data[0][i].clkDan = (data[0][i].cost / data[0][i].total_pv).toFixed(3);
       data[0][i].clkRate = ((data[0][i].total_pv / parseFloat(data[0][i].view)).toFixed(3)) * 100;
       data[0][i].zheDown = (data[0][i].zheCost / data[0][i].total_count).toFixed(3);
-      data[0][i].acRate = (data[0][i].total_active / data[0][i].total_pv).toFixed(3) * 100;
+      data[0][i].acRate = (data[0][i].allac / data[0][i].total_pv).toFixed(3) * 100;
       data[0][i].zheAnC = (an[i] / parseFloat(zhe)).toFixed(3);
       data[0][i].zheIoC = (ios[i] / parseFloat(zhe)).toFixed(3);
-      // data[0][i].zheAnB=(data[0][i].zheAnC/parseFloat($('.an_total_active').eq(i).text())).toFixed(3);
-      // data[0][i].zheIoB=(data[0][i].zheIoC/parseFloat($('.ios_total_active').eq(i).text())).toFixed(3);
+      data[0][i].zheAnB=(data[0][i].zheAnC/parseFloat(data[0][i].allac_and)).toFixed(3);
+      data[0][i].zheIoB=(data[0][i].zheIoC/parseFloat(data[0][i].allac_ios)).toFixed(3);
     }
 
 
@@ -95,6 +95,8 @@ function sum(zhe, appid, edate, sdate) {
       biao2[k].btnViewBi = (parseFloat(biao2[k].baidu_view_button) / parseFloat(biao2[k].view)).toFixed(3);
       biao2[k].btnCostBi = (parseFloat(biao2[k].button_cost) / parseFloat(biao2[k].cost)).toFixed(3);
       biao2[k].h5Cost = (parseFloat(biao2[k].cost) - parseFloat(biao2[k].button_cost)).toFixed(3);
+      biao2[k].h5 = parseFloat(biao2[k].h5Cost)/parseFloat(biao2[k].activity_h5);
+      biao2[k].an = parseFloat(biao2[k].button_cost)/parseFloat(biao2[k].activity_button);
     }
     $('.tmp1').html(tb1({data: biao2}));
     $('#table2').tablesorter();

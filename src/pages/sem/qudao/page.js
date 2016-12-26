@@ -143,13 +143,16 @@ $(() => {
     $('.l1').addClass("qudao_active").siblings().removeClass("qudao_active");
   });
   //导出
-  /*$(".daochu").click(function() {
-    send1=JSON.stringify(all);
-    console.log(send1);
-    utils.ajax(apiUrl.getApiUrl('getAccountAll'), { appid: 'appid',data: 'data', user: 'user', us: 'us', page: 'page' }).done(function (el) {
-      window.location="/"+us+"渠道日报.xlsx";
-    });
-  });*/
+  $(".daochu").click(function() {
+    var arr = $("#alert").val().split("/");
+    var date = arr[2] + "-" + arr[0] + "-" + arr[1];
+    var send1=JSON.stringify(all);
+    utils.formSubmit(apiUrl.getApiUrl('setQuOut'), {
+      name: currentAccount.username,
+      data: send1,
+      date: date,
+    })
+  });
   $(".tablesorter").tablesorter();
   //点击切换数据
   $(".choose2").on("click","span",function() {
