@@ -18,7 +18,7 @@ const store = require('static/js/store');
 let currentAccount = store.getCurrentAccount();
 eventBus.on('account_change', function () {
     currentAccount = store.getCurrentAccount();
-    upload(currentAccount.appid, flag);
+    fun();
 });
 
 require('static/vendor/jquery.tablesorter.min');
@@ -57,7 +57,23 @@ const apiUrl = require('static/js/api');
             }
         }
     }
+// 获取关键词
+function fun() {
+    utils.ajax(apiUrl.getApiUrl('getNextWord'), {
+        appid: currentAccount.appid,
+    }).done(function (data) {
+        console.log(data.data.length);
 
+        var option = "";
+        var datas = data.data;
+        console.log(datas)
+
+        for(var i = 0;i<datas.length;i++) {
+            option += "<option value='"+datas[i].campaignId+ "'>"+datas[i].campaignName +"</option>"
+        }
+        $(".get_plane").html(option);
+    });
+}
 //全网 数据
 function trHide(btn,Otbody){
     var data = [];
@@ -117,7 +133,8 @@ function addTable(text,data) {
     }
 }
 $(() => {
-
+    //关键词调用
+    fun();
     //点击输入发送请求
     $(".send").click(function() {
         n++;
@@ -141,22 +158,7 @@ $(() => {
             });
         }
     });
-if( $(".get_plane > option").text() == "" ) {
-    utils.ajax(apiUrl.getApiUrl('getNextWord'), {
-        appid: currentAccount.appid,
-    }).done(function (data) {
-        console.log(data.data.length);
 
-        var option = "";
-        var datas = data.data;
-        console.log(datas)
-
-       for(var i = 0;i<datas.length;i++) {
-            option += "<option value='"+datas[i].campaignId+ "'>"+datas[i].campaignName +"</option>"
-       }
-        $(".get_plane").append(option);
-    });
-}
 $(".get_plane").change(function(){
 
     utils.ajax(apiUrl.getApiUrl('getElement'), {
