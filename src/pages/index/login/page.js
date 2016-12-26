@@ -27,6 +27,10 @@ window.switchToPage = (page) => {
   }
 };
 $(() => {
+
+  if(store.getUser()){
+    window.location = '/sem/index/page.html';
+  }
   $('.user').hover(function() {
    $('.user1').attr('src',p);
    $('.user').css('border-bottom','1px solid rgb(0,175,233)');
