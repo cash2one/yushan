@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <script type="text/javascript">
-  window.location.href = 'index/login/page.html';
+  if(store.getUser()){
+    window.location = '/sem/index/page.html';
+  }else{
+    window.location.href = 'index/login/page.html';
+  }
+
 </script>
 </head>
 <body>
