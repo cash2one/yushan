@@ -35,6 +35,7 @@ const moduleExports = {
   getWord: '/keywords/tuijian',
   getNextWord: '/plan/allplan',
   getElement: '/unit/allunit',
+  setQuOut: '/landpage/out',
 };
 
 module.exports = moduleExports;
