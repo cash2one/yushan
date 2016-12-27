@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/javascript">
-  if(store.getUser()){
-    window.location = '/sem/index/page.html';
-  }else{
-    window.location.href = 'index/login/page.html';
-  }
+    <!--<script src="static/js/store.js"></script>-->
+    <script type="text/javascript">
+      if(window.localStorage.user){
+        window.location = '/sem/index/page.html';
+      }else{
+        window.location.href = 'index/login/page.html';
+      }
 
-</script>
+    </script>
 </head>
 <body>
   
