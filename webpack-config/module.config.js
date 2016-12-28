@@ -43,7 +43,7 @@ module.exports = {
       // 如下配置，将小于8192byte的图片转成base64码
       test: /\.(png|jpg|gif)$/,
       include: dirVars.srcRootDir,
-      loader: 'url?limit=8192&name=./static/img/[hash:8].[ext]',
+      loader: 'url?limit=8192&name=./static/img/[chunkhash:8].[ext]',
     },
     {
       // 专供iconfont方案使用的，后面会带一串时间戳，需要特别匹配到
