@@ -16,11 +16,11 @@ var configPlugins = [
   /* 抽取出所有通用的部分 */
   new webpack.optimize.CommonsChunkPlugin({
     name: 'static/commons',      // 需要注意的是，chunk的name不能相同！！！
-    filename: '[name]/bundle.js',
+    filename: '[name]/bundle.[hash:8].js',
     minChunks: 4,
   }),
   /* 抽取出chunk的css */
-  new ExtractTextPlugin('[name]/styles.css'),
+  new ExtractTextPlugin('[name]/styles.[hash:8].css'),
   /* 配置好Dll */
   new webpack.DllReferencePlugin({
     context: dirVars.projectRootDir, // 指定一个路径作为上下文环境，需要与DllPlugin的context参数保持一致，建议统一设置为项目根目录
