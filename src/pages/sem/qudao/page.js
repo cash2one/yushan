@@ -149,6 +149,7 @@ $(() => {
     var send1=JSON.stringify(all);
     utils.formSubmit(apiUrl.getApiUrl('setQuOut'), {
       name: currentAccount.username,
+      appid: currentAccount.appid,
       data: send1,
       date: date,
     })

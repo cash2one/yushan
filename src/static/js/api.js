@@ -36,6 +36,11 @@ const moduleExports = {
   getNextWord: '/plan/allplan',
   getElement: '/unit/allunit',
   setQuOut: '/landpage/out',
+  getZhong: '/keywords/sscasync',
+  getTask: '/keywords/taskname',
+  getSomeTask: '/keywords/somesscr',
+  OutTuoCi: '/out/tuoci',
+  getZhXX: '/sem/setzhxx',
 };
 
 module.exports = moduleExports;

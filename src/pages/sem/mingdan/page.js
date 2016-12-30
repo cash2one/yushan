@@ -20,6 +20,8 @@ eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
 
 });
+
+let source = [];
 function resetTabullet() {
   $("#table").tabullet({
     data: source,
@@ -27,6 +29,8 @@ function resetTabullet() {
       console.dir(mode);
       if (mode === 'save') {
         source.push(data);
+        // alert('save')
+        console.log(data)
       }
       if (mode === 'edit') {
         for (var i = 0; i < source.length; i++) {
@@ -34,14 +38,19 @@ function resetTabullet() {
             source[i] = data;
           }
         }
+        // alert("edit")
+        console.log(data)
       }
       if (mode == 'delete') {
         for (var i = 0; i < source.length; i++) {
           if (source[i].id == data) {
             source.splice(i, 1);
+            // alert("delete")
+            console.log(data)
             break;
           }
         }
+
       }
       resetTabullet();
     }
@@ -58,7 +67,7 @@ $(() => {
     $('#myTable').tablesorter();
   });*/
   $(function() {
-    var source = [{
+    source = [{
       id: 1,
       name: "Aditya Purwa",
       level: "Admin"

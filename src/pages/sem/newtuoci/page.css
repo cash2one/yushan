@@ -1,0 +1,167 @@
+
+#table thead tr th,#myTable thead tr th{
+    color: #fff;
+    background: #4390b9 !important;
+    font-size: 13px;
+}
+#table tbody tr td,#myTable tbody tr td{
+    font-size: 16px;
+    color: #666;
+}
+tbody tr{
+    border-bottom:1px solid #bfbfbf !important;
+}
+
+/* tables */
+table.tablesorter {
+    /*width: 1900px;*/
+    font-family:arial;
+    background-color: #CDCDCD;
+    margin:10px 0pt 15px;
+    font-size: 8pt;
+    /*width: 100%;*/
+    text-align: left;
+}
+table input {
+    width: 100px;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+    width: 100px;
+    background-color: #e6EEEE;
+    border: 1px solid #FFF;
+    font-size:14px;
+    font-weight: normal;
+    padding: 4px;
+}
+table.tablesorter thead tr .tablesorter-header-inner{
+    background-image: url(./images/bg1.png);
+    background-size: 6px;
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+table.tablesorter tbody td {
+    width: 100px;
+    color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+table.tablesorter tbody tr.odd td {
+    background-color:#F0F0F6;
+}
+table.tablesorter thead tr .tablesorter-headerAsc .tablesorter-header-inner{
+    background-image: url(./images/asc1.png);
+}
+table.tablesorter thead tr .tablesorter-headerDesc .tablesorter-header-inner{
+    background-image: url(./images/desc1.png);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#date1,#date2,.search,#zhe,.search1,.record input,.record select{
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-left: 10px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    /*box-shadow: 0px 2px 2px #ccc;*/
+    list-style: none;
+    border: 1px solid #ccc;
+}
+tbody::-webkit-scrollbar,.record::-webkit-scrollbar{
+    width: 10px;
+    background: #ebf0f1;
+}
+tbody::-webkit-scrollbar-button,.record::-webkit-scrollbar-button{
+    display: none;
+}
+tbody::-webkit-scrollbar-track,.record::-webkit-scrollbar-track{
+    background: #bfbfbf;
+}
+tbody::-webkit-scrollbar-thumb,.record::-webkit-scrollbar-thumb{
+    width: 15px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #bfbfbf;
+    box-shadow: 0px 0px 2px 3px #bfbfbf;
+}
+tbody::-webkit-scrollbar-track-piece,.record::-webkit-scrollbar-track-piece{
+    background: #bfbfbf;
+}
+.old{
+    margin-top: 30px;
+    margin-left: 30px;
+    height:250px;
+}
+#myTable{
+    float: left;
+    width: 400px;
+    height:250px;
+}
+#myTable tbody{
+    display:block;
+    height:224px;
+    overflow-y: auto;
+}
+#table tbody{
+    display:block;
+    height:300px;
+    overflow-y: auto;
+}
+table thead tr, tbody tr {
+    display:table;
+    width:100%;
+    /*table-layout:fixed;*/
+}
+table thead {
+    width: calc( 100% - 1em )
+}
+.record{
+    padding-right: 10px;
+    margin-top: 10px;
+    float: left;
+    font-size: 15px;
+    height: 240px;
+    overflow: auto;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    margin-left: 20px;
+}
+.record button{
+    border: none;
+    padding: 5px 15px;
+    color: #fff;
+    background-color: #4390b9;
+    font-size: 16px;
+    border-radius:5px;
+    list-style: none;
+}
+.record p{
+    margin-top: 10px;
+}
+.record span{
+    width: 120px;
+    display: inline-block;
+}
+.xiang{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+#myTable span{
+    font-size: 12px;
+}
+#myTable button{
+    border: none;
+    padding: 1px 5px;
+    color: #fff;
+    background-color: #4390b9;
+    font-size: 13px;
+    border-radius:5px;
+    list-style: none;
+}
+

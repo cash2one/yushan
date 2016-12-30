@@ -60,22 +60,27 @@ function ajax(str,flag) {
       line[0] = {
         name: '总消费',
         data: totalCost,
+        time:days,
       };
       line[1] = {
         name: '按钮点击',
         data: totalCount,
+        time:days,
       };
       line[2] = {
         name: 'H5展现',
         data: totalPV,
+        time:days,
       };
       line[3] = {
         name: '下载率',
         data: downloadRate,
+        time:days,
       };
       line[4] = {
         name: '激活率',
         data: activeRate,
+        time:days,
       };
       selecteder = {
         按钮点击: false,

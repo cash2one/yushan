@@ -1,0 +1,29 @@
+<table id="table" class="tablesorter table">
+    <thead>
+    <tr>
+        <th>名</th>
+        <th>计划</th>
+        <th>单元</th>
+        <th>关键词</th>
+        <th>种子词</th>
+        <th>单价</th>
+        <th>来源</th>
+        <th>URL</th>
+    </tr>
+    </thead>
+    <tbody class="list">
+    <% for (var j=0; j<data.length; j++) { %>
+    <tr>
+        <td class="ming"><%=data[j].taskname %></td>
+        <td class="jh"><%=data[j].plan %></td>
+        <td class="dy"><%=data[j].unit %></td>
+        <td class="gjc"><%=data[j].word %></td>
+        <td class="zzc"><%=data[j].seedword %></td>
+        <td class="dj"><%=data[j].recBid %></td>
+        <td class="ly1"><%=data[j].ly %></td>
+        <td class="url"><%=data[j].url %></td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>
+

@@ -1,3 +1,4 @@
+/*eslint-disable */
 const echarts = require('echarts/lib/echarts');
 // 引入柱状图
 require('echarts/lib/chart/pie');
@@ -34,27 +35,28 @@ function getSeries(datas) {
     });
   }*/
   for (let i = 0; i < datas.length; i++) {
-    series.push({
-      name: datas[i].name,
-      type: 'line',
-      line: '总量',
-      data: datas[i].data,
-      symbol: 'emptyCircle',
-      symbolSize: 3,
-      smooth: true,
-      itemStyle: {
-        normal: {
-          lineStyle: { // 系列级个性化折线样式，横向渐变描边
-            width: 2,
+      series.push({
+        name: datas[i].name,
+        type: 'line',
+        line: '总量',
+        data: datas[i].data,
+        symbol: 'emptyCircle',
+        symbolSize: 3,
+        smooth: true,
+        itemStyle: {
+          normal: {
+            lineStyle: { // 系列级个性化折线样式，横向渐变描边
+              width: 2,
+            },
+          },
+          emphasis: {
+            label: {
+              show: true,
+            },
           },
         },
-        emphasis: {
-          label: {
-            show: true,
-          },
-        },
-      },
-    });
+      });
+
   }
   return series;
 }

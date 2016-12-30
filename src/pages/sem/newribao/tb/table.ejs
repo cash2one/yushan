@@ -1,0 +1,68 @@
+<table cellspacing="30px" id="table1" class="tablesorter table-striped">
+    <thead>
+    <tr>
+        <th>日期</th>
+        <th>系统</th>
+        <th>实际消费</th>
+        <th>下载数</th>
+        <th>激活数</th>
+        <th class="tou"><a href="#" class="tou_liu" data-type="text" style="color: #fff;">留存</a></th>
+        <th>下载率</th>
+        <th>激活率</th>
+        <th class="lcl">留存率</th>
+        <th>下载成本</th>
+        <th>激活成本</th>
+        <th class="liucb">留存成本</th>
+        <th>账户消费</th>
+        <th>展现</th>
+        <th>点击</th>
+        <th>点击率</th>
+        <th>点击单价</th>
+        <th>落地页总激活</th>
+        <th>按钮总激活</th>
+        <th>账户余额</th>
+        <th>返点</th>
+        <th>备注</th>
+    </tr>
+    </thead>
+    <tbody class="table1 list">
+    <% for (var j=0; j<data.length; j++) { %>
+    <tr>
+        <td class="time"><%=data[j].date %></td>
+        <td class="xitong">安卓/Ios</td>
+        <td class="acsum"><%=data[j].turecost %></td>
+        <td class="down_sum"><%=data[j].download_total %></td>
+        <td class="active_sum"><%=data[j].active_total %></td>
+        <td class="liu_cun">
+            <a href="#" class="liucun1" data-type="text"><%=data[j].liucun %></a>
+        </td>
+        <td class="down_rate"><%=data[j].download_rate +"%" %></td>
+        <td class="active_rate"><%=data[j].active_rate+"%" %></td>
+        <td class="liucun_rate"><%=data[j].liucun_rate +"%"%></td>
+        <td class="down_cb">0</td>
+        <td class="active_cb">0</td>
+        <td class="liucun_cb">0</td>
+        <td class="some_cost"><%=data[j].cost %></td>
+        <td class="view"><%=data[j].view %></td>
+        <td class="pv"><%=data[j].pv %></td>
+        <td class="pv_rate"><%=data[j].pv_rate +"%"%></td>
+        <td class="pv_dan"><%=data[j].click_price %></td>
+        <td class="page_active">
+            <a href="#" class="page_active1" data-type="text"><%=data[j].lp_active %></a>
+        </td>
+        <td class="btn_active">
+            <a href="#" class="btn_active1" data-type="text"><%=data[j].button_active %></a>
+        </td>
+        <td class="some_remainder"><%=data[j].balance %></td>
+        <td class="re_point">
+            <a href="#" class="re_point1" data-type="text"><%=data[j].fd %></a>
+        </td>
+        <td class="shuoming">
+            <a href="#" class="beizhu" data-type="textarea">无</a>
+        </td>
+    </tr>
+    <% } %>
+
+    </tbody>
+
+</table>
