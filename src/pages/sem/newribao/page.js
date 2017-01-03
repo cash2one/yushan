@@ -38,6 +38,9 @@ function sum(zhe, appid, edate, sdate) {
     sdate: sdate,
   }).done(function (data) {
     console.log(data);
+   /* for(var i=0;i<data[0].length;i++){
+      data[0][i].active_rate=(data[0][i].active_rate*100).toFixed(2);
+    }*/
     $('.tmp').html(tb({data: data[0]}));
     $('#table1').tablesorter();
     var options = {
