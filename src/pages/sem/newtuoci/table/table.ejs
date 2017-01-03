@@ -1,15 +1,15 @@
 <table id="myTable" class="tablesorter table">
     <thead>
     <tr>
-        <th>名字</th>
+        <!--<th>名字</th>-->
         <th>时间</th>
         <th colspan='2'>状态</th>
     </tr>
     </thead>
     <tbody class="list">
 <% for (var j=0; j<date.length; j++) { %>
-<tr>
-    <td class="id" style="cursor: pointer;text-decoration: underline;color: #00afe9;"><%=date[j].taskname %></td>
+<tr class="lin" title="<%=date[j].taskname %>" style="cursor: pointer;">
+    <!--<td class="id" style="cursor: pointer;text-decoration: underline;color: #00afe9;"></td>-->
 
     <td class="click"> <%=date[j].date %>
     </td>

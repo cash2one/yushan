@@ -27,7 +27,7 @@
     </thead>
     <tbody class="table1 list">
     <% for (var j=0; j<data.length; j++) { %>
-    <tr>
+    <tr data-id="<%=data[j].date %>">
         <td class="time"><%=data[j].date %></td>
         <td class="xitong">安卓/Ios</td>
         <td class="acsum"><%=data[j].turecost %></td>
@@ -48,14 +48,16 @@
         <td class="pv_rate"><%=data[j].pv_rate +"%"%></td>
         <td class="pv_dan"><%=data[j].click_price %></td>
         <td class="page_active">
-            <a href="#" class="page_active1" data-type="text"><%=data[j].lp_active %></a>
+            <%=data[j].lp_active %>
+            <!--<a href="#" class="page_active1" data-type="text"></a>-->
         </td>
         <td class="btn_active">
             <a href="#" class="btn_active1" data-type="text"><%=data[j].button_active %></a>
         </td>
         <td class="some_remainder"><%=data[j].balance %></td>
         <td class="re_point">
-            <a href="#" class="re_point1" data-type="text"><%=data[j].fd %></a>
+            <%=data[j].fd %>
+            <!--<a href="#" class="re_point1" data-type="text"></a>-->
         </td>
         <td class="shuoming">
             <a href="#" class="beizhu" data-type="textarea">无</a>

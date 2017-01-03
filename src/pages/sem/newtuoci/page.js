@@ -31,11 +31,12 @@ function rw(){
     var date=[];
     for(var i=0;i<data.length;i++){
       date.push({taskname:String(data[i])});
+      console.log(new Date(data[i]));
     }
 
     for(let i=0;i<date.length;i++){
       // data[i].date=utils.dateFormat(data[i].date, 'yyyy-MM-dd');
-      date[i].date=utils.dateFormat(new Date(), 'yyyy-MM-dd');
+      date[i].date=utils.dateFormat(new Date(data[i]), 'yyyy-MM-dd hh:mm:ss');
       // if(data[i].isfinish){
         date[i].flag='已完成';
       // }else{
@@ -167,9 +168,7 @@ $(() => {
         flag='未完成';
       }
       var html='';
-      html+='<tr>';
-      html+='<td class="id" style="cursor: pointer;text-decoration: underline;color: #00afe9;">'+data.taskname;
-      html+='</td>';
+      html+='<tr class="lin" title="'+data.taskname+'">';
       html+='<td class="click">'+ date;
       html+='</td>';
       html+='<td class="down"> <span>'+flag+'</span><button data-name='+data.taskname+' disabled>完成</button>';
@@ -180,10 +179,12 @@ $(() => {
       $('#myTable .list').prepend(html);
     });
   });
-  $(document).on('click','.id',function(){
+  $(document).on('click','.lin',function(){
+    $(this).find('td').addClass('llin');
+    $(this).siblings().find('td').removeClass('llin');
     utils.ajax(apiUrl.getApiUrl('getSomeTask'), {
       appid: currentAccount.appid,
-      taskname: $(this).text(),
+      taskname: $(this).attr('title'),
     }).done(function (data) {
       console.log(data);
       $('.xiang').html(tb1({data: data}));

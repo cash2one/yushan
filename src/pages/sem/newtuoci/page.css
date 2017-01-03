@@ -4,6 +4,9 @@
     background: #4390b9 !important;
     font-size: 13px;
 }
+#myTable thead tr th{
+    width: 125px;
+}
 #table tbody tr td,#myTable tbody tr td{
     font-size: 16px;
     color: #666;
@@ -163,5 +166,9 @@ table thead {
     font-size: 13px;
     border-radius:5px;
     list-style: none;
+}
+.llin{
+    background:#78adca !important;
+    color: #fff !important;
 }
 

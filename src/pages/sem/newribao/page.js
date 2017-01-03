@@ -78,18 +78,13 @@ function sum(zhe, appid, edate, sdate) {
   });
 }
 
-function pos(active, appid, beizhu, date, device, type, plan, is,liu,liusm) {
+function pos(date,type,active,jihuaid) {
   utils.ajaxPost(apiUrl.getApiUrl('getP'), {
-    active: active,
-    appid: appid,
-    beizhu: beizhu,
-    date: date,
-    device: device,
-    type: type,
-    plan: plan,
-    isbutton: is,
-    liu: liu,
-    liusm: liusm,
+    appid:currentAccount.appid,
+    date:date,
+    type:type,
+    active:active,
+    jihuaid:jihuaid,
   }).done(function (data) {
     console.log(data);
   });
@@ -129,56 +124,70 @@ $(() => {
 
       if ($(this).parents('td').attr('class').toString() == 'liu_cun') {
 
-        pos('', currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'all', '', false,'',parseFloat($(this).parent().siblings('.editable-input').find('input').val()));
-        $(this).parents('td').siblings('.liucun_rate').text(((parseFloat($(this).parent().siblings('.editable-input').find('input').val()) / parseFloat($(this).parents('td').siblings('.active_sum').text())) * 100) .toFixed(2)+ '%');
-        $(this).parents('td').siblings('.liucun_cb').text(( parseFloat($(this).parents('td').siblings('.acsum').text())/parseFloat($(this).parent().siblings('.editable-input').find('input').val())).toFixed(2));
+        const $tr = $(this).closest('tr');
+        const liucun = parseFloat($tr.find('.editable-input').find('input').val());
+        const sum = parseFloat($tr.find('.active_sum').text());
+        const xiaofei = parseFloat($tr.find('.acsum').text());
+
+        pos($tr.find('.time').text(),'liucun',liucun,'');
+        $tr.find('.liucun_rate').text(((liucun/sum) * 100) .toFixed(2)+ '%');
+        $tr.find('.liucun_cb').text((xiaofei/liucun).toFixed(2));
+
       } else if ($(this).parents('td').attr('class').toString() == 'page_active') {
-        pos(parseFloat($(this).parent().siblings('.editable-input').find('input').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'all', '', false,'','');
-        let a=parseInt($(this).parents('td').siblings('.btn_active').find('a').text())+ parseInt($(this).parent().siblings('.editable-input').find('input').val());
-        let b=(parseFloat($(this).parents('td').siblings('.acsum').text())/a).toFixed(2);
-        let c=((a/parseFloat($(this).parents('td').siblings('.down_sum').text()))*100).toFixed(2)+"%";
-        let d=((parseFloat($(this).parents('td').siblings('.liu_cun').find('a').text())/a)*100).toFixed(2)+"%";
-        $(this).parents('td').siblings('.active_sum').text(a);
-        $(this).parents('td').siblings('.active_cb').text(b);
-        $(this).parents('td').siblings('.active_rate').text(c);
-        $(this).parents('td').siblings('.liucun_rate').text(d);
+        // pos(parseFloat($(this).parent().siblings('.editable-input').find('input').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'all', '', false,'','');
+        // let a=parseInt($(this).parents('td').siblings('.btn_active').find('a').text())+ parseInt($(this).parent().siblings('.editable-input').find('input').val());
+        // let b=(parseFloat($(this).parents('td').siblings('.acsum').text())/a).toFixed(2);
+        // let c=((a/parseFloat($(this).parents('td').siblings('.down_sum').text()))*100).toFixed(2)+"%";
+        // let d=((parseFloat($(this).parents('td').siblings('.liu_cun').find('a').text())/a)*100).toFixed(2)+"%";
+        // $(this).parents('td').siblings('.active_sum').text(a);
+        // $(this).parents('td').siblings('.active_cb').text(b);
+        // $(this).parents('td').siblings('.active_rate').text(c);
+        // $(this).parents('td').siblings('.liucun_rate').text(d);
+
 
       } else if ($(this).parents('td').attr('class').toString() == 'btn_active') {
-        pos(parseFloat($(this).parent().siblings('.editable-input').find('input').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'all', '', true,'','');
-        let a=parseInt($(this).parents('td').siblings('.page_active').find('a').text())+ parseInt($(this).parent().siblings('.editable-input').find('input').val());
-        let b=(parseFloat($(this).parents('td').siblings('.acsum').text())/a).toFixed(2);
-        let c=((a/parseFloat($(this).parents('td').siblings('.down_sum').text()))*100).toFixed(2)+"%";
-        let d=((parseFloat($(this).parents('td').siblings('.liu_cun').find('a').text())/a)*100).toFixed(2)+"%";
-        $(this).parents('td').siblings('.active_sum').text(a);
-        $(this).parents('td').siblings('.active_cb').text(b);
-        $(this).parents('td').siblings('.active_rate').text(c);
-        $(this).parents('td').siblings('.liucun_rate').text(d);
+        const $tr1 = $(this).closest('tr');
+        const btn = parseFloat($tr1.find('.editable-input').find('input').val());
+        let a=parseInt($tr1.find('.page_active').text())+ parseInt($tr1.find('.editable-input').find('input').val());
+        let b=(parseFloat($tr1.find('.acsum').text())/a).toFixed(2);
+        let c=((a/parseFloat($tr1.find('.down_sum').text()))*100).toFixed(2)+"%";
+        let d=((parseFloat($tr1.find('.liu_cun').find('a').text())/a)*100).toFixed(2)+"%";
+        pos($tr1.find('.time').text(),'btn',btn,'');
+        $tr1.find('.active_sum').text(a);
+        $tr1.find('.active_cb').text(b);
+        $tr1.find('.active_rate').text(c);
+        $tr1.find('.liucun_rate').text(d);
 
       } else if ($(this).parents('td').attr('class').toString() == 're_point') {
-        pos(parseFloat($(this).parent().siblings('.editable-input').find('input').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'fandian', '',false,'','');
-        let a=(parseFloat($(this).parents('td').siblings('.some_cost').text())/(parseFloat($(this).parent().siblings('.editable-input').find('input').val())+1)).toFixed(2);
-        let b=(a/parseFloat($(this).parents('td').siblings('.down_sum').text())).toFixed(2);
-        let c=(a/parseFloat($(this).parents('td').siblings('.liu_cun').find('a').text())).toFixed(2);
-        let d=(a/parseFloat($(this).parents('td').siblings('.active_sum').text())).toFixed(2);
-
-        $(this).parents('td').siblings('.acsum').text(a);
-        $(this).parents('td').siblings('.down_cb').text(b);
-        $(this).parents('td').siblings('.liucun_cb').text(c);
-        $(this).parents('td').siblings('.active_cb').text(d);
+        // pos(parseFloat($(this).parent().siblings('.editable-input').find('input').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'fandian', '',false,'','');
+        // let a=(parseFloat($(this).parents('td').siblings('.some_cost').text())/(parseFloat($(this).parent().siblings('.editable-input').find('input').val())+1)).toFixed(2);
+        // let b=(a/parseFloat($(this).parents('td').siblings('.down_sum').text())).toFixed(2);
+        // let c=(a/parseFloat($(this).parents('td').siblings('.liu_cun').find('a').text())).toFixed(2);
+        // let d=(a/parseFloat($(this).parents('td').siblings('.active_sum').text())).toFixed(2);
+        //
+        // $(this).parents('td').siblings('.acsum').text(a);
+        // $(this).parents('td').siblings('.down_cb').text(b);
+        // $(this).parents('td').siblings('.liucun_cb').text(c);
+        // $(this).parents('td').siblings('.active_cb').text(d);
 
       } else if ($(this).parents('td').attr('class').toString() == 'shuoming') {
-        pos('', currentAccount.appid, $(this).parent().siblings('.editable-input').find('textarea').val(), $(this).parents('td').siblings('.time').text(), '', 'all', '', false,'','');
+        const $tr1 = $(this).closest('tr');
+        const btn = parseFloat($tr1.find('.editable-input').find('textarea').val());
+        // pos($tr1.find('.time').text(),'btn',btn,'');
 
       } else if ($(this).parents('td').attr('class').toString() == 'ji_pageactive') {
-        pos(parseFloat($(this).parent().siblings('.editable-input').find('input').val()), currentAccount.appid, '', $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.tui_jihua').text(), false,'','');
-        let a=parseInt($(this).parents('td').siblings('.ji_btnactive').text()) + parseInt($(this).parent().siblings('.editable-input').find('input').val());
-        let b=(parseFloat($(this).parents('td').siblings('.ji_cost').text())/a).toFixed(2);
-        let c=(parseFloat($(this).parents('td').siblings('.ji_pagecost').text())/parseFloat($(this).parent().siblings('.editable-input').find('input').val())).toFixed(2);
-        $(this).parents('td').siblings('.ji_active').text(a);
-        $(this).parents('td').siblings('.ji_activecb').text(b);
-        $(this).parents('td').siblings('.ji_pageactivecb').text(c);
+        const $tr2 = $(this).closest('tr');
+        console.log($tr2.attr('title'));
+        const h5 = parseFloat($tr2.find('.editable-input').find('input').val());
+        let a=parseInt($tr2.find('.ji_btnactive').text()) + parseInt($tr2.find('.editable-input').find('input').val());
+        let b=(parseFloat($tr2.find('.ji_cost').text())/a).toFixed(2);
+        let c=(parseFloat($tr2.find('.ji_pagecost').text())/parseFloat($tr2.find('.editable-input').find('input').val())).toFixed(2);
+        pos($tr2.find('.date').text(),'h5',h5,$tr2.attr('title'));
+        $tr2.find('.ji_active').text(a);
+        $tr2.find('.ji_activecb').text(b);
+        $tr2.find('.ji_pageactivecb').text(c);
       }else if ($(this).parents('td').attr('class').toString() == 'remark') {
-        pos('',currentAccount.appid, $(this).parent().siblings('.editable-input').find('textarea').val(), $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.tui_jihua').text(), false,'','');
+        // pos('',currentAccount.appid, $(this).parent().siblings('.editable-input').find('textarea').val(), $(this).parents('td').siblings('.date').text(), '', 'plan', $(this).parents('td').siblings('.tui_jihua').text(), false,'','');
 
       }
     // }

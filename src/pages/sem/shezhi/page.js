@@ -14,16 +14,19 @@ let currentAccount = store.getCurrentAccount();
 
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
-  $('.appid').val(currentAccount.appid)
+  $('.appid').val(currentAccount.appid);
+  $('.name').val(currentAccount.username);
 });
 
 
 
 $(() => {
-  $('.appid').val(currentAccount.appid)
+  $('.appid').val(currentAccount.appid);
+  $('.name').val(currentAccount.username);
   $('button').click(function(){
     utils.ajaxPost(apiUrl.getApiUrl('getZhXX'), {
       name: $('.name').val(),
+      password: $('.psd').val(),
       appid: $('.appid').val(),
       type: $('.leixing').val(),
       account_name: $('.three').val(),
