@@ -54,7 +54,7 @@ function sum(zhe, appid, edate, sdate) {
 
       for (var j = 0; j < data[1][i].length; j++) {
         // console.log(j);
-        data[1][i][j].date = data[0][i].date;
+        // data[1][i][j].date = data[0][i].date;
 
         biao2.push(data[1][i][j])
       }

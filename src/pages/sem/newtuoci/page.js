@@ -10,6 +10,7 @@ require('static/vendor/list.min');
 
 require('static/css/reset.css');
 require('./page.css');
+require('static/js/validator');
 const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
 const utils = require('utils');
@@ -28,27 +29,23 @@ function rw(){
     appid: currentAccount.appid,
   }).done(function (data) {
     console.log(data);
-    var date=[];
-    for(var i=0;i<data.length;i++){
-      date.push({taskname:String(data[i])});
-      console.log(new Date(data[i]));
-    }
-
-    for(let i=0;i<date.length;i++){
+    for(let i=0;i<data.length;i++){
       // data[i].date=utils.dateFormat(data[i].date, 'yyyy-MM-dd');
-      date[i].date=utils.dateFormat(new Date(data[i]), 'yyyy-MM-dd hh:mm:ss');
-      // if(data[i].isfinish){
-        date[i].flag='已完成';
-      // }else{
-      //   data[i].flag='未完成';
-      // }
+      data[i].date=utils.dateFormat(new Date(data[i].taskname), 'yyyy-MM-dd hh:mm:ss');
+      if(data[i].isfinish){
+        data[i].flag='已完成';
+      }else{
+        data[i].flag='未完成';
+      }
     }
-    console.log(date);
-    $('.new').html(tb({date: date}));
+    $('.new').html(tb({data: data}));
 
   });
 }
 $(() => {
+
+
+
   $('.zhongzi').change(function(){
     // console.log($(this).val().length)
     if($(this).val().length>5000){
@@ -154,51 +151,108 @@ $(() => {
       flag2=1;
     }
   });
-  $('.record button').click(function(){
-    var l=$('.zhongzi').val().replace(/，/ig ,',');
-    var strAry= l.split(',');
-    console.log(strAry);
-    // console.log($('.sele').val())
-    utils.ajaxPost(apiUrl.getApiUrl('getZhong'), {
-      appid: currentAccount.appid,
-      words:JSON.stringify(strAry),
-      zsx:$('.sx').val(),
-      ys:$('.ys').val(),
-      tpf:$('.tpf').val(),
-      ly:$('.ly').val(),
-      price:$('.out').val(),
-      plan:$('.jihua').val(),
-      unit:$('.danyuan').val(),
-      url:$('.ul').val(),
-      matchModel:$('.pipei').val(),
-      fwurl:$('.yidongwen').val(),
-      xsurl:$('.yidongxian').val(),
-      gisuse:$('.gsele').val(),
-      cisuse:$('.csele').val(),
-      cytitle:$('.chuangtitle').val(),
-      cyms1:$('.chuang1').val(),
-      cyms2:$('.chuang2').val(),
-    }).done(function (data) {
-      console.log(data);
-      var date=utils.dateFormat(data.date, 'yyyy-MM-dd');
-      var flag='';
-      if(data.isfinish){
-        flag='已完成';
-      }else{
-        flag='未完成';
-      }
-      var html='';
-      html+='<tr class="lin" title="'+data.taskname+'">';
-      html+='<td class="click">'+ date;
-      html+='</td>';
-      html+='<td class="down"> <span>'+flag+'</span><button data-name='+data.taskname+' disabled>完成</button>';
-      html+='</td>';
-      html+='<td class="rate"> <span>'+flag+'</span><button data-name='+data.taskname+'>下载</button>';
-      html+='</td>';
-      html+='</tr>';
-      $('#myTable .list').prepend(html);
-    });
+
+  $("#myForm").validate({
+    submitHandler: function () {
+      // 已经通过了验证
+      // btn.button('loading');
+      console.log($("#myForm").serializeArray());
+
+      var dataArr = $("#myForm").serializeArray();
+      dataArr.push({name:"appid",value:currentAccount.appid});
+      var data = {};
+
+      $.each(dataArr, function(i, field){
+        if(field.name == 'words'){
+          var l=field.value.replace(/，/ig ,',');
+          var strAry= l.split(',');
+          data[field.name] = JSON.stringify(strAry);
+        }else{
+          data[field.name] = field.value;
+        }
+      });
+
+      /*let dat = $("#myForm").serialize();
+       dat.appid = currentAccount.appid;
+
+       console.log(dat);*/
+      // console.log($('.sele').val())
+      utils.ajaxPost(apiUrl.getApiUrl('getZhong'),data).done(function (data) {
+        console.log(data);
+        var date=utils.dateFormat(data.date, 'yyyy-MM-dd hh:mm:ss');
+        var flag='';
+        let u='';
+        if(data.isfinish){
+          flag='已完成';
+          u='<td class="rate"><span>'+flag+'</span><button data-name='+data.taskname+'>下载</button>'
+        }else{
+          flag='未完成';
+          u='<td class="rate"><span>'+flag+'</span><button data-name='+data.taskname+' disabled>下载</button>'
+        }
+        var html='';
+        html+='<tr class="lin" title="'+data.taskname+'">';
+        html+='<td class="click" style="width: 50%;">'+ date;
+        html+='</td>';
+        html+='<td class="down"> <span>'+flag+'</span><button data-name='+data.taskname+' disabled>完成</button>';
+        html+='</td>';
+        html+=u;
+        html+='</td>';
+        html+='</tr>';
+        $('#myTable .list').prepend(html);
+      });
+
+      return false;
+    },
   });
+
+  // $('.bt').click(function(e){
+  //
+  //     console.log($("#myForm").serializeArray());
+  //
+  //     var dataArr = $("#myForm").serializeArray();
+  //     dataArr.push({name:"appid",value:currentAccount.appid});
+  //     var data = {};
+  //
+  //     $.each(dataArr, function(i, field){
+  //       if(field.name == 'words'){
+  //         var l=field.value.replace(/，/ig ,',');
+  //         var strAry= l.split(',');
+  //         data[field.name] = JSON.stringify(strAry);
+  //       }else{
+  //         data[field.name] = field.value;
+  //       }
+  //     });
+  //
+  //     /*let dat = $("#myForm").serialize();
+  //     dat.appid = currentAccount.appid;
+  //
+  //     console.log(dat);*/
+  //   // console.log($('.sele').val())
+  //   utils.ajaxPost(apiUrl.getApiUrl('getZhong'),data).done(function (data) {
+  //     console.log(data);
+  //     var date=utils.dateFormat(data.date, 'yyyy-MM-dd hh:mm:ss');
+  //     var flag='';
+  //     let u='';
+  //     if(data.isfinish){
+  //       flag='已完成';
+  //       u='<td class="rate"><span>'+flag+'</span><button data-name='+data.taskname+'>下载</button>'
+  //     }else{
+  //       flag='未完成';
+  //       u='<td class="rate"><span>'+flag+'</span><button data-name='+data.taskname+' disabled>下载</button>'
+  //     }
+  //     var html='';
+  //     html+='<tr class="lin" title="'+data.taskname+'">';
+  //     html+='<td class="click" style="width: 50%;">'+ date;
+  //     html+='</td>';
+  //     html+='<td class="down"> <span>'+flag+'</span><button data-name='+data.taskname+' disabled>完成</button>';
+  //     html+='</td>';
+  //     html+=u;
+  //     html+='</td>';
+  //     html+='</tr>';
+  //     $('#myTable .list').prepend(html);
+  //   });
+  //   e.preventDefault();
+  // });
   $(document).on('click','.lin',function(){
     $(this).find('td').addClass('llin');
     $(this).siblings().find('td').removeClass('llin');

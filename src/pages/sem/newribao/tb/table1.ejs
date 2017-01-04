@@ -1,11 +1,7 @@
 <table cellspacing="30px" id="table2" class="tablesorter table-striped">
     <thead>
     <tr>
-        <th style="width: 100px;">日期
-        </th>
-        <th style="width: 100px;">渠道包名
-        </th>
-        <th style="width: 100px;">推广计划
+        <th style="width: 100px;">日期/计划
         </th>
         <th></th>
         <th></th>
@@ -14,18 +10,18 @@
     <tbody class="table1 list1">
     <% for (var i=0; i<data.length; i++) { %>
     <tr title="<%=data[i].jihuaid %>">
-        <td class="date" style="width: 100px;"><%=data[i].date %></td>
-        <td class="qudao" style="width: 100px;">无</td>
-        <td class="tui_jihua" style="width: 100px;"><%=data[i].name %></td>
+        <td style="width: 100px;"><p class="date"><%=data[i].date %></p><p class="tui_jihua"><%=data[i].name %></p></td>
         <td>
             <div class="row">
                 <div class="col-sm-6"><span>计划消费:</span><span class="ji_cost"><%=data[i].cost %></span></div>
                 <div class="col-sm-6"><span>计划激活:</span><span class="ji_active"><%=data[i].jihua_active %></span></div>
                 <div class="col-sm-6"><span>计划激活成本:</span><span class="ji_activecb"><%=data[i].jihua_active_chengben %></span></div>
                 <div class="col-sm-6"><span>展现:</span><span class="ji_view"><%=data[i].view %></span></div>
-                <div class="col-sm-6"><span>点击:</span><span class="ji_pv"><%=data[i].click %></span></div>
-                <div class="col-sm-6"><span>点击率:</span><span class="ji_pvrate"><%=data[i].click_rate+"%" %></span></div>
+                <div class="col-sm-6"><p class="els-<%=data[i].date %>"><span>落地页激活:</span><span class="ji_pageactive"><a href="#" class="ji_pageactive1" data-type="text"><%=data[i].h5_active %></a></span></p></div>
                 <div class="col-sm-6"><span>点击单价:</span><span class="ji_pvdan"><%=data[i].click_price %></span></div>
+                <div class="col-sm-6"><span>落地页消费:</span><span class="ji_pagecost"><%=data[i].h5_cost %></span></div>
+                <div class="col-sm-6"><span>点击:</span><span class="ji_pv"><%=data[i].click %></span></div>
+                <div class="col-sm-6"><span>落地页激活成本:</span><span class="ji_pageactivecb"><%=data[i].h5_active_chengben %></span></div>
                 <div class="col-sm-6"><span>备注:</span><span class="remark"><a href="#" class="remark1" data-type="textarea">无</a></span></div>
             </div>
         </td>
@@ -34,13 +30,11 @@
                 <div class="col-sm-6"><span>按钮展现:</span><span class="ji_btnview"><%=data[i].view_button %></span></div>
                 <div class="col-sm-6"><span>按钮点击:</span><span class="ji_btnpv"><%=data[i].click_button %></span></div>
                 <div class="col-sm-6"><span>按钮消费:</span><span class="ji_btncost"><%=data[i].button_cost %></span> </div>
-                <div class="col-sm-6"><span>按钮激活:</span><span class="ji_btnactive"><%=data[i].active_button %></span></div>
+                <div class="col-sm-6"><span>按钮消费占比:</span><span class="ji_btncostb"><%=data[i].button_cost_rate +"%"%></span></div>
                 <div class="col-sm-6"><span>按钮激活成本:</span><span class="ji_btnactivecb"><%=data[i].active_button_chengben %></span></div>
                 <div class="col-sm-6"><span>按钮展现占比:</span><span class="ji_btnviewb"><%=data[i].button_view_rate +"%"%></span></div>
-                <div class="col-sm-6"><span>按钮消费占比:</span><span class="ji_btncostb"><%=data[i].button_cost_rate +"%"%></span></div>
-                <div class="col-sm-6"><span>落地页消费:</span><span class="ji_pagecost"><%=data[i].h5_cost %></span></div>
-                <div class="col-sm-6"><p class="els-<%=data[i].date %>"><span>落地页激活:</span><span class="ji_pageactive"><a href="#" class="ji_pageactive1" data-type="text"><%=data[i].h5_active %></a></span></p></div>
-                <div class="col-sm-6"><span>落地页激活成本:</span><span class="ji_pageactivecb"><%=data[i].h5_active_chengben %></span></div>
+                <div class="col-sm-6"><span>按钮激活:</span><span class="ji_btnactive"><%=data[i].active_button %></span></div>
+                <div class="col-sm-6"><span>点击率:</span><span class="ji_pvrate"><%=data[i].click_rate+"%" %></span></div>
             </div>
         </td>
     </tr>

@@ -7,15 +7,20 @@
     </tr>
     </thead>
     <tbody class="list">
-<% for (var j=0; j<date.length; j++) { %>
-<tr class="lin" title="<%=date[j].taskname %>" style="cursor: pointer;">
+<% for (var j=0; j<data.length; j++) { %>
+<tr class="lin" title="<%=data[j].taskname %>" style="cursor: pointer;">
     <!--<td class="id" style="cursor: pointer;text-decoration: underline;color: #00afe9;"></td>-->
 
-    <td class="click"> <%=date[j].date %>
+    <td class="click"> <%=data[j].date %>
     </td>
-    <td class="down"> <span><%=date[j].flag %></span><button data-name="<%=date[j].taskname %>" disabled>完成</button>
+    <td class="down"> <span><%=data[j].flag %></span><button data-name="<%=data[j].taskname %>">完成</button>
     </td>
-    <td class="rate"> <span><%=date[j].flag %></span><button data-name="<%=date[j].taskname %>">下载</button>
+    <td class="rate"> <span><%=data[j].flag %></span>
+        <% if(data[j].isfinish) { %>
+        <button data-name="<%=data[j].taskname %>">下载</button>
+        <% }else{ %>
+        <button data-name="<%=data[j].taskname %>" disabled>下载</button>
+        <% } %>
     </td>
 </tr>
 <% } %>

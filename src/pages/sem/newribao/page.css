@@ -162,6 +162,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 tbody{
     display:block;
     height:300px;
+    overflow-x: hidden;
     overflow-y: auto;
 }
 table thead, tbody tr {

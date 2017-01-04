@@ -1,8 +1,7 @@
 <table cellspacing="30px" id="table1" class="tablesorter table-striped">
     <thead>
     <tr>
-        <th style="width: 100px;">日期</th>
-        <th style="width: 100px;">系统</th>
+        <th style="width: 100px;">日期/系统</th>
         <th></th>
         <th></th>
     </tr>
@@ -10,34 +9,41 @@
     <tbody class="table1 list">
     <% for (var j=0; j<data.length; j++) { %>
     <tr data-id="<%=data[j].date %>">
-        <td class="time" style="width: 100px;"><%=data[j].date %></td>
-        <td class="xitong" style="width: 100px;">安卓/Ios</td>
+        <td style="width: 100px;"><p class="time"><%=data[j].date %></p><p>安卓/Ios</p></td>
         <td>
             <div class="row">
+                <div class="col-sm-6"><span>展现:</span><span class="view"><%=data[j].view %></span></div>
+                <div class="col-sm-6"><span>返点:</span><span class="re_point"><%=data[j].fd %></span></div>
                 <div class="col-sm-6"><span>实际消费:</span><span class="acsum"><%=data[j].turecost %></span></div>
-                <div class="col-sm-6"><span>账户消费:</span><span class="some_cost"><%=data[j].cost %></span></div>
+
                 <div class="col-sm-6"><span>账户余额:</span><span class="some_remainder"><%=data[j].balance %></span></div>
-                <div class="col-sm-6"><span>留存/新购:</span><span class="liu_cun"><a href="#" class="liucun1" data-type="text"><%=data[j].liucun %></a></span></div>
-                <div class="col-sm-6"><span>留存/新购率:</span><span class="liucun_rate"><%=data[j].liucun_rate +"%"%></span></div>
-                <div class="col-sm-6"><span>留存/新购成本:</span><span class="liucun_cb"><%=data[j].liucun_chengben %></span></div>
-                <div class="col-sm-6"><span>点击:</span><span class="pv"><%=data[j].pv %></span></div>
-                <div class="col-sm-6"><span>点击率:</span><span class="pv_rate"><%=data[j].pv_rate +"%"%></span></div>
+                <div class="col-sm-6"><span>账户消费:</span><span class="some_cost"><%=data[j].cost %></span></div>
                 <div class="col-sm-6"><span>点击单价:</span><span class="pv_dan"><%=data[j].click_price %></span></div>
+                <div class="col-sm-6"><span>点击:</span><span class="pv"><%=data[j].pv %></span></div>
+                <div class="col-sm-6"><span>留存/新购成本:</span><span class="liucun_cb"><%=data[j].liucun_chengben %></span></div>
+                <div class="col-sm-6"><span>备注:</span><span class="shuoming"><a href="#" class="beizhu" data-type="textarea">无</a></span></div>
+                <div class="col-sm-6"><span>留存/新购:</span><span class="liu_cun"><a href="#" class="liucun1" data-type="text"><%=data[j].liucun %></a></span></div>
             </div>
         </td>
         <td>
             <div class="row">
-                <div class="col-sm-6"><span>下载数:</span><span class="down_sum"><%=data[j].download_total %></span></div>
-                <div class="col-sm-6"><span>下载率:</span><span class="down_rate"><%=data[j].download_rate +"%" %></span></div>
-                <div class="col-sm-6"><span>激活数:</span><span class="active_sum"><%=data[j].active_total %></span></div>
-                <div class="col-sm-6"><span>激活率:</span><span class="active_rate"><%=data[j].active_rate+"%" %></span></div>
-                <div class="col-sm-6"><span>下载成本:</span><span class="down_cb"><%=data[j].download_chengben %></span></div>
-                <div class="col-sm-6"><span>激活成本:</span><span class="active_cb"><%=data[j].active_chengben %></span></div>
-                <div class="col-sm-6"><span>展现:</span><span class="view"><%=data[j].view %></span></div>
-                <div class="col-sm-6"><span>落地页总激活:</span><span class="page_active"><%=data[j].lp_active %></span></div>
                 <div class="col-sm-6"><span>按钮总激活:</span><span class="btn_active"><a href="#" class="btn_active1" data-type="text"><%=data[j].button_active %></a></span></div>
-                <div class="col-sm-6"><span>返点:</span><span class="re_point"><%=data[j].fd %></span></div>
-                <div class="col-sm-6"><span>备注:</span><span class="shuoming"><a href="#" class="beizhu" data-type="textarea">无</a></span></div>
+                <div class="col-sm-6"><span>落地页总激活:</span><span class="page_active"><%=data[j].lp_active %></span></div>
+                <div class="col-sm-6"><span>下载数:</span><span class="down_sum"><%=data[j].download_total %></span></div>
+                <div class="col-sm-6"><span>点击率:</span><span class="pv_rate"><%=data[j].pv_rate +"%"%></span></div>
+
+                <div class="col-sm-6"><span>激活数:</span><span class="active_sum"><%=data[j].active_total %></span></div>
+                <div class="col-sm-6"><span>下载率:</span><span class="down_rate"><%=data[j].download_rate +"%" %></span></div>
+
+
+                <div class="col-sm-6"><span>下载成本:</span><span class="down_cb"><%=data[j].download_chengben %></span></div>
+                <div class="col-sm-6"><span>激活率:</span><span class="active_rate"><%=data[j].active_rate+"%" %></span></div>
+
+                <div class="col-sm-6"><span>激活成本:</span><span class="active_cb"><%=data[j].active_chengben %></span></div>
+                <div class="col-sm-6"><span>留存/新购率:</span><span class="liucun_rate"><%=data[j].liucun_rate +"%"%></span></div>
+
+
+
             </div>
         </td>
     </tr>
