@@ -8,6 +8,9 @@
     font-size: 16px;
     color: #666;
 }
+#table1,#table2{
+    height: 100%;
+}
 tbody tr{
     border-bottom:1px solid #bfbfbf !important;
 }
@@ -161,7 +164,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 }
 tbody{
     display:block;
-    height:300px;
+    height:91%;
     overflow-x: hidden;
     overflow-y: auto;
 }
