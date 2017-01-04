@@ -1,0 +1,20 @@
+<table id="table" class="tablesorter">
+    <thead>
+    <tr>
+        <!--<th>关键词</th>-->
+        <th>词</th>
+        <th>原因</th>
+        <th>删除</th>
+    </tr>
+    </thead>
+    <tbody class="list">
+    <% for (var j=0; j<data.length; j++) { %>
+    <tr>
+        <!--<td class="js-op">0</td>-->
+        <td><%=data[j].word %></td>
+        <td><%=data[j].yuanyin %></td>
+        <td><button class="del" disabled>删除</button></td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>

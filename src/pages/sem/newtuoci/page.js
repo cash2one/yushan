@@ -134,6 +134,26 @@ $(() => {
     }
   });
   rw();
+  let flag1=1;
+  let flag2=1;
+  $('.gj').click(function(){
+    if(flag1==1){
+      $('.luo').slideUp();
+      flag1=0;
+    }else{
+      $('.luo').slideDown();
+      flag1=1;
+    }
+  });
+  $('.cy').click(function(){
+    if(flag2==1){
+      $('.sheng').slideUp();
+      flag2=0;
+    }else{
+      $('.sheng').slideDown();
+      flag2=1;
+    }
+  });
   $('.record button').click(function(){
     var l=$('.zhongzi').val().replace(/，/ig ,',');
     var strAry= l.split(',');

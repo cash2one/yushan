@@ -5,7 +5,7 @@
     font-size: 13px;
 }
 #myTable thead tr th{
-    width: 125px;
+    width: 50%;
 }
 #table tbody tr td,#myTable tbody tr td{
     font-size: 16px;
@@ -104,7 +104,7 @@ tbody::-webkit-scrollbar-track-piece,.record::-webkit-scrollbar-track-piece{
 }
 #myTable{
     float: left;
-    width: 400px;
+    /*width: 400px;*/
     height:250px;
 }
 #myTable tbody{

@@ -4,7 +4,8 @@
 /*eslint-disable */
 require('cp');
 
-
+const tb1 = require('./table/table.ejs');
+const tb2 = require('./table/table1.ejs');
 require('static/css/reset.css');
 require('static/vendor/Tabullet');
 require('./page.css');
@@ -28,6 +29,11 @@ function fad(type) {
     type:type,
   }).done(function (data) {
     console.log(data);
+    if(data[0].appid=='all'){
+      $('.tb1').html(tb1({data: data}));
+    }else{
+      $('.tb2').html(tb2({data: data}));
+    }
   });
 
 }
@@ -39,6 +45,7 @@ function ajx(words,type,source){
     yuanyin:source,
   }).done(function (data) {
     console.log(data);
+
   });
 }
 $(() => {
