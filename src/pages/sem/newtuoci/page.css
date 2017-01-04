@@ -128,10 +128,10 @@ table thead {
 .record{
     padding-right: 10px;
     margin-top: 10px;
-    float: left;
+    /*float: left;*/
     font-size: 15px;
-    height: 240px;
-    overflow: auto;
+    /*height: 240px;*/
+    /*overflow: auto;*/
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     margin-left: 20px;
 }

@@ -57,9 +57,9 @@ $(() => {
     ajx(JSON.stringify(strAry),'all',$('.yuanyin').eq(0).val());
     for(let i=0;i<strAry.length;i++){
       html+='<tr>';
-      html+='<td>' +$('.yuanyin').eq(0).val();
-      html+='</td>';
       html+='<td>' +strAry[i];
+      html+='</td>';
+      html+='<td>' +$('.yuanyin').eq(0).val();
       html+='</td>';
       html+='<td><button class="del" disabled>删除</button></td>';
       html+='</tr>';
@@ -76,9 +76,9 @@ $(() => {
     ajx(JSON.stringify(strAry),'zh',$('.yuanyin').eq(1).val());
     for(let i=0;i<strAry.length;i++){
       html+='<tr>';
-      html+='<td>' +$('.yuanyin').eq(1).val();
-      html+='</td>';
       html+='<td>' +strAry[i];
+      html+='</td>';
+      html+='<td>' +$('.yuanyin').eq(1).val();
       html+='</td>';
       html+='<td><button class="del" disabled>删除</button></td>';
       html+='</tr>';
