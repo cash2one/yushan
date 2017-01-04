@@ -134,8 +134,8 @@ function qudao_ajax(el){
   };
 }
 $(() => {
-  $('#alert').attr('value', utils.getDateStr(-1));
-  $('#alert1').attr('value', utils.getDateStr(-2));
+  $('#alert').attr('value', utils.getDateStr(0));
+  $('#alert1').attr('value', utils.getDateStr(-1));
   $(document).ready(function() {
     book = "all";
     ajx(book,currentAccount.appid);
