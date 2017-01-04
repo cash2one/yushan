@@ -21,43 +21,49 @@ eventBus.on('account_change', function () {
 
 });
 
-let source = [];
-function resetTabullet() {
-  $("#table").tabullet({
-    data: source,
-    action: function(mode, data) {
-      console.dir(mode);
-      if (mode === 'save') {
-        source.push(data);
-        // alert('save')
-        console.log(data)
-      }
-      if (mode === 'edit') {
-        for (var i = 0; i < source.length; i++) {
-          if (source[i].id == data.id) {
-            source[i] = data;
-          }
-        }
-        // alert("edit")
-        console.log(data)
-      }
-      if (mode == 'delete') {
-        for (var i = 0; i < source.length; i++) {
-          if (source[i].id == data) {
-            source.splice(i, 1);
-            // alert("delete")
-            console.log(data)
-            break;
-          }
-        }
-
-      }
-      resetTabullet();
-    }
-  });
-}
-
 $(() => {
+  $(document).on('click','.del',function(){
+    $(this).parents('tr').remove();
+  });
+
+  $('.left-1').click(function(){
+    var l=$('.ci').eq(0).val().replace('，', ',');
+    var strAry= l.split(',');
+    var html='';
+    for(let i=0;i<strAry.length;i++){
+      html+='<tr>';
+      html+='<td>' +$('.yuanyin').eq(0).val();
+      html+='</td>';
+      html+='<td>' +strAry[i];
+      html+='</td>';
+      html+='<td><button class="del" disabled>删除</button></td>';
+      html+='</tr>';
+    }
+
+    $('#myTable .list').prepend(html);
+    $('.yuanyin').eq(0).val('');
+    $('.ci').eq(0).val('');
+  });
+  $('.left-2').click(function(){
+    var l=$('.ci').eq(1).val().replace('，', ',');
+    var strAry= l.split(',');
+    var html='';
+    for(let i=0;i<strAry.length;i++){
+      html+='<tr>';
+      html+='<td>' +$('.yuanyin').eq(1).val();
+      html+='</td>';
+      html+='<td>' +strAry[i];
+      html+='</td>';
+      html+='<td><button class="del" disabled>删除</button></td>';
+      html+='</tr>';
+    }
+
+    $('#table .list').prepend(html);
+    $('.yuanyin').eq(1).val('');
+    $('.ci').eq(1).val('');
+  });
+
+
   /*utils.ajax(apiUrl.getApiUrl('getSKWord'), {
     appid: $('.appid').val(),
     date: $('.time').val(),
@@ -66,29 +72,5 @@ $(() => {
     $('#tb').html(tb({ data: datas }));
     $('#myTable').tablesorter();
   });*/
-  $(function() {
-    source = [{
-      id: 1,
-      name: "Aditya Purwa",
-      level: "Admin"
-    }, {
-      id: 2,
-      name: "Aditya Avaga",
-      level: "Manager"
-    }, {
-      id: 101,
-      name: "Aditya Myria",
-      level: "User"
-    }, {
-      id: 102,
-      name: "Lucent Serentia",
-      level: "LOD"
-    }, {
-      id: 103,
-      name: "Hayden Bapalthiel",
-      level: "King"
-    }, ];
 
-    resetTabullet();
-  });
 });

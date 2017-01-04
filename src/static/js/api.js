@@ -41,6 +41,8 @@ const moduleExports = {
   getSomeTask: '/keywords/somesscr',
   OutTuoCi: '/out/tuoci',
   getZhXX: '/sem/setzhxx',
+  setZhXX: '/sem/getzhxx',
+
 };
 
 module.exports = moduleExports;

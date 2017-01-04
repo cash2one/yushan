@@ -55,7 +55,7 @@ table input {
     width: 100px;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-    width: 100px;
+    /*width: 100px;*/
     background-color: #e6EEEE;
     border: 1px solid #FFF;
     font-size:14px;
@@ -70,7 +70,7 @@ table.tablesorter thead tr .tablesorter-header-inner{
     cursor: pointer;
 }
 table.tablesorter tbody td {
-    width: 100px;
+    /*width: 100px;*/
     color: #3D3D3D;
     padding: 4px;
     background-color: #FFF;
@@ -191,6 +191,9 @@ tbody::-webkit-scrollbar-thumb{
 }
 tbody::-webkit-scrollbar-track-piece{
     background: #bfbfbf;
+}
+table tbody tr span{
+    display: inline-block;width:120px;
 }
 
 
