@@ -45,37 +45,39 @@ function  obj(a,b,c,d,e,f,g,h,i) {
 };
 function ajx(type, appid) {
   var arr = $("#alert").val().split("/");
+  var arr1 = $("#alert1").val().split("/");
   var date = arr[2] + "-" + arr[0] + "-" + arr[1];
+  var date1 = arr1[2] + "-" + arr1[0] + "-" + arr1[1];
   var url;
   switch (type) {
     case "all": {
-      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,date: date,type: type}).done(function (el) {
+      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,edate: date,sdate: date1,type: type}).done(function (el) {
         qudao_ajax(el);
       });
     }
       break;
     case "baidu": {
-      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,date: date,type: type}).done(function (el) {
+      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,edate: date,sdate: date1,type: type}).done(function (el) {
         qudao_ajax(el);
       });
     }
       break;
     case "search": {
-      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,date: date,type: type}).done(function (el) {
+      utils.ajax(apiUrl.getApiUrl('getAll'), { appid: appid,edate: date,sdate: date1,type: type}).done(function (el) {
         qudao_ajax(el);
       });
     }
       break;
     case "other": {
       // alert("other");
-      utils.ajax(apiUrl.getApiUrl('getAccountother'), { appid: appid,date: date}).done(function (el) {
+      utils.ajax(apiUrl.getApiUrl('getAccountother'), { appid: appid,edate: date,sdate: date1,}).done(function (el) {
         qudao_ajax(el);
       });
     }
           break;
     case "otherbaidu": {
       // alert("otherbaidu");
-      utils.ajax(apiUrl.getApiUrl('getAccountotherbaidu'), { appid: appid,date: date}).done(function (el) {
+      utils.ajax(apiUrl.getApiUrl('getAccountotherbaidu'), { appid: appid,edate: date,sdate: date1,}).done(function (el) {
         qudao_ajax(el);
       });
     }
@@ -133,25 +135,29 @@ function qudao_ajax(el){
 }
 $(() => {
   $('#alert').attr('value', utils.getDateStr(-1));
+  $('#alert1').attr('value', utils.getDateStr(-2));
   $(document).ready(function() {
     book = "all";
     ajx(book,currentAccount.appid);
   });
   //日历
-  $("#alert").change(function() {
+  $("#alert,#alert1").change(function() {
     ajx(book,currentAccount.appid);
     $('.l1').addClass("qudao_active").siblings().removeClass("qudao_active");
   });
   //导出
   $(".daochu").click(function() {
     var arr = $("#alert").val().split("/");
+    var arr1 = $("#alert1").val().split("/");
     var date = arr[2] + "-" + arr[0] + "-" + arr[1];
+    var date1 = arr1[2] + "-" + arr1[0] + "-" + arr1[1];
     var send1=JSON.stringify(all);
     utils.formSubmit(apiUrl.getApiUrl('setQuOut'), {
       name: currentAccount.username,
       appid: currentAccount.appid,
       data: send1,
-      date: date,
+      edate: date,
+      sdate: date1,
     })
   });
   $(".tablesorter").tablesorter();
@@ -203,16 +209,9 @@ $(() => {
       }
     }
   })
-  $(".rili").hover(
-      function() {
-        $(this).attr("src",ck)
-      },function() {
-        $(this).attr("src",ri)
-      }
-  );
-  $( ".time input" ).datepicker({
-    altField: "#alert"
-  });
+
+  $("input[id='alert']").datepicker();
+  $("input[id='alert1']").datepicker();
   $( ".rili").click(function() {
     $( ".time input" ).datepicker( 'show' );
   });

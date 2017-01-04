@@ -326,7 +326,7 @@ table.tablesorter thead tr .tablesorter-headerDesc .tablesorter-header-inner{
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
     background-color: #8dbdd8;
 }
-tbody{
+#myTable tbody{
     display:block;
     height:200px;
     overflow-y: auto;
