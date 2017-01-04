@@ -21,6 +21,16 @@ eventBus.on('account_change', function () {
 
 });
 
+function ajx(words,type,source){
+  utils.ajaxPost(apiUrl.getApiUrl('setBlacWords'), {
+    appid:currentAccount.appid,
+    words:words,
+    type:type,
+    yuanyin:source,
+  }).done(function (data) {
+    console.log(data);
+  });
+}
 $(() => {
   $(document).on('click','.del',function(){
     $(this).parents('tr').remove();
@@ -28,8 +38,11 @@ $(() => {
 
   $('.left-1').click(function(){
     var l=$('.ci').eq(0).val().replace('，', ',');
+    console.log(l);
     var strAry= l.split(',');
+    console.log(strAry);
     var html='';
+    ajx(JSON.stringify(strAry),'all',$('.yuanyin').eq(0).val());
     for(let i=0;i<strAry.length;i++){
       html+='<tr>';
       html+='<td>' +$('.yuanyin').eq(0).val();
@@ -48,6 +61,7 @@ $(() => {
     var l=$('.ci').eq(1).val().replace('，', ',');
     var strAry= l.split(',');
     var html='';
+    ajx(JSON.stringify(strAry),'zh',$('.yuanyin').eq(1).val());
     for(let i=0;i<strAry.length;i++){
       html+='<tr>';
       html+='<td>' +$('.yuanyin').eq(1).val();
@@ -64,13 +78,5 @@ $(() => {
   });
 
 
-  /*utils.ajax(apiUrl.getApiUrl('getSKWord'), {
-    appid: $('.appid').val(),
-    date: $('.time').val(),
-  }).done(function (data) {
-    datas = data;
-    $('#tb').html(tb({ data: datas }));
-    $('#myTable').tablesorter();
-  });*/
 
 });

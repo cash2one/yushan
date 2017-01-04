@@ -92,7 +92,7 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 }
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .nav-li{
-    margin-top: 100px;
+    margin-top: 20px;
     margin-left: 30px;
 }
 .out{
@@ -194,6 +194,7 @@ tbody::-webkit-scrollbar-track-piece{
 }
 table tbody tr span{
     display: inline-block;width:120px;
+    white-space: nowrap;
 }
 
 

@@ -42,6 +42,7 @@ const moduleExports = {
   OutTuoCi: '/out/tuoci',
   getZhXX: '/sem/setzhxx',
   setZhXX: '/sem/getzhxx',
+  setBlacWords: '/black/setwords',
 
 };
 
