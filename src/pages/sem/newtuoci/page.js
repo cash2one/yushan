@@ -135,7 +135,7 @@ $(() => {
   });
   rw();
   $('.record button').click(function(){
-    var l=$('.zhongzi').val().replace('，', ",");
+    var l=$('.zhongzi').val().replace(/，/ig ,',');
     var strAry= l.split(',');
     console.log(strAry);
     // console.log($('.sele').val())
