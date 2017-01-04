@@ -193,8 +193,9 @@ tbody::-webkit-scrollbar-track-piece{
     background: #bfbfbf;
 }
 table tbody tr span{
-    display: inline-block;width:120px;
+    display: inline-block;width:100px;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 
