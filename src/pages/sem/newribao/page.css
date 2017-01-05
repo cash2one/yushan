@@ -199,9 +199,9 @@ tbody::-webkit-scrollbar-track-piece{
 table tbody tr span{
     display: inline-block;
 }
-table tbody .row div{
-    white-space: nowrap;
-    overflow: hidden;
+table tbody .row .col-sm-4{
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
 }
 .tong{
     color: #999;
