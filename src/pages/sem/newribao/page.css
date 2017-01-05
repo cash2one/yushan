@@ -211,5 +211,11 @@ table tbody .row .col-sm-4{
     display: none;
 }
 
+.sort,.sort1 {
 
+    text-decoration:underline;
+    list-style: none;
+    border: none;
+    background: #fff;
 
+}
