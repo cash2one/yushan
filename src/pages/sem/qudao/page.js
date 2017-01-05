@@ -141,7 +141,7 @@ $(() => {
     ajx(book,currentAccount.appid);
   });
   //日历
-  $("#alert,#alert1").change(function() {
+  $('.look-jihua').click(function(){
     ajx(book,currentAccount.appid);
     $('.l1').addClass("qudao_active").siblings().removeClass("qudao_active");
   });

@@ -458,7 +458,7 @@ $(() => {
 
   upload(currentAccount.appid);
 
-  $('#date').change(function () {
+  $('.look-jihua').click(function(){
     var arr = $('#date').val().split('/');
     ajx(arr[2], arr[0], arr[1], str);
   });

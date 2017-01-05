@@ -27,7 +27,7 @@ eventBus.on('account_change', function () {
   var arr2 = $('#date2').val().split('/');
   var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
   var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
-  sum($('#zhe').val(), currentAccount.appid, e, s)
+  sum('', currentAccount.appid, e, s)
 });
 
 function sum(zhe, appid, edate, sdate) {
@@ -211,7 +211,7 @@ $(() => {
   var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
   var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
   sum(1,currentAccount.appid, e, s)
-  $('#date1').change(function () {
+  /*$('#date1').change(function () {
     var arr1 = $('#date1').val().split('/');
     var arr2 = $('#date2').val().split('/');
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
@@ -219,11 +219,14 @@ $(() => {
     sum($('#zhe').val(),currentAccount.appid, e, s)
   });
   $('#date2').change(function () {
+
+  });*/
+  $('.look-jihua').click(function(){
     var arr1 = $('#date1').val().split('/');
     var arr2 = $('#date2').val().split('/');
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
-    sum($('#zhe').val(),currentAccount.appid, e, s)
+    sum('',currentAccount.appid, e, s)
   });
  /* $('#zhe').change(function () {
     var arr1 = $('#date1').val().split('/');
@@ -238,7 +241,7 @@ $(() => {
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
     utils.formSubmit(apiUrl.getApiUrl('setOut'), {
-      zhe: $('#zhe').val(),
+      zhe: '',
       appid: currentAccount.appid,
       name: currentAccount.username,
       edate: e,

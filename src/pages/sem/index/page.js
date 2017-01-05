@@ -45,6 +45,8 @@ $(() => {
   });
   $('.xuan2').click(function(){
     clearTimeout(time);
+    localStorage.clear();
+    window.location = '/index/login/page.html';
     /*layer.confirm('是否退出账户', {
       btn: ['是','否'] //按钮
     }, function(){

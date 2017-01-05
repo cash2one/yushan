@@ -197,9 +197,15 @@ tbody::-webkit-scrollbar-track-piece{
     background: #bfbfbf;
 }
 table tbody tr span{
-    display: inline-block;width:100px;
+    display: inline-block;
+}
+table tbody .row div{
     white-space: nowrap;
     overflow: hidden;
 }
+.tong{
+    color: #999;
+}
+
 
 

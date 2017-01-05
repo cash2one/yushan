@@ -122,7 +122,7 @@ $(() => {
     }
   });
   $('.ys').change(function(){
-    if(parseFloat($(this).val())>50){
+    if(parseFloat($(this).val())>3000 || parseFloat($(this).val())<50){
       $(this).css('border','2px solid red');
       $('.record button').attr('disabled','disabled')
     }else{

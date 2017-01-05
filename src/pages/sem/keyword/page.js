@@ -220,8 +220,11 @@ $(() => {
   $("input[id='date']").datepicker();
 
   upLoad(currentAccount.appid);
-  $('#date').unbind('change').bind('change', function () {
+  /*$('#date').unbind('change').bind('change', function () {
     // arr = $('#date').val().split('/');
+    top200(currentAccount.appid);
+  });*/
+  $('.look-jihua').click(function(){
     top200(currentAccount.appid);
   });
   $('.rili').hover(
