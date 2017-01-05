@@ -64,6 +64,7 @@ function sum(zhe, appid, edate, sdate) {
     $('#table2').tablesorter();
     var options2 = {
       listClass: 'list1',
+      sortClass:'sort1',
       searchClass: 'search1',
       valueNames: ['date','qudao','tui_jihua','ji_cost','ji_view','ji_pv','ji_pvrate','ji_pvdan','ji_btnview','ji_btnpv','ji_btncost','ji_btnviewb','ji_btncostb','ji_pagecost','ji_pageactive','ji_pageactivecb','ji_btnactive','ji_btnactivecb','ji_active','ji_activecb','remark']
     };
@@ -235,6 +236,20 @@ $(() => {
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
     sum($(this).val(), currentAccount.appid, e, s)
   });*/
+ let non=1;
+ $('.zk').click(function(){
+   if(non==1){
+     $(this).text('合并');
+     $('.m1').hide();
+     $('.m2').show();
+     non=0;
+   }else{
+     $(this).text('展开');
+     $('.m2').hide();
+     $('.m1').show();
+     non=1;
+   }
+ });
   $('.out').click(function(){
     var arr1 = $('#date1').val().split('/');
     var arr2 = $('#date2').val().split('/');
