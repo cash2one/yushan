@@ -167,6 +167,14 @@ $(() => {
           var l=field.value.replace(/，/ig ,',');
           var strAry= l.split(',');
           data[field.name] = JSON.stringify(strAry);
+        }if(field.name == 'include'){
+          var l=field.value.replace(/，/ig ,',');
+          var strAry= l.split(',');
+          data[field.name] = JSON.stringify(strAry);
+        }if(field.name == 'noinclude'){
+          var l=field.value.replace(/，/ig ,',');
+          var strAry= l.split(',');
+          data[field.name] = JSON.stringify(strAry);
         }else{
           data[field.name] = field.value;
         }

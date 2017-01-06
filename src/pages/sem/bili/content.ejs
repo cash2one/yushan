@@ -1,8 +1,9 @@
 <div id="page-wrapper">
-    <button>查看</button>
-    <div style="margin-left: 30px;margin-top: 20px;">
-        开始时间:<input type="text" id="date1"/>
-        <select id="time1">
+    <button class="ck">查看</button> <button class="tj">添加</button>
+    <li style="margin-left: 30px;margin-top: 20px;" class="trends">
+        <button class='btn-danger del'>删除</button>
+        开始时间:<input type="text" class="date1 dp" placeholder="01/03/2017" />
+        <select class="time1">
             <option>00:00</option>
             <option>01:00</option>
             <option>02:00</option>
@@ -28,7 +29,7 @@
             <option>22:00</option>
             <option>23:00</option>
         </select>点
-        ——    结束时间:<input type="text" id="date2"/>
+        ——    结束时间:
         <select class="time2">
             <option>00:00</option>
             <option>01:00</option>
@@ -55,6 +56,11 @@
             <option>22:00</option>
             <option>23:00</option>
         </select>点
+    </li>
+    <div class="trends-all">
+    </div>
+    <div class="tol">
+
     </div>
 
 </div>

@@ -44,6 +44,7 @@ const moduleExports = {
   setZhXX: '/sem/getzhxx',
   setBlacWords: '/black/setwords',
   getBlacWords: '/black/getwords',
+  getTime: '/account/timevs',
 
 };
 

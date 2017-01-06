@@ -1,5 +1,5 @@
 
-#date1,#date2,select{
+.date1,#date2,select{
     padding-left: 10px;
     padding-right: 20px;
     margin-left: 10px;
@@ -48,5 +48,8 @@ button{
     background: #4390b9;
     color: #fff;
 }
-
+.tol{
+    width: 80%;
+    margin: 30px auto;
+}
 
