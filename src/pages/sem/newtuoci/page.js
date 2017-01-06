@@ -164,17 +164,17 @@ $(() => {
 
       $.each(dataArr, function(i, field){
         if(field.name == 'words'){
-          var l=field.value.replace(/，/ig ,',');
-          var strAry= l.split(',');
+          let l=field.value.replace(/，/ig ,',');
+          let strAry= l.split(',');
           data[field.name] = JSON.stringify(strAry);
-        }if(field.name == 'include'){
-          var l=field.value.replace(/，/ig ,',');
-          var strAry= l.split(',');
-          data[field.name] = JSON.stringify(strAry);
-        }if(field.name == 'noinclude'){
-          var l=field.value.replace(/，/ig ,',');
-          var strAry= l.split(',');
-          data[field.name] = JSON.stringify(strAry);
+        }else if(field.name == 'include'){
+          let l1=field.value.replace(/，/ig ,',');
+          let strAry1= l1.split(',');
+          data[field.name] = JSON.stringify(strAry1);
+        }else if(field.name == 'noinclude'){
+          let l2=field.value.replace(/，/ig ,',');
+          let strAry2= l2.split(',');
+          data[field.name] = JSON.stringify(strAry2);
         }else{
           data[field.name] = field.value;
         }
