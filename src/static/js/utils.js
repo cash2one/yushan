@@ -2,6 +2,8 @@
 const $ = require('jquery');
 const toastr = require('static/vendor/toastr.min');
 require('static/vendor/toastr.min.css');
+require('static/css/nprogress.css');
+const NProgress=require('static/vendor/nprogress');
 
 const moduleExports = {
 
@@ -112,6 +114,12 @@ const moduleExports = {
       async: async,
       dataType: 'json',
       data: data,
+      beforeSend:function(){
+        NProgress.start();
+      },
+      complete: function() {
+        NProgress.done();
+      },
     })
     .done(function done(json) {
       if (json.status) {
@@ -131,30 +139,32 @@ const moduleExports = {
       }
     })
     .fail(function fail() {
+
       toastr.error('数据加载失败', '加载失败')
       deferred.reject();
     })
     .always(function always() {
-      toastr.success('数据请求完成', '完成')
+      NProgress.done();
+      // toastr.success('数据请求完成', '完成')
     });
 
     return deferred.promise();
   },
-  ajaxPost(url, data, async) {
+  ajaxAsync(url, data, async) {
     var deferred = $.Deferred();
-
-    if (async === false) {
-      async = false;
-    } else {
-      async = true;
-    }
 
     $.ajax({
       url: url,
-      type: 'post',
-      async: async,
+      type: 'get',
+      async: false,
       dataType: 'json',
       data: data,
+      beforeSend:function(){
+        NProgress.start();
+      },
+      complete: function() {
+        NProgress.done();
+      },
     })
       .done(function done(json) {
         if (json.status) {
@@ -174,11 +184,64 @@ const moduleExports = {
         }
       })
       .fail(function fail() {
+        NProgress.done();
         toastr.error('数据加载失败', '加载失败')
         deferred.reject();
       })
       .always(function always() {
-        toastr.success('数据请求完成', '完成')
+        NProgress.done();
+        // toastr.success('数据请求完成', '完成')
+      });
+
+    return deferred.promise();
+  },
+  ajaxPost(url, data, async) {
+    var deferred = $.Deferred();
+
+    if (async === false) {
+      async = false;
+    } else {
+      async = true;
+    }
+
+    $.ajax({
+      url: url,
+      type: 'post',
+      async: async,
+      dataType: 'json',
+      data: data,
+      beforeSend:function(){
+        NProgress.start();
+      },
+      complete: function() {
+        NProgress.done();
+      },
+    })
+      .done(function done(json) {
+        if (json.status) {
+          if (json.status !== 'success') {
+            // notice('数据错误', json.message || '操作发生错误');
+            toastr.error(json.message || '操作发生错误', '数据错误')
+            deferred.reject();
+          } else {
+            if (json.data) {
+              deferred.resolve(json.data);
+            } else {
+              deferred.resolve(json);
+            }
+          }
+        } else {
+          deferred.resolve(json);
+        }
+      })
+      .fail(function fail() {
+        NProgress.done();
+        toastr.error('数据加载失败', '加载失败')
+        deferred.reject();
+      })
+      .always(function always() {
+        NProgress.done();
+        // toastr.success('数据请求完成', '完成')
       });
 
     return deferred.promise();

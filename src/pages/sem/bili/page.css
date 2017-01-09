@@ -50,6 +50,14 @@ button{
 }
 .tol{
     width: 80%;
-    margin: 30px auto;
+    /*margin: 30px auto;*/
+    margin-top: 30px;
 }
-
+.inx{
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 14px;
+}

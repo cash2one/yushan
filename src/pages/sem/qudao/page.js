@@ -86,6 +86,7 @@ function ajx(type, appid) {
 }
 
 function qudao_ajax(el){
+  all=[];
   $('.l1').addClass("qudao_active").siblings().removeClass("qudao_active");
   $('#myTable').tablesorter();
   datas = el;
@@ -94,6 +95,17 @@ function qudao_ajax(el){
   // $(".l1").addClass("active").siblings().removeClass("active");
   for(var i = 0;i <el.length;i++) {
     all.push(new obj(el[i]._id,el[i].pv_total,el[i].dl_total,el[i].ios_pv_total,el[i].ios_dl_total,el[i].ios_rate+"%",el[i].android_pv_total,el[i].android_dl_total,el[i].android_rate+"%"));
+    /*all.push({
+      c2 : el[i]._id,
+      total_click : el[i].pv_total,
+      total_download :el[i].dl_total,
+      ios_click : el[i].ios_pv_total,
+      ios_download : el[i].ios_dl_total,
+      ios_rate : el[i].ios_rate+'%',
+      android_pv_total : el[i].android_pv_total,
+      android_dl_total : el[i].android_dl_total,
+      android_rate : el[i].android_rate+'%',
+    });*/
     total_click1 += el[i].pv_total;
     total_down += el[i].dl_total;
     ios_totaldl += el[i].ios_dl_total;
