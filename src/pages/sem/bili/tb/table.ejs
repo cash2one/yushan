@@ -1,0 +1,29 @@
+<div>
+    <span class="glyphicon glyphicon-chevron-down rise" style="color: rgb(0, 0, 0);cursor: pointer;">收起</span>
+    <span class="glyphicon glyphicon-chevron-up down" style="color:rgb(0, 0, 0);cursor: pointer;">展开</span>
+    <table class="tablesorter table">
+        <thead>
+        <tr>
+            <th>时间</th>
+            <th>激活</th>
+            <th>CPC</th>
+            <th>点击</th>
+            <th>展现</th>
+            <th>消费</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (var i in data) {%>
+        <tr>
+            <td><%=data[i].dateTime%></td>
+            <td data-time="<%=data[i].dateTime1 %>" class="td_active"><a href="#" class="all_active" data-type="text"><%=data[i].active%></a></td>
+            <td><%=data[i].cpc %></td>
+            <td><%=data[i].clickCount %></td>
+            <td><%=data[i].showCount %></td>
+            <td><%=data[i].spend %></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+</div>
+

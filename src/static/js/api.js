@@ -45,7 +45,9 @@ const moduleExports = {
   setBlacWords: '/black/setwords',
   getBlacWords: '/black/getwords',
   getTime: '/account/timevs',
-
+  getGPlan: '/plan/getplan',
+  setHour: '/active/sethour',
+  getHu: '/account/gethu',
 };
 
 module.exports = moduleExports;

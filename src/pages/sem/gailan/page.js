@@ -28,6 +28,7 @@ let currentAccount = store.getCurrentAccount();
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
   upload(currentAccount.appid, flag);
+  pei();
 });
 
 function ajax(str,flag) {
@@ -204,15 +205,23 @@ function upload(str, flag) {
     pieChart.renderPie(el);
   });
 }
-
+function pei(){
+  utils.ajax(apiUrl.getApiUrl('getHu'), {
+    appid: currentAccount.appid,
+  }).done(function (data) {
+    console.log(data[0].api_count);
+    $('.apie span').text(data[0].api_count);
+  });
+}
 $(() => {
   $('#main1').hide();
+  pei();
 
-  console.log(utils.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss'));
-  console.log(apiUrl.getApiUrl('getUser'));
+  // console.log(utils.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss'));
+  // console.log(apiUrl.getApiUrl('getUser'));
 
-  console.log(localStorage.getItem('userName'));
-  console.log(sessionStorage.getItem('userName'));
+  // console.log(localStorage.getItem('userName'));
+  // console.log(sessionStorage.getItem('userName'));
 
   $('.start').hover(function () {
     $(this).attr('src', tian1);
