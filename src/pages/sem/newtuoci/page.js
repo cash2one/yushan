@@ -201,7 +201,7 @@ $(() => {
         html+='<tr class="lin" title="'+data.taskname+'">';
         html+='<td class="click" style="width: 50%;">'+ date;
         html+='</td>';
-        html+='<td class="down"> <span>'+flag+'</span><button data-name='+data.taskname+' disabled>完成</button>';
+        html+='<td class="down"> <span>'+flag+'</span>';
         html+='</td>';
         html+=u;
         html+='</td>';

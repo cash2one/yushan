@@ -2,6 +2,7 @@
  * Created by jy on 2016/12/6.
  */
 /*eslint-disable */
+// const tb = require('./tpl/table.ejs');
 require('cp');
 require('static/css/reset.css');
 require('./page.css');
@@ -14,31 +15,20 @@ let currentAccount = store.getCurrentAccount();
 
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
-  $('.appid').val(currentAccount.appid);
-  $('.name').val(currentAccount.username);
-  tol();
 });
 
 function tol(){
   utils.ajax(apiUrl.getApiUrl('setZhXX'), {
     appid: currentAccount.appid,
   }).done(function (data) {
-    console.log(data);
-    $('.name').val(data[0].name);
-    $('.appid').val(data[0].appid);
-    $('.psd').val('');
-    $('.leixing').val(data[0].account_type);
-    $('.three').val(data[0].account_name);
-    $('.threepass').val(data[0].account_password);
-    $('.token').val(data[0].account_appid);
-    $('.zt').val(data[0].account_status);
-    $('.fd').val(data[0].fd_rate);
+    // $('.tb1').append(tb1({data: data[i]}));
   })
 };
 
 $(() => {
-  $('.appid').val(currentAccount.appid);
-  $('.name').val(currentAccount.username);
+  $('.top').click(function(){
+    window.location='/sem/grpdetail/page.html';
+  });
   $('button').click(function(){
     utils.ajaxPost(apiUrl.getApiUrl('getZhXX'), {
       name: $('.name').val(),
@@ -53,6 +43,6 @@ $(() => {
       console.log(data);
     });
   });
-  tol();
+  // tol();
 
 });

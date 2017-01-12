@@ -1,0 +1,14 @@
+<table id="myTable" class="tablesorter">
+<thead>
+<tr>
+    <th>组名</th>
+</tr>
+</thead>
+<tbody>
+<% for (var word in data) {%>
+  <tr>
+      <td><%=data[word].count %></td>
+  </tr>
+<% } %>
+</tbody>
+</table>
