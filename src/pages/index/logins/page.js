@@ -30,6 +30,9 @@ window.switchToPage = (page) => {
 };
 $(() => {
 
+
+
+
   passport.login({selector:"#login-form"});
 
   $('.user').hover(function() {
@@ -49,6 +52,13 @@ $(() => {
   $('.clk').click(clk);
 
   function clk() {
+
+    $.when($.ajax("http://www.baidu.com"),$.ajax("http://www.baidu.com")).done(function (v1, v2) {
+      alert(v1,v2);
+      console.log(v1,v2);
+    });
+
+
     var userName = $('.user').val();
     var pwd = $('.pwd').val();
 
