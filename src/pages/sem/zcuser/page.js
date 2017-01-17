@@ -2,7 +2,6 @@
  * Created by jy on 2016/12/6.
  */
 /*eslint-disable */
-const tb = require('./semer/sem.ejs');
 const tb1 = require('./semer/enroll.ejs');
 require('cp');
 require('static/css/reset.css');
@@ -24,18 +23,6 @@ eventBus.on('account_change', function () {
   window.location.reload();
 });
 
-function tol(){
-  utils.ajax(apiUrl.getApiUrl('getSemXX'), {
-    userid: store.getUser().data.id,
-  }).done(function (data) {
-    console.log(data);
-    $('.username1').val(data.real_name);
-    $('.users1').val(data.name);
-    $('.email1').val(data.email);
-    $('.phone1').val(data.phone);
-  });
-  typ();
-}
 function typ(){
   utils.ajax(apiUrl.getApiUrl('getType'), {
     type: constant.userType,
@@ -46,19 +33,7 @@ function typ(){
 }
 
 $(() => {
-  $("#myForm1").validate({
-    submitHandler: function () {
-
-      let dataArr = $("#myForm1").serializeArray();
-       dataArr.push({name:"userid",value:store.getUser().data.id});
-      console.log(dataArr);
-      utils.ajaxPost(apiUrl.getApiUrl('getChangeSem'),dataArr).done(function (data) {
-       console.log(data);
-       });
-
-      return false;
-    },
-  });
+  typ();
   $("#myForm").validate({
     submitHandler: function () {
 
@@ -83,25 +58,5 @@ $(() => {
 
       return false;
     },
-  });
-  tol();
-  $('.member').click(function(){
-    /*let sem_name=[];
-    $('.sem_name').each(function(){
-      sem_name.push($(this).text().trim());
-    });
-    console.log(sem_name);*/
-    utils.ajax(apiUrl.getApiUrl('getAllHu'), {}).done(function (data) {
-      // let newData=[];
-      console.log(data);
-      /*for(let i=0;i<sem_name.length;i++){
-        for(let j=0;j<data.length;j++){
-          if(sem_name[i]==data[j].name){
-            data.splice(j,1)
-          }
-        }
-      }*/
-      // $('.a').html(tb({data: data}));
-    });
   });
 });
