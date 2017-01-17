@@ -160,7 +160,7 @@ html,body{
     border-radius:10px;
     box-shadow: 2px 3px 6px #999;
     background: #fff;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 /* tbody tr{
      border-bottom:1px solid #bfbfbf !important;
@@ -189,7 +189,7 @@ html,body{
 }
 .biao-2{
     height: 73%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     width: 100%;
     /*height: 300px;*/
     /*overflow: hidden;*/
@@ -335,14 +335,14 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 #myTable tbody{
     display:block;
     height:88%;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
 }
 table thead, tbody tr {
     display:table;
     width:100%;
     table-layout:fixed;
 }
-table thead {
+/*table thead {
     width: calc( 100% - 1em )
 }
 tbody::-webkit-scrollbar{
@@ -364,4 +364,4 @@ tbody::-webkit-scrollbar-thumb{
 }
 tbody::-webkit-scrollbar-track-piece{
     background: #bfbfbf;
-}
+}*/
