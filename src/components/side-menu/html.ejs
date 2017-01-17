@@ -33,16 +33,16 @@
                 </ul>
             </li>-->
             <li >
-                <a href="javascript:;"><i class="iconfont icon-demo-page"></i> 设置<span class="iconfont arrow"></span></a>
+                <a href="javascript:;"><i class="iconfont icon-demo-page"></i> 用户管理<span class="iconfont arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="<%= constructInsideUrl('index/login') %>" target="_blank">登录页</a>
+                        <a href="<%= constructInsideUrl('sem/user') %>">修改用户</a>
                     </li>
                     <li>
-                        <a href="<%= constructInsideUrl('user/edit-password') %>">修改密码</a>
+                        <a href="<%= constructInsideUrl('sem/zcuser') %>">注册用户</a>
                     </li>
                     <li>
-                        <a href="<%= constructInsideUrl('user/modify-info') %>">修改个人资料</a>
+                        <a href="<%= constructInsideUrl('sem/addzhu') %>">新添账户</a>
                     </li>
                 </ul>
             </li>
@@ -93,7 +93,10 @@
                 <a href="<%= constructInsideUrl('sem/group') %>">分组管理</a>
             </li>
             <li class="menu">
-                <a href="<%= constructInsideUrl('sem/shezhi') %>">设置</a>
+                <a href="<%= constructInsideUrl('sem/shezhi') %>">账户管理</a>
+            </li>
+            <li class="menu">
+                <a href="<%= constructInsideUrl('sem/user') %>">用户管理</a>
             </li>
         </ul>
     </div>

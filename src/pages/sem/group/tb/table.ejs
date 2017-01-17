@@ -4,10 +4,10 @@
     <th>组名</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="list">
 <% for (var word in data) {%>
   <tr>
-      <td><%=data[word].count %></td>
+      <td class="nam" data-id="<%=data[word].group_id %>" data-name="<%=data[word].group_name %>"><%=data[word].group_name %></td>
   </tr>
 <% } %>
 </tbody>

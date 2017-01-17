@@ -2,7 +2,7 @@
  * Created by jy on 2016/12/6.
  */
 /*eslint-disable */
-// const tb = require('./tpl/table.ejs');
+const tb = require('./tb/table.ejs');
 require('cp');
 require('static/css/reset.css');
 require('./page.css');
@@ -15,34 +15,47 @@ let currentAccount = store.getCurrentAccount();
 
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
+  window.location.reload();
 });
 
 function tol(){
-  utils.ajax(apiUrl.getApiUrl('setZhXX'), {
-    appid: currentAccount.appid,
+  utils.ajax(apiUrl.getApiUrl('getSemZu'), {
+    // userid: store.getUser().id,
   }).done(function (data) {
-    // $('.tb1').append(tb1({data: data[i]}));
-  })
+    console.log(data);
+    $('.top').append(tb({data: data}));
+  });
 };
 
 $(() => {
-  $('.top').click(function(){
+  $('.add').click(function(){
+    if($('.group-name').val().length !=0){
+      utils.ajax(apiUrl.getApiUrl('getCreateZu'), {
+        userid: store.getUser().id,
+        zuname: $('.group-name').val(),
+      }).done(function (data) {
+        console.log(data);
+        // $('.tb1').append(tb1({data: data[i]}));
+        let html='';
+        html+='<tr>';
+        html+='<td class="nam" data-id="'+data+'" data-name="'+$('.group-name').val()+'">' +$('.group-name').val()+'</td>';
+        html+='</tr>';
+        html+='</tr>';
+        $('#myTable .list').prepend(html);
+      });
+
+    }
+
+  });
+  tol();
+  $(document).on('click','#myTable .nam',function(){
+    console.log($(this).data('id'));
+    console.log($(this).data('name'));
+    let zu={
+      group_id:$(this).data('id'),
+      group_name:$(this).data('name'),
+    };
+    store.setZu(zu);
     window.location='/sem/grpdetail/page.html';
   });
-  $('button').click(function(){
-    utils.ajaxPost(apiUrl.getApiUrl('getZhXX'), {
-      name: $('.name').val(),
-      appid: $('.appid').val(),
-      type: $('.leixing').val(),
-      account_name: $('.three').val(),
-      account_password: $('.threepass').val(),
-      account_appid: $('.token').val(),
-      account_status: $('.zt').val(),
-      fd_rate: $('.fd').val(),
-    }).done(function (data) {
-      console.log(data);
-    });
-  });
-  // tol();
-
 });

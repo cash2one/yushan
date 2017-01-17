@@ -44,6 +44,23 @@ const moduleExports = {
   getCurrentAccount: function () {
     return JSON.parse(localStorage.getItem('currentAccount'));
   },
+  setZu: function (zu) {
+  /*  if (accounts) {
+      const current = this.getZu();
+      if (current && (current=== accounts)) {
+        console.log('not change');
+      } else {
+        localStorage.setItem('zu', JSON.stringify(accounts));
+        eventBus.fire('zu_change');
+      }
+    } else {
+      localStorage.removeItem('zu');
+    }*/
+    localStorage.setItem('zu', JSON.stringify(zu));
+  },
+  getZu: function () {
+    return JSON.parse(localStorage.getItem('zu'));
+  },
 };
 
 module.exports = moduleExports;

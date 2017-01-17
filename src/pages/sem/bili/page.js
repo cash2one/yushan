@@ -190,6 +190,7 @@ function legend(logo, who) {
   let show = [];
   let click = [];
   let spend = [];
+  let acve = [];
   let series = [];
   let n = [];
   $('.tb').html('');
@@ -206,7 +207,10 @@ function legend(logo, who) {
       for (let j = 0; j < who[i].length; j++) {
         who[i][j].dateTime1= utils.dateFormat(who[i][j].dateTime, 'yyyy-MM-dd hh:mm:ss');
         who[i][j].dateTime= utils.dateFormat(who[i][j].dateTime, 'MM-dd hh:mm');
-        who[i][j].cpc= who[i][j].cpc.toFixed(2);
+        who[i][j].cpc= who[i][j].cpc ? who[i][j].cpc.toFixed(2) : 0;
+        who[i][j].clickCount= who[i][j].clickCount ? who[i][j].clickCount: 0 ;
+        who[i][j].showCount= who[i][j].showCount ? who[i][j].showCount: 0 ;
+        who[i][j].spend= who[i][j].spend ? who[i][j].spend: 0 ;
       }
     }
   }catch (e){
@@ -269,6 +273,18 @@ function legend(logo, who) {
 
       }
         break;
+      case '激活': {
+        acve = [];
+        for (let j = 0; j < who[i].length; j++) {
+          acve.push({
+            value: who[i][j].active,
+            name:who[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],acve);
+
+      }
+        break;
     }
   }
 
@@ -283,6 +299,7 @@ function legend1(logo, data) {
   let show = [];
   let click = [];
   let spend = [];
+  let acve = [];
   let btnclick = [];
   let btnshow = [];
   let btnspend = [];
@@ -305,7 +322,13 @@ function legend1(logo, data) {
       for (let j = 0; j < data[i].length; j++) {
         data[i][j].dateTime1= utils.dateFormat(data[i][j].dateTime, 'yyyy-MM-dd hh:mm:ss');
         data[i][j].dateTime= utils.dateFormat(data[i][j].dateTime, 'MM-dd hh:mm');
-        data[i][j].cpc= data[i][j].cpc.toFixed(2);
+        data[i][j].cpc= data[i][j].cpc ? data[i][j].cpc.toFixed(2) : 0;
+        data[i][j].clickCount= data[i][j].clickCount ? data[i][j].clickCount: 0 ;
+        data[i][j].showCount= data[i][j].showCount ? data[i][j].showCount: 0 ;
+        data[i][j].spend= data[i][j].spend ? data[i][j].spend: 0 ;
+        data[i][j].total_btnClickCount= data[i][j].total_btnClickCount ? data[i][j].total_btnClickCount: 0 ;
+        data[i][j].total_btnShowCount= data[i][j].total_btnShowCount ? data[i][j].total_btnShowCount: 0 ;
+        data[i][j].total_btnSpend= data[i][j].total_btnSpend ? data[i][j].total_btnSpend: 0 ;
         // data[i][j].total_btnSpend= data[i][j].total_btnSpend.toFixed(2);
       }
     }
@@ -364,6 +387,17 @@ function legend1(logo, data) {
           });
         }
         pu(series,n[i],spend);
+      }
+        break;
+      case '激活': {
+        acve = [];
+        for (let j = 0; j < data[i].length; j++) {
+          acve.push({
+            value: data[i][j].active,
+            name:data[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],acve);
       }
         break;
       case '按钮点击': {

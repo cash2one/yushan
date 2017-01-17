@@ -25,16 +25,28 @@ button{
     padding: 5px 20px;
 }
 #myTable thead tr th{
+    text-align: center;
+    padding: 5px 10px;
+    width: 100px;
     color: #fff;
     background: #4390b9 !important;
     font-size: 13px;
 }
 #myTable tbody tr td{
+    /*border: 1px solid #666;*/
+    width: 100px;
     font-size: 16px;
-    color: #666;
+    color: #00b7ee;
+    cursor: pointer;
+    text-decoration: underline;
 }
 .write-psd{
     margin-top: 20px;
     font-size: 20px;
     font-weight: 600;
 }
+.top{
+    margin-top: 20px;
+}
+#myTable{border-right:1px solid #666;border-bottom:1px solid #666}
+#myTable td{border-left:1px solid #666;border-top:1px solid #666}

@@ -9,7 +9,7 @@ let currentAccount = store.getCurrentAccount();
 
 function xin() {
   if(currentAccount){
-    $('.yushan-1').text(currentAccount.username);
+    $('.yushan-1').text(currentAccount.name);
     $('.yushan-2 span').text(currentAccount.mobileBalance);
   }
 }

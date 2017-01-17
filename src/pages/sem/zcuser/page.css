@@ -2,18 +2,25 @@
     margin-top: 20px;
     margin-left: 30px;
 }
-p input,select{
+p input,p select{
     padding-left: 10px;
     padding-right: 20px;
     margin-left: 10px;
-    width: 300px;
+    width: 200px;
     height: 30px;
     border-radius: 5px;
     /*box-shadow: 0px 2px 2px #ccc;*/
     list-style: none;
     border: 1px solid #ccc;
 }
-button{
+p select{
+    margin-left: 5px;
+}
+.write-psd .ding{
+    display: inline-block;
+    width: 100px;
+}
+button,input[type=submit]{
     font-size: 16px;
     font-weight:400;
     margin-left: 10px;
@@ -24,25 +31,17 @@ button{
     list-style: none;
     padding: 5px 20px;
 }
-#myTable thead tr th{
-    color: #fff;
-    background: #4390b9 !important;
-    font-size: 13px;
-}
-#myTable tbody tr td{
-    font-size: 16px;
-    color: #666;
-}
-.write-psd{
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 600;
+#myForm .ding{
+    display: inline-block;
+    width: 100px;
+    /*font-size: 16px;*/
+    /*font-weight: 600;*/
 }
 .a .list-group-item span{
     display: inline-block;
     width: 200px;
 }
-.a{
-    height: 500px;
-    overflow: auto;
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #333;
 }

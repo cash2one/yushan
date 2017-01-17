@@ -154,8 +154,6 @@ $(() => {
 
   $("#myForm").validate({
     submitHandler: function () {
-      // 已经通过了验证
-      // btn.button('loading');
       console.log($("#myForm").serializeArray());
 
       var dataArr = $("#myForm").serializeArray();

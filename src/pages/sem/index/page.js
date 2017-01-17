@@ -22,8 +22,8 @@ function ck() {
 }
 $(() => {
   var app1=document.getElementsByClassName("user")[0];
-  var now = new Date()
-  var hour = now.getHours()
+  var now = new Date();
+  var hour = now.getHours();
   if(hour < 6){$(".time").text(",凌晨好！")}
   else if (hour < 9){$(".time").text(",早上好！")}
   else if (hour < 12){$(".time").text(",上午好！")}
@@ -33,7 +33,7 @@ $(() => {
   else if (hour < 22){$(".time").text(",晚上好！")}
   else {$(".time").text(",夜里好！")}
 
-  $(".userb-1").text(store.getUser().username);
+  $(".userb-1").text(store.getUser().data.real_name);
   var time;
   $('.xuan1').click(function(){
     $(this).hide();
@@ -62,13 +62,13 @@ $(() => {
   })
 
   utils.ajax(apiUrl.getApiUrl('getNotice'), {
-    appid: store.getUser().appid,
+    appid: store.getUser().data.id,
   }).done(function (data) {
     console.log('dd'+data)
     $('dd').text(data[0].message)
   });
   utils.ajax(apiUrl.getApiUrl('getPay'), {
-    userId: store.getUser().appid,
+    userId: store.getUser().data.id,
   }).done(function (data) {
     store.setAccounts(data);
 
