@@ -12,6 +12,8 @@ const utils = require('utils');
 const apiUrl = require('static/js/api');
 const passport = require('static/js/passport');
 
+const pinyinUtil = require('static/js/pinyinUtil');
+
 /*eslint-disable */
 window.switchToPage = (page) => {
   switch (page) {
@@ -30,7 +32,11 @@ window.switchToPage = (page) => {
 };
 $(() => {
 
+  var py = pinyinUtil.getPinyin('我是nihao111','');
+  var fp = pinyinUtil.getFirstLetter('我是nihao111').toLowerCase();
 
+  console.log(py);
+  console.log(fp);
 
 
   passport.login({selector:"#login-form"});
