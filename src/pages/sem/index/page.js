@@ -12,7 +12,7 @@ const utils = require('utils');
 const apiUrl = require('static/js/api');
 
 const store = require('static/js/store');
-
+const pinyinUtil = require('static/js/pinyinUtil');
 function ck() {
 
   var curr=store.getAccountByAppid($(this).parent().attr('title'));
@@ -74,6 +74,8 @@ $(() => {
 
     var appid=[];
     var nam=[];
+    var py=[];
+    var fp=[];
     var total_balance=[];
     console.log(data);
     for(var i=0;i<data.length;i++){
@@ -82,12 +84,18 @@ $(() => {
       }
       appid.push(data[i].appid);
       nam.push(data[i].name);
+      py.push(pinyinUtil.getPinyin(data[i].username,''));
+      fp.push(pinyinUtil.getFirstLetter(data[i].username).toLowerCase());
       total_balance.push(data[i].mobileBalance)
     }
     app1.oninput=function(){
       var ann=[];
       for(var i=0;i<nam.length;i++){
         if(nam[i].indexOf($(this).val()) > -1){
+          ann.push(data[i]);
+        }else if(py[i].indexOf($(this).val()) > -1){
+          ann.push(data[i]);
+        }else if(fp[i].indexOf($(this).val()) > -1){
           ann.push(data[i]);
         }
       }
