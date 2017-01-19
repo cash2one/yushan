@@ -75,17 +75,15 @@ $(() => {
     var appid=[];
     var nam=[];
     var py=[];
-    var fp=[];
     var total_balance=[];
-    console.log(data);
+
     for(var i=0;i<data.length;i++){
       if(data[i].mobileBalance=='null'){
         data[i].mobileBalance="无";
       }
       appid.push(data[i].appid);
       nam.push(data[i].name);
-      py.push(pinyinUtil.getPinyin(data[i].username,''));
-      fp.push(pinyinUtil.getFirstLetter(data[i].username).toLowerCase());
+      py.push(pinyinUtil.getPinyin(data[i].name,'')+pinyinUtil.getFirstLetter(data[i].name).toLowerCase());
       total_balance.push(data[i].mobileBalance)
     }
     app1.oninput=function(){
@@ -94,8 +92,6 @@ $(() => {
         if(nam[i].indexOf($(this).val()) > -1){
           ann.push(data[i]);
         }else if(py[i].indexOf($(this).val()) > -1){
-          ann.push(data[i]);
-        }else if(fp[i].indexOf($(this).val()) > -1){
           ann.push(data[i]);
         }
       }
