@@ -2,8 +2,6 @@
  * Created by jy on 2016/12/6.
  */
 /*eslint-disable */
-const tb = require('./semer/sem.ejs');
-const tb1 = require('./semer/enroll.ejs');
 require('cp');
 require('static/css/reset.css');
 require('./page.css');
@@ -34,16 +32,9 @@ function tol(){
     $('.email1').val(data.email);
     $('.phone1').val(data.phone);
   });
-  typ();
+
 }
-function typ(){
-  utils.ajax(apiUrl.getApiUrl('getType'), {
-    type: constant.userType,
-  }).done(function (data) {
-    console.log(data);
-    $('#type2').html(tb1({data: data}));
-  });
-}
+
 
 $(() => {
   $("#myForm1").validate({
@@ -59,49 +50,6 @@ $(() => {
       return false;
     },
   });
-  $("#myForm").validate({
-    submitHandler: function () {
 
-      let dataArr = $("#myForm").serializeArray();
-      let fix='yushan@MOSHI';
-      let data={};
-      // console.log(dataArr);
-      $.each(dataArr, function(i, field){
-        if(field.name == 'password'){
-          let code = $.md5(field.value + fix);
-          data[field.name] = code;
-        }else{
-          data[field.name] = field.value;
-        }
-      });
-      console.log(data);
-     /* var dataArr = $("#myForm").serializeArray();
-      dataArr.push({name:"appid",value:currentAccount.appid});*/
-
-      utils.ajaxPost(apiUrl.getApiUrl('getCreateSem'),data).done(function (data) {
-      });
-
-      return false;
-    },
-  });
   tol();
-  $('.member').click(function(){
-    /*let sem_name=[];
-    $('.sem_name').each(function(){
-      sem_name.push($(this).text().trim());
-    });
-    console.log(sem_name);*/
-    utils.ajax(apiUrl.getApiUrl('getAllHu'), {}).done(function (data) {
-      // let newData=[];
-      console.log(data);
-      /*for(let i=0;i<sem_name.length;i++){
-        for(let j=0;j<data.length;j++){
-          if(sem_name[i]==data[j].name){
-            data.splice(j,1)
-          }
-        }
-      }*/
-      // $('.a').html(tb({data: data}));
-    });
-  });
 });

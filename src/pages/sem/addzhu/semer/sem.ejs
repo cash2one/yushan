@@ -1,7 +1,7 @@
 <% for (var i in data) {%>
 <li class="list-group-item">
     <span><input type="checkbox" name="check"></span>
-    <span data-id="<%=data[i].appid %>" class="sem"><%=data[i].name %></span>
+    <span data-id="<%=data[i].id %>" data-appid="<%=data[i].appid %>" data-name="<%=data[i].name %>" class="sem"><%=data[i].name %></span>
 </li>
 <% } %>
 <li class="list-group-item">

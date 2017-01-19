@@ -58,6 +58,13 @@ const moduleExports = {
   getType: '/sem/gettype',
   getCreateSem: '/sem/createsem',
   getAllHu: '/sem/getallhu',
+  getUserAddHu: '/sem/useraddhu',
+  getChangePass: '/sem/changepass',
+  getHuSemer: '/sem/husemer',
+  getHuChangesem: '/sem/huchangesem',
+  CreateHu: '/sem/createhu',
+  UpStatus: '/sem/upstatus',
+  AllKeHu: '/sem/allkehu',
 };
 
 module.exports = moduleExports;

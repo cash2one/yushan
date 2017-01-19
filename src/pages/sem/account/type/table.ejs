@@ -1,0 +1,37 @@
+<table class="table table-hover tablesorter table-striped" id="myTable">
+    <thead>
+    <tr>
+        <th><input type="checkbox" class="head_chek">全选</th>
+        <th>APP名</th>
+        <th>户名</th>
+        <th>负责人</th>
+        <th>Appid</th>
+        <th>API余额</th>
+        <th>类型</th>
+        <th>返点</th>
+        <th>状态</th>
+        <th>设置</th>
+    </tr>
+    </thead>
+    <tbody class="list">
+    <% for (var i in data) {%>
+    <tr>
+        <td><input type="checkbox" data-id="<%=data[i].id %>" name="check" class="body_chek"></td>
+        <td class="name1"><%=data[i].name %></td>
+        <td class="account_name"><%=data[i].account_name %></td>
+        <td class="semname"><%=data[i].semname %></td>
+        <td class="appid"><%=data[i].appid %></td>
+        <td class="api_count"><%=data[i].api_count %></td>
+        <td class="type1"><%=data[i].type1 %></td>
+        <td class="fd"><%=data[i].fd_rate %></td>
+        <td class="th-statu"><%=data[i].statu %></td>
+        <td>
+            <button type="button" class="btn btn-warning btn-sm hu-start" data-id="<%=data[i].id %>" data-status="1">启用</button>
+            <button type="button" class="btn btn-warning btn-sm hu-stop" data-id="<%=data[i].id %>" data-status="0">停用</button>
+        </td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>
+<button type="button" class="btn btn-danger more-stop" data-status="0">多选停用</button>
+<button type="button" class="btn btn-danger more-use" data-status="1">多选启用</button>

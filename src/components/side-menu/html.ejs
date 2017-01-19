@@ -1,10 +1,10 @@
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse">
         <div class="balance clear">
-            <div class="logo-1">
+            <!--<div class="logo-1">
                 <img src="http://7xrc8m.com1.z0.glb.clouddn.com/%E7%82%B9%E5%87%BB%E9%87%8F.png" alt=""/>
-            </div>
-            <div class="logo-2">
+            </div>-->
+            <!--<div class="logo-2">
                 <p class="yushan-1">Loading...</p>
                 <p class="yushan-2">
                     余额：
@@ -12,7 +12,7 @@
                                         Loading...
                                         </span>
                 </p>
-            </div>
+            </div>-->
         </div>
         <ul class="nav" id="side-menu">
             <!--<li >
@@ -35,14 +35,31 @@
             <li >
                 <a href="javascript:;"><i class="iconfont icon-demo-page"></i> 用户管理<span class="iconfont arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li>
+                    <li class="menu">
                         <a href="<%= constructInsideUrl('sem/user') %>">修改用户</a>
                     </li>
-                    <li>
+                    <li class="menu">
                         <a href="<%= constructInsideUrl('sem/zcuser') %>">注册用户</a>
                     </li>
-                    <li>
+                    <li class="menu">
                         <a href="<%= constructInsideUrl('sem/addzhu') %>">新添账户</a>
+                    </li>
+                    <li class="menu">
+                        <a href="<%= constructInsideUrl('sem/userpasd') %>">修改密码</a>
+                    </li>
+                    <li class="menu">
+                        <a href="<%= constructInsideUrl('sem/crecount') %>">新建账户</a>
+                    </li>
+                </ul>
+            </li>
+            <li >
+                <a href="javascript:;"><i class="iconfont icon-demo-page"></i> 列表<span class="iconfont arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="menu">
+                        <a href="<%= constructInsideUrl('sem/account') %>">账户列表</a>
+                    </li>
+                    <li class="menu">
+                        <a href="<%= constructInsideUrl('sem/client') %>">客户列表</a>
                     </li>
                 </ul>
             </li>
@@ -94,9 +111,6 @@
             </li>
             <li class="menu">
                 <a href="<%= constructInsideUrl('sem/shezhi') %>">账户管理</a>
-            </li>
-            <li class="menu">
-                <a href="<%= constructInsideUrl('sem/user') %>">用户管理</a>
             </li>
         </ul>
     </div>

@@ -44,7 +44,9 @@ function rw(){
 }
 $(() => {
 
-
+  $('.flush').click(function(){
+    rw();
+  });
 
   $('.zhongzi').change(function(){
     // console.log($(this).val().length)
@@ -162,16 +164,19 @@ $(() => {
 
       $.each(dataArr, function(i, field){
         if(field.name == 'words'){
-          let l=field.value.replace(/，/ig ,',');
-          let strAry= l.split(',');
+          // let l=field.value.replace(/，/ig ,',');
+          let l=field.value;
+          let strAry= l.split(/\r\n/g);
           data[field.name] = JSON.stringify(strAry);
         }else if(field.name == 'include'){
-          let l1=field.value.replace(/，/ig ,',');
-          let strAry1= l1.split(',');
+          // let l1=field.value.replace(/，/ig ,',');
+          let l1=field.value;
+          let strAry1= l1.split(/\r\n/g);
           data[field.name] = JSON.stringify(strAry1);
         }else if(field.name == 'noinclude'){
-          let l2=field.value.replace(/，/ig ,',');
-          let strAry2= l2.split(',');
+          // let l2=field.value.replace(/，/ig ,',');
+          let l2=field.value;
+          let strAry2= l2.split(/\r\n/g);
           data[field.name] = JSON.stringify(strAry2);
         }else{
           data[field.name] = field.value;
@@ -210,55 +215,6 @@ $(() => {
       return false;
     },
   });
-
-  // $('.bt').click(function(e){
-  //
-  //     console.log($("#myForm").serializeArray());
-  //
-  //     var dataArr = $("#myForm").serializeArray();
-  //     dataArr.push({name:"appid",value:currentAccount.appid});
-  //     var data = {};
-  //
-  //     $.each(dataArr, function(i, field){
-  //       if(field.name == 'words'){
-  //         var l=field.value.replace(/，/ig ,',');
-  //         var strAry= l.split(',');
-  //         data[field.name] = JSON.stringify(strAry);
-  //       }else{
-  //         data[field.name] = field.value;
-  //       }
-  //     });
-  //
-  //     /*let dat = $("#myForm").serialize();
-  //     dat.appid = currentAccount.appid;
-  //
-  //     console.log(dat);*/
-  //   // console.log($('.sele').val())
-  //   utils.ajaxPost(apiUrl.getApiUrl('getZhong'),data).done(function (data) {
-  //     console.log(data);
-  //     var date=utils.dateFormat(data.date, 'yyyy-MM-dd hh:mm:ss');
-  //     var flag='';
-  //     let u='';
-  //     if(data.isfinish){
-  //       flag='已完成';
-  //       u='<td class="rate"><span>'+flag+'</span><button data-name='+data.taskname+'>下载</button>'
-  //     }else{
-  //       flag='未完成';
-  //       u='<td class="rate"><span>'+flag+'</span><button data-name='+data.taskname+' disabled>下载</button>'
-  //     }
-  //     var html='';
-  //     html+='<tr class="lin" title="'+data.taskname+'">';
-  //     html+='<td class="click" style="width: 50%;">'+ date;
-  //     html+='</td>';
-  //     html+='<td class="down"> <span>'+flag+'</span><button data-name='+data.taskname+' disabled>完成</button>';
-  //     html+='</td>';
-  //     html+=u;
-  //     html+='</td>';
-  //     html+='</tr>';
-  //     $('#myTable .list').prepend(html);
-  //   });
-  //   e.preventDefault();
-  // });
   $(document).on('click','.lin',function(){
     $(this).find('td').addClass('llin');
     $(this).siblings().find('td').removeClass('llin');

@@ -9,7 +9,7 @@
     <tbody class="table1 list">
     <% for (var j=0; j<data.length; j++) { %>
     <tr data-id="<%=data[j].date %>">
-        <td style="width: 100px;"><p class="time"><%=data[j].date %></p><p class="well m2">安卓/Ios</p></td>
+        <td style="width: 100px;"><p class="time"><%=data[j].date %></p><p class="m2" style="margin-top: 10px;"><%=data[j].device %></p></td>
         <td>
             <div class="row m1">
                 <div class="col-md-6 col-lg-4 text-danger"><span>留存/新购:</span><span class="liu_cun"><a href="#" class="liucun1" data-type="text"><%=data[j].liucun %></a></span></div>

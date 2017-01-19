@@ -81,7 +81,7 @@ $(() => {
         data[i].mobileBalance="无";
       }
       appid.push(data[i].appid);
-      nam.push(data[i].username);
+      nam.push(data[i].name);
       total_balance.push(data[i].mobileBalance)
     }
     app1.oninput=function(){

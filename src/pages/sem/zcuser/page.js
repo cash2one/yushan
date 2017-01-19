@@ -11,6 +11,8 @@ const store = require('static/js/store');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
 const constant = require('static/js/constant');
+const toastr = require('static/vendor/toastr.min');
+require('static/vendor/toastr.min.css');
 
 require('static/js/validator');
 require('static/vendor/md5');
@@ -54,6 +56,7 @@ $(() => {
       dataArr.push({name:"appid",value:currentAccount.appid});*/
 
       utils.ajaxPost(apiUrl.getApiUrl('getCreateSem'),data).done(function (data) {
+        toastr.success('数据请求完成', '完成')
       });
 
       return false;

@@ -1,0 +1,25 @@
+
+p input,select{
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-left: 10px;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    /*box-shadow: 0px 2px 2px #ccc;*/
+    list-style: none;
+    border: 1px solid #ccc;
+}
+button{
+    color: #fff;
+    background: #428bca;
+    border-radius: 5px;
+    border: none;
+    list-style: none;
+    padding: 10px 20px;
+}
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #4390b9;
+    border-color: #ddd;
+}

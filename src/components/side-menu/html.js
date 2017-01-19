@@ -7,18 +7,20 @@ const store = require('static/js/store');
 require('./page.css');
 let currentAccount = store.getCurrentAccount();
 
+/*
 function xin() {
   if(currentAccount){
     $('.yushan-1').text(currentAccount.name);
     $('.yushan-2 span').text(currentAccount.mobileBalance);
   }
 }
+*/
 
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
-  xin();
+  // xin();
 });
 
 $(() => {
-  xin();
+  // xin();
 });

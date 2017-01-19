@@ -7,7 +7,7 @@ const utils = require('utils');
 // 引入 ECharts 主模块
 require('static/css/reset.css');
 require('./page.css');
-
+const tb = require('./type/enroll.ejs');
 const zeng = require('./images/增.png');
 const jian = require('./images/减.png');
 const tian1 = require('./images/颜色填充-6-拷贝@2x.png');
@@ -33,7 +33,7 @@ eventBus.on('account_change', function () {
 
 function ajax(str,flag) {
   // $('#main').show();
-  console.log(flag);
+  // console.log(flag);
   if (flag === 1) {
     utils.ajax(apiUrl.getApiUrl('getAccountTwoWeek'), {
       c1: str,
@@ -48,7 +48,7 @@ function ajax(str,flag) {
       var legendData = [];
       var line = [];
 
-      console.log('el' + el);
+      // console.log('el' + el);
 
       for (let i = 0; i < el.length; i++) {
         activeRate.push(parseFloat(el[i].active_rate));
@@ -141,7 +141,7 @@ function ajax(str,flag) {
         消费: true,
       };
       legendData = ['消费'];
-      console.log(el);
+      // console.log(el);
       lineChart.renderLine('main1', arr, selected, legendData, arr3);
     });
   }
@@ -153,15 +153,16 @@ function upload(str, flag) {
     $('.dow').text('关注量');
     $('.biao2-2').text('关注率');
   }*/
-  console.log('str' + str);
+  // console.log('str' + str);
 
   utils.ajax(apiUrl.getApiUrl('getAccountAll'), {
     c1: str,
   }).done(function (el) {
-    console.log(el);
+    // console.log(el);
     if (el.mobileBalance === null) {
       el.mobileBalance = '无';
     }
+    $('.apie1 span').text(el.mobileBalance);
     //            $('.ui-b2').text(el.activeRate);
     //            $('.ui-b1').text(el.downloadRate);
 
@@ -204,17 +205,51 @@ function upload(str, flag) {
 
     pieChart.renderPie(el);
   });
+
+  utils.ajax(apiUrl.getApiUrl('getAllSem'), {}).done(function (data) {
+    // let newData=[];
+    console.log(data);
+    $('#anser').html(tb({data: data}));
+  });
+
+  utils.ajax(apiUrl.getApiUrl('getHuSemer'), {
+    huid:currentAccount.id,
+  }).done(function (data) {
+    console.log(data);
+    $('.expose').text(data.name);
+  });
+
+
 }
 function pei(){
   utils.ajax(apiUrl.getApiUrl('getHu'), {
     appid: currentAccount.appid,
   }).done(function (data) {
-    console.log(data[0].api_count);
+    // console.log(data[0].api_count);
     $('.apie span').text(data[0].api_count);
   });
 }
 $(() => {
-  $('#main1').hide();
+  $('.revise').click(function(){
+    $('.in-answer').hide();
+    $('.out-answer').show();
+  });
+  $('.up-answer').click(function(){
+    // console.log($("#anser").find("option:selected").attr("title"));
+    $('.expose').text($("#anser").find("option:selected").attr("title"));
+    $('.out-answer').hide();
+    $('.in-answer').show();
+    utils.ajax(apiUrl.getApiUrl('getHuChangesem'), {
+      huid: currentAccount.id,
+      userid:$('#anser').val(),
+    }).done(function (data) {
+      console.log(data);
+    });
+  });
+  $('.abolish').click(function(){
+    $('.out-answer').hide();
+    $('.in-answer').show();
+  });
   pei();
 
   // console.log(utils.dateFormat(new Date(), 'yyyy-MM-dd hh:mm:ss'));
@@ -256,7 +291,7 @@ $(() => {
     ajax(currentAccount.appid, flag);
   });
   // let str = utils.getUrlParameter('username');
-  console.log(currentAccount);
+  // console.log(currentAccount);
   // if (str !== undefined) {
   upload(currentAccount.appid, flag);
   // }

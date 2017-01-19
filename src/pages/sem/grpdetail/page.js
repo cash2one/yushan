@@ -29,6 +29,12 @@ function tol(){
     // $('.top').append(tb({data: data}));
     for(let i=0;i<data.length;i++){
       data[i].indexn='in'+i;
+      if(data[i].role_id==3){
+        data[i].roles='组员';
+      }else if(data[i].role_id==2){
+        data[i].roles='组长';
+      }
+
     }
     console.log(data);
     $('#accordion').append(tb({data: data}));
@@ -76,7 +82,7 @@ $(() => {
   });
   $('.cy').click(function(){
     let sem_name=[];
-    $('.sem_name').each(function(){
+    $('.sem_name .sem_name1').each(function(){
       sem_name.push($(this).text().trim());
     });
     console.log(sem_name);

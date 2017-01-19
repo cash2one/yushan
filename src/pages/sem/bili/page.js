@@ -175,14 +175,14 @@ function pu(series,name,data){
       },
       emphasis: {
         label: {
-          show: true,
+          show: false,
         },
       },
     },
   });
 }
 function legend(logo, who) {
-  // console.log(who);
+  console.log(who);
   let max = who[0].length;
   let days = [];
   let datas = [];
@@ -192,6 +192,8 @@ function legend(logo, who) {
   let spend = [];
   let acve = [];
   let series = [];
+  let cpd = [];
+  let downtotal = [];
   let n = [];
   $('.tb').html('');
   for (let i = 1; i < who.length; i++) {
@@ -211,6 +213,8 @@ function legend(logo, who) {
         who[i][j].clickCount= who[i][j].clickCount ? who[i][j].clickCount: 0 ;
         who[i][j].showCount= who[i][j].showCount ? who[i][j].showCount: 0 ;
         who[i][j].spend= who[i][j].spend ? who[i][j].spend: 0 ;
+        who[i][j].cpd= who[i][j].cpd ? who[i][j].cpd.toFixed(2): 0 ;
+        who[i][j].download_total= who[i][j].download_total ? who[i][j].download_total: 0 ;
       }
     }
   }catch (e){
@@ -285,6 +289,30 @@ function legend(logo, who) {
 
       }
         break;
+      case 'cpd': {
+        cpd = [];
+        for (let j = 0; j < who[i].length; j++) {
+          cpd.push({
+            value: who[i][j].cpd,
+            name:who[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],cpd);
+
+      }
+        break;
+      case '总下载': {
+        downtotal = [];
+        for (let j = 0; j < who[i].length; j++) {
+          downtotal.push({
+            value: who[i][j].download_total,
+            name:who[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],downtotal);
+
+      }
+        break;
     }
   }
 
@@ -304,6 +332,8 @@ function legend1(logo, data) {
   let btnshow = [];
   let btnspend = [];
   let series = [];
+  let cpd = [];
+  let total = [];
   let n = [];
   $('.tb1').html('');
   for (let i = 1; i < data.length; i++) {
@@ -329,6 +359,8 @@ function legend1(logo, data) {
         data[i][j].total_btnClickCount= data[i][j].total_btnClickCount ? data[i][j].total_btnClickCount: 0 ;
         data[i][j].total_btnShowCount= data[i][j].total_btnShowCount ? data[i][j].total_btnShowCount: 0 ;
         data[i][j].total_btnSpend= data[i][j].total_btnSpend ? data[i][j].total_btnSpend: 0 ;
+        data[i][j].cpd= data[i][j].cpd ? data[i][j].cpd.toFixed(2): 0 ;
+        data[i][j].download_total= data[i][j].download_total ? data[i][j].download_total: 0 ;
         // data[i][j].total_btnSpend= data[i][j].total_btnSpend.toFixed(2);
       }
     }
@@ -431,6 +463,28 @@ function legend1(logo, data) {
           });
         }
         pu(series,n[i],btnspend);
+      }
+        break;
+      case 'cpd': {
+        cpd = [];
+        for (let j = 0; j < data[i].length; j++) {
+          cpd.push({
+            value: data[i][j].cpd,
+            name:data[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],cpd);
+      }
+        break;
+      case '总下载': {
+        total = [];
+        for (let j = 0; j < data[i].length; j++) {
+          total.push({
+            value: data[i][j].download_total,
+            name:data[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],total);
       }
         break;
     }
