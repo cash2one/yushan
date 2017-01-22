@@ -44,7 +44,7 @@ $(() => {
       }else{
         data[i].statu='暂停'
       }
-      data[i].type1=getType.getTypeName(data[i].account_type);
+      data[i].type1=getType.getTypeName(getType.mediaType,data[i].account_type);
     }
     console.log(data);
 

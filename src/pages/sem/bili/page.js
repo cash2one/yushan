@@ -47,8 +47,8 @@ function lin(type,plan) {
   }
   $('.trends').each(function () {
     let day = $(this).find('.dp').val().split('/');
-    let min1 = $(this).find('.time1').val() + ':00';
-    let min2 = $(this).find('.time2').val() + ':00';
+    let min1 = $('.time1').val() + ':00';
+    let min2 = $('.time2').val() + ':00';
     let time1 = day[2] + '-' + day[0] + '-' + day[1] + ' ' + min1;
     let time2 = day[2] + '-' + day[0] + '-' + day[1] + ' ' + min2;
     utils.ajaxAsync(apiUrl.getApiUrl('getTime'), {
@@ -72,9 +72,14 @@ function draw(d,n,days,series){
       formatter: function (params) {
         // console.log(params);
         let rev='';
-        for(let i=0;i<params.length;i++){
-          rev+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:'+params[i].color+'"></span>'+params[i].data.name + '：' + params[i].data.value+'<br/>'
+        try{
+          for(let i=0;i<params.length;i++){
+            rev+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:'+params[i].color+'"></span>'+params[i].data.name + '：' + params[i].data.value+'<br/>'
+          }
+        }catch (e){
+          console.log(e);
         }
+
         return rev;
       }
     },
@@ -114,7 +119,9 @@ function draw(d,n,days,series){
       {
         type: 'category',
         boundaryGap: false,
-        interval: 0,
+        axisLabel:{
+          interval: 0
+        },
         data: days,
         splitLine: {
           show: true,
@@ -193,14 +200,15 @@ function legend(logo, who) {
   let acve = [];
   let series = [];
   let cpd = [];
+  let api = [];
   let downtotal = [];
   let n = [];
   $('.tb').html('');
-  for (let i = 1; i < who.length; i++) {
+  /*for (let i = 1; i < who.length; i++) {
     if (max < who[i].length) {
       max = who[i].length;
     }
-  }
+  }*/
   for (let i = 0; i < who.length; i++) {
     n.push((i+1).toString());
   }
@@ -209,27 +217,31 @@ function legend(logo, who) {
       for (let j = 0; j < who[i].length; j++) {
         who[i][j].dateTime1= utils.dateFormat(who[i][j].dateTime, 'yyyy-MM-dd hh:mm:ss');
         who[i][j].dateTime= utils.dateFormat(who[i][j].dateTime, 'MM-dd hh:mm');
+        who[i][j].dian= utils.dateFormat(who[i][j].dateTime, 'hh');
         who[i][j].cpc= who[i][j].cpc ? who[i][j].cpc.toFixed(2) : 0;
         who[i][j].clickCount= who[i][j].clickCount ? who[i][j].clickCount: 0 ;
         who[i][j].showCount= who[i][j].showCount ? who[i][j].showCount: 0 ;
         who[i][j].spend= who[i][j].spend ? who[i][j].spend: 0 ;
         who[i][j].cpd= who[i][j].cpd ? who[i][j].cpd.toFixed(2): 0 ;
         who[i][j].download_total= who[i][j].download_total ? who[i][j].download_total: 0 ;
+        who[i][j].api_count= who[i][j].api_count ? who[i][j].api_count: 0 ;
       }
     }
   }catch (e){
     console.log(e.name + ": " + e.message);
   }
-
-  for (let i = 0; i < who.length; i++) {
-    $('.tb').append(tb({data: who[i]}));
+  for (let j = 0; j < who[1].length; j++) {
+    days.push(utils.dateFormat(who[1][j].dateTime, 'hh'));
   }
-  $('.table').tablesorter();
+  // for (let i = 0; i < who.length; i++) {
+    $('.tb').append(tb({data: who}));
+  // }
+  $('#jiahua_table').tablesorter();
   $('.all_active').editable();
 
-  for (let i = 1; i < max; i++) {
+  /*for (let i = 1; i < max; i++) {
     days.push(i);
-  }
+  }*/
   for (let i = 0; i < who.length; i++) {
     switch (logo) {
       case 'cpc': {
@@ -313,6 +325,18 @@ function legend(logo, who) {
 
       }
         break;
+      case 'API余额': {
+        api = [];
+        for (let j = 0; j < who[i].length; j++) {
+          api.push({
+            value: who[i][j].api_count,
+            name:who[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],api);
+
+      }
+        break;
     }
   }
 
@@ -334,16 +358,17 @@ function legend1(logo, data) {
   let series = [];
   let cpd = [];
   let total = [];
+  let api = [];
   let n = [];
   $('.tb1').html('');
-  for (let i = 1; i < data.length; i++) {
+  /*for (let i = 1; i < data.length; i++) {
     if (max < data[i].length) {
       max = data[i].length;
     }
-  }
-  for (let i = 1; i < max; i++) {
+  }*/
+  /*for (let i = 1; i < max; i++) {
     days.push(i);
-  }
+  }*/
   for (let i = 0; i < data.length; i++) {
     n.push((i+1).toString());
   }
@@ -352,6 +377,7 @@ function legend1(logo, data) {
       for (let j = 0; j < data[i].length; j++) {
         data[i][j].dateTime1= utils.dateFormat(data[i][j].dateTime, 'yyyy-MM-dd hh:mm:ss');
         data[i][j].dateTime= utils.dateFormat(data[i][j].dateTime, 'MM-dd hh:mm');
+        data[i][j].dian= utils.dateFormat(data[i][j].dateTime, 'hh');
         data[i][j].cpc= data[i][j].cpc ? data[i][j].cpc.toFixed(2) : 0;
         data[i][j].clickCount= data[i][j].clickCount ? data[i][j].clickCount: 0 ;
         data[i][j].showCount= data[i][j].showCount ? data[i][j].showCount: 0 ;
@@ -361,17 +387,20 @@ function legend1(logo, data) {
         data[i][j].total_btnSpend= data[i][j].total_btnSpend ? data[i][j].total_btnSpend: 0 ;
         data[i][j].cpd= data[i][j].cpd ? data[i][j].cpd.toFixed(2): 0 ;
         data[i][j].download_total= data[i][j].download_total ? data[i][j].download_total: 0 ;
+        data[i][j].api_count= data[i][j].api_count ? data[i][j].api_count: 0 ;
         // data[i][j].total_btnSpend= data[i][j].total_btnSpend.toFixed(2);
       }
     }
   }catch (e){
     console.log(e.name + ": " + e.message);
   }
-
-  for (let i = 0; i < data.length; i++) {
-    $('.tb1').append(tb1({data: data[i]}));
+  for (let j = 0; j < data[1].length; j++) {
+    days.push(utils.dateFormat(data[1][j].dateTime, 'hh'));
   }
-  $('.table').tablesorter();
+  // for (let i = 0; i < data.length; i++) {
+    $('.tb1').append(tb1({data: data}));
+  // }
+  $('#zonglan_table').tablesorter();
   $('.all_active1').editable();
 
 
@@ -487,6 +516,17 @@ function legend1(logo, data) {
         pu(series,n[i],total);
       }
         break;
+      case 'API余额': {
+        api = [];
+        for (let j = 0; j < data[i].length; j++) {
+          api.push({
+            value: data[i][j].api_count,
+            name:data[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],api);
+      }
+        break;
     }
   }
   draw('d2',n,days,series);
@@ -526,6 +566,8 @@ $(() => {
   });
   // let $cln=$('.trends');
   $('.date1').attr('value', utils.getDateStr(-1));
+  $('.n1').attr('value', utils.getDateStr(0));
+  $('.n2').attr('value', utils.getDateStr(-1));
   $('.dp').datepicker();
   $(document).on('click', '.del', function () {
     $(this).parent().remove();
@@ -534,6 +576,7 @@ $(() => {
     $('.trends-all').append(mo());
     $('.dp').datepicker();
     $('.date1').attr('value', utils.getDateStr(-1));
+    $('.n1').attr('value', utils.getDateStr(0));
   });
   $('.ck').click(function () {
     switch ($('.nav-li>.clink').text()) {

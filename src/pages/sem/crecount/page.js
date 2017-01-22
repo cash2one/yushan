@@ -32,32 +32,45 @@ function change(current,all){
   }
   $('.type2').html(tb({data: cur}));
 }
-$(() => {
-  let all;
-  utils.ajax(apiUrl.getApiUrl('getType'), {
-    type: constant.mediaType,
-  }).done(function (data) {
-    console.log(data);
-    all=data;
-    let one=[];
-    for(let i=0;i<data.length;i++){
-      if(data[i].parent_id==null){
-        one.push({
-          id:data[i].id,
-          name:data[i].name,
-        })
-      }
+function media(){
+  let data=constant.gettype(constant.mediaType);
+  console.log(data);
+  let all=data;
+  let one=[];
+  for(let i=0;i<data.length;i++){
+    if(data[i].parent_id==null){
+      one.push({
+        id:data[i].id,
+        name:data[i].name,
+      })
     }
-    $('.type1').html(tb({data: one}));
-    change($('.type1').val(),data)
-    $('.disan').text($('.type1').find("option:selected").attr("title"))
-  });
-  utils.ajax(apiUrl.getApiUrl('getType'), {
+  }
+  $('.type1').html(tb({data: one}));
+  change($('.type1').val(),data)
+  $('.disan').text($('.type1').find("option:selected").attr("title"))
+}
+function view () {
+  let data=constant.gettype(constant.viewType);
+  console.log(data);
+  $('#xianshi').html(tb({data: data}));
+  /*utils.ajax(apiUrl.getApiUrl('getType'), {
     type: constant.viewType,
   }).done(function (data) {
     console.log(data);
     $('#xianshi').html(tb({data: data}));
-  });
+  });*/
+}
+$(() => {
+  let all;
+  media();
+  view();
+
+ /* utils.ajax(apiUrl.getApiUrl('getType'), {
+    type: constant.,
+  }).done(function (data) {
+
+  });*/
+
   $('.type1').change(function () {
     change($(this).val(),all);
     $('.disan').text($(this).find("option:selected").attr("title"))

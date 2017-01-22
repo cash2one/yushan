@@ -9,34 +9,31 @@ const moduleExports = {
     mediaType: 11,
     viewType: 12,
     gettype(groupType) {
-      let typeName;
+      let typeList;
       if(!JSON.parse(localStorage.getItem("type"+groupType))){
-        utils.ajax(apiUrl.getApiUrl('getType'), {
+        utils.ajaxAsync(apiUrl.getApiUrl('getType'), {
           type: groupType,
         }).done(function (data) {
           // console.log(data);
           let ind=[];
           for(let i=0;i<data.length;i++){
-            ind.push({
-              id:data[i].id,
-              name:data[i].name,
-            })
+            ind.push(data[i])
           }
           localStorage.setItem("type"+groupType, JSON.stringify(ind));
+          typeList = JSON.parse(localStorage.getItem("type"+groupType));
         });
       };
       if(JSON.parse(localStorage.getItem("type"+groupType))){
-        typeName = JSON.parse(localStorage.getItem("type"+groupType));
+        typeList = JSON.parse(localStorage.getItem("type"+groupType));
       }
-      return typeName;
+      return typeList;
   },
-  getTypeName(iden){
-      let name1;
-    let len=[];
-    let a=this.gettype(10);
-    let b=this.gettype(11);
-    let c=this.gettype(12);
-    for(let i=0;i<a.length;i++){
+  getTypeName(mock,iden){
+    let name1;
+    let a=this.gettype(mock);
+ /*   let b=this.gettype(11);
+    let c=this.gettype(12);*/
+  /*  for(let i=0;i<a.length;i++){
       len.push(a[i]);
     }
     for(let i=0;i<b.length;i++){
@@ -44,12 +41,17 @@ const moduleExports = {
     }
     for(let i=0;i<c.length;i++){
       len.push(c[i]);
-    }
-    for(let i=0;i<len.length;i++){
-      if(len[i].id==iden){
-        name1=len[i].name;
+    }*/
+  try{
+    for(let i=0;i<a.length;i++){
+      if(a[i].id==iden){
+        name1=a[i].name;
       }
     }
+  }catch (e){
+    console.log(e);
+  }
+
     return name1;
   },
 }

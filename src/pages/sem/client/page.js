@@ -28,7 +28,7 @@ function pu(data){
       }else{
         el[i].statu='暂停'
       }
-      el[i].type1=getType.getTypeName(el[i].account_type);
+      el[i].type1=getType.getTypeName(getType.mediaType,el[i].account_type);
     }
     /*for(let i=0;i<all.length;i++){
       for(let j=0;j<data.length;j++){

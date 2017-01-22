@@ -12,6 +12,7 @@ const utils = require('utils');
 const apiUrl = require('static/js/api');
 const constant = require('static/js/constant');
 const toastr = require('static/vendor/toastr.min');
+const getType = require('static/js/constant');
 require('static/vendor/toastr.min.css');
 
 require('static/js/validator');
@@ -26,12 +27,14 @@ eventBus.on('account_change', function () {
 });
 
 function typ(){
-  utils.ajax(apiUrl.getApiUrl('getType'), {
+  let data=getType.gettype(getType.userType);
+  $('#type2').html(tb1({data: data}));
+  /*utils.ajax(apiUrl.getApiUrl('getType'), {
     type: constant.userType,
   }).done(function (data) {
     console.log(data);
-    $('#type2').html(tb1({data: data}));
-  });
+
+  });*/
 }
 
 $(() => {
