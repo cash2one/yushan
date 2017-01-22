@@ -22,8 +22,8 @@ function ck() {
 }
 $(() => {
   var app1=document.getElementsByClassName("user")[0];
-  var now = new Date()
-  var hour = now.getHours()
+  var now = new Date();
+  var hour = now.getHours();
   if(hour < 6){$(".time").text(",凌晨好！")}
   else if (hour < 9){$(".time").text(",早上好！")}
   else if (hour < 12){$(".time").text(",上午好！")}
@@ -33,7 +33,7 @@ $(() => {
   else if (hour < 22){$(".time").text(",晚上好！")}
   else {$(".time").text(",夜里好！")}
 
-  $(".userb-1").text(store.getUser().username);
+  $(".userb-1").text(store.getUser().data.real_name);
   var time;
   $('.xuan1').click(function(){
     $(this).hide();
@@ -48,44 +48,42 @@ $(() => {
     localStorage.clear();
     window.location = '/index/login/page.html';
     /*layer.confirm('是否退出账户', {
-      btn: ['是','否'] //按钮
-    }, function(){
-      layer.msg('( ^_^ )/~~拜拜', {icon: 1});
-      setTimeout(function(){
-        window.location="./index.html"
-      },2000)
-    }, function(){
-      layer.msg('又见面啦(*^__^*) 嘻嘻……', {icon:6});
-      $(".xuan2").hide();
-      $(".xuan1").show();
-    });*/
+     btn: ['是','否'] //按钮
+     }, function(){
+     layer.msg('( ^_^ )/~~拜拜', {icon: 1});
+     setTimeout(function(){
+     window.location="./index.html"
+     },2000)
+     }, function(){
+     layer.msg('又见面啦(*^__^*) 嘻嘻……', {icon:6});
+     $(".xuan2").hide();
+     $(".xuan1").show();
+     });*/
   })
 
   utils.ajax(apiUrl.getApiUrl('getNotice'), {
-    appid: store.getUser().appid,
+    appid: store.getUser().data.id,
   }).done(function (data) {
     console.log('dd'+data)
     $('dd').text(data[0].message)
   });
   utils.ajax(apiUrl.getApiUrl('getPay'), {
-    userId: store.getUser().appid,
+    userId: store.getUser().data.id,
   }).done(function (data) {
     store.setAccounts(data);
 
     var appid=[];
     var nam=[];
     var py=[];
-    var fp=[];
     var total_balance=[];
-    console.log(data);
+
     for(var i=0;i<data.length;i++){
       if(data[i].mobileBalance=='null'){
         data[i].mobileBalance="无";
       }
       appid.push(data[i].appid);
-      nam.push(data[i].username);
-      py.push(pinyinUtil.getPinyin(data[i].username,''));
-      fp.push(pinyinUtil.getFirstLetter(data[i].username).toLowerCase());
+      nam.push(data[i].name);
+      py.push(pinyinUtil.getPinyin(data[i].name,'')+pinyinUtil.getFirstLetter(data[i].name).toLowerCase());
       total_balance.push(data[i].mobileBalance)
     }
     app1.oninput=function(){
@@ -94,8 +92,6 @@ $(() => {
         if(nam[i].indexOf($(this).val()) > -1){
           ann.push(data[i]);
         }else if(py[i].indexOf($(this).val()) > -1){
-          ann.push(data[i]);
-        }else if(fp[i].indexOf($(this).val()) > -1){
           ann.push(data[i]);
         }
       }
