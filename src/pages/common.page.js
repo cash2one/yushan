@@ -4,6 +4,7 @@ require('iconfontDir/iconfont.css');
 require('lessDir/base.less');
 require('metisMenu/metisMenu.min');
 require('components/top-nav/html');
+require('components/side-menu/html');
 
 const noJquery = require('withoutJqueryModule');
 const store = require('static/js/store');
