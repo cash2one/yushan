@@ -1,0 +1,16 @@
+<% for (var i in data) {%>
+<li class="list-group-item">
+    <span><input type="checkbox" name="check"></span>
+    <span data-id="<%=data[i].id %>" class="sem"><%=data[i].name %></span>
+    <span>
+                <select class="role">
+                    <option value="3">组员</option>
+                    <option value="2">优化师组长</option>
+                    <option value="1">管理员</option>
+                </select>
+            </span>
+</li>
+<% } %>
+<li class="list-group-item">
+    <button class="add">添加</button>
+</li>

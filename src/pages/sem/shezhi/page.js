@@ -42,7 +42,6 @@ $(() => {
   $('button').click(function(){
     utils.ajaxPost(apiUrl.getApiUrl('getZhXX'), {
       name: $('.name').val(),
-      password: $('.psd').val(),
       appid: $('.appid').val(),
       type: $('.leixing').val(),
       account_name: $('.three').val(),

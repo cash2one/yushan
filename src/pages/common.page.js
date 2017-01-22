@@ -4,9 +4,28 @@ require('iconfontDir/iconfont.css');
 require('lessDir/base.less');
 require('metisMenu/metisMenu.min');
 require('components/top-nav/html');
-require('components/side-menu/html');
+
+const noJquery = require('withoutJqueryModule');
+const store = require('static/js/store');
+
+if (!store.getUser()) {
+  window.location.href = '/index/login/page.html';
+}
+
+const getType = require('static/js/constant');
+const type = getType.getTypeName(getType.userType, store.getUser().data.type);
+
+let sideBar;
+if (type === '优化师') {
+  sideBar = require('components/side-menu/sem.ejs');
+} else if (type === '客户') {
+  sideBar = require('components/side-menu/kehu.ejs');
+} else if (type === '技术') {
+  sideBar = require('components/side-menu/jishu.ejs');
+}
 
 $(() => {
+  $('#bar').html(sideBar({ constructInsideUrl: noJquery.constructInsideUrl }));
   $('#side-menu').metisMenu();
   $('#side-menu').css('visibility', 'visible');
   (() => {

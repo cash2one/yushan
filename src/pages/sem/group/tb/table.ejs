@@ -1,0 +1,14 @@
+<table id="myTable" class="tablesorter">
+<thead>
+<tr>
+    <th>组名</th>
+</tr>
+</thead>
+<tbody class="list">
+<% for (var word in data) {%>
+  <tr>
+      <td class="nam" data-id="<%=data[word].group_id %>" data-name="<%=data[word].group_name %>"><%=data[word].group_name %></td>
+  </tr>
+<% } %>
+</tbody>
+</table>

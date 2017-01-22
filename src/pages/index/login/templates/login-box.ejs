@@ -1,13 +1,17 @@
 <div class="login">
-  <p>
-    <img src="./images/Profile1.png" alt="" class="user1"/>
-    <input type="text" class="user" placeholder="请输入您的账号"/>
-  </p>
-  <p>
-    <img src="./images/Lock.png" alt="" class="pwd1"/>
-    <input type="password" class="pwd" placeholder="请输入您的密码"  onkeydown="kLogin();"/>
-  </p>
-  <p>
-    <input type="button" class="clk" value="登陆"/>
-  </p>
+    <form id="login-form">
+        <input type="hidden" name="password" id="pwd"/>
+        <input type="hidden" name="key" id="salt"/>
+        <p>
+            <img src="./images/Profile1.png" alt="" class="user1"/>
+            <input type="text" name="username" class="user" placeholder="请输入您的账号"/>
+        </p>
+        <p>
+            <img src="./images/Lock.png" alt="" class="pwd1"/>
+            <input type="password" id="showPwd" class="pwd" placeholder="请输入您的密码" />
+        </p>
+        <p>
+            <input type="submit" class="clk" value="登陆"/>
+        </p>
+    </form>
 </div>

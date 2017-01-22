@@ -1,0 +1,48 @@
+<% for (var i in data) {%>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion"
+               href="<%='#'+data[i].indexn %>" class="sem_name">
+                <span class="sem_name1"><%=data[i].username %></span>(<%=data[i].roles %>)
+            </a>
+        </h4>
+    </div>
+    <div id="<%=data[i].indexn %>" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <p>
+                <select>
+                    <% for (var j in el) {%>
+                    <option value='<%=el[j].id %>'><%=el[j].name %></option>
+                    <% } %>
+                </select>
+                <button type="button" class="btn btn-danger add" data-id="<%=data[i].id %>">添加账户</button>
+            </p>
+            <table class="table table-hover tablesorter table-striped">
+                <thead>
+                <tr>
+                    <th>户名</th>
+                    <th>优化师</th>
+                    <th>状态</th>
+                    <th>类型</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+                <tbody class="list">
+                <% for (var j in data) {%>
+                <tr>
+                    <td><%=data[j].name %></td>
+                    <td><%=data[j].semname %></td>
+                    <td class="th-statu"><%=data[i].statu %></td>
+                    <td><%=data[i].type1 %></td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm hu-start" data-id="<%=data[j].id %>">删除</button>
+                    </td>
+                </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<% } %>

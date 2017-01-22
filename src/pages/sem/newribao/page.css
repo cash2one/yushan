@@ -9,6 +9,7 @@
     color: #666;
 }
 #table1,#table2{
+    width: 100%;
     height: 94%;
 }
 tbody tr{

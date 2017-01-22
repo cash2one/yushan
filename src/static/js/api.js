@@ -48,6 +48,23 @@ const moduleExports = {
   getGPlan: '/plan/getplan',
   setHour: '/active/sethour',
   getHu: '/account/gethu',
+  getSemZu: '/sem/getzu',
+  getCreateZu: '/sem/createzu',
+  getAllSem: '/sem/allsem',
+  getZuUser: '/sem/getzuuser',
+  getZuAddUser: '/sem/zuadduser',
+  getSemXX: '/sem/semxx',
+  getChangeSem: '/sem/changesem',
+  getType: '/sem/gettype',
+  getCreateSem: '/sem/createsem',
+  getAllHu: '/sem/getallhu',
+  getUserAddHu: '/sem/useraddhu',
+  getChangePass: '/sem/changepass',
+  getHuSemer: '/sem/husemer',
+  getHuChangesem: '/sem/huchangesem',
+  CreateHu: '/sem/createhu',
+  UpStatus: '/sem/upstatus',
+  AllKeHu: '/sem/allkehu',
 };
 
 module.exports = moduleExports;

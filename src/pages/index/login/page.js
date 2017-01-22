@@ -1,3 +1,4 @@
+/*eslint-disable */
 require('!!bootstrap-webpack!bootstrapConfig');
 require('lessDir/base.less');
 require('./page.less');
@@ -6,10 +7,11 @@ const p = require('./images/Profile.png');
 const p1 = require('./images/Profile1.png');
 const l = require('./images/Lock1.png');
 const l1 = require('./images/Lock.png');
-const store = require('static/js/store');
+// const store = require('static/js/store');
 
-const utils = require('utils');
-const apiUrl = require('static/js/api');
+// const utils = require('utils');
+// const apiUrl = require('static/js/api');
+const passport = require('static/js/passport');
 /*eslint-disable */
 window.switchToPage = (page) => {
   switch (page) {
@@ -27,8 +29,6 @@ window.switchToPage = (page) => {
   }
 };
 $(() => {
-
-
   $('.user').hover(function() {
    $('.user1').attr('src',p);
    $('.user').css('border-bottom','1px solid rgb(0,175,233)');
@@ -43,9 +43,10 @@ $(() => {
    $('.pwd1').attr('src',l1);
    $('.pwd').css('border-bottom','1px solid rgb(153,153,153)');
   });
-  $('.clk').click(clk);
+  passport.login({selector:"#login-form"});
+  // $('.clk').click(clk);
 
-  function clk() {
+  /*function clk(e) {
     var userName = $('.user').val();
     var pwd = $('.pwd').val();
 
@@ -61,13 +62,14 @@ $(() => {
         }
       })
     }
-  }
-  function kLogin(){
+    e.preventDefault();
+  }*/
+   /* function kLogin(){
     if (event.keyCode == 13)
     {
       event.returnValue=false;
       event.cancel = true;
       clk();
     }
-  }
+  }*/
 });

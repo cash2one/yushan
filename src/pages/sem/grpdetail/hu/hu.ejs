@@ -1,0 +1,19 @@
+<% for (var i in data) {%>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion"
+               href="<%='#'+data[i].indexn %>" class="sem_name">
+                <span class="sem_name1"><%=data[i].username %></span>(<%=data[i].roles %>)
+            </a>
+        </h4>
+    </div>
+    <div id="<%=data[i].indexn %>" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <% for (var j in data[i].hu) {%>
+            <span class="hu" data-appid="<%=data[i].hu[j].appid %>" data-name="<%=data[i].hu[j].name %> " data-bal="<%=data[i].hu[j].mobileBalance %>" style="color: #00b7ee;text-decoration: underline;cursor: pointer;font-size: 13px;"><%=data[i].hu[j].name %></span>
+            <% } %>
+        </div>
+    </div>
+</div>
+<% } %>

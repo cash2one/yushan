@@ -8,7 +8,7 @@ const noJquery = require('withoutJqueryModule');
 const topAccounts = require('./tpl/topAccounts.ejs');
 
 $(() => {
-  $('#top-menu').append(topUser({ user: store.getUser(), constructInsideUrl: noJquery.constructInsideUrl }));
+  $('#top-menu').append(topUser({ user: store.getUser().data, constructInsideUrl: noJquery.constructInsideUrl }));
   $('#us').html(topAccounts({ accounts: store.getAccounts(), currentAccount: store.getCurrentAccount() }));
   $(document).on('change', '#us', function () {
     if ($(this).val() === 'all') {

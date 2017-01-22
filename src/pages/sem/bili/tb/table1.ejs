@@ -1,37 +1,46 @@
 <div>
     <span class="glyphicon glyphicon-chevron-down rise" style="color: rgb(0, 0, 0);cursor: pointer;">收起</span>
     <span class="glyphicon glyphicon-chevron-up down" style="color:rgb(0, 0, 0);cursor: pointer;">展开</span>
-    <table class="tablesorter table">
+    <table class="tablesorter table" id="zonglan_table">
         <thead>
         <tr>
             <th>时间</th>
+            <th>时间点</th>
             <th>Name</th>
             <th>激活</th>
             <th>CPC</th>
+            <th>API余额</th>
             <th>点击</th>
             <th>展现</th>
             <th>消费</th>
             <th>按钮点击</th>
             <th>按钮展现</th>
             <th>按钮消费</th>
+            <th>CPD</th>
+            <th>总下载</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="list">
         <% for (var i in data) {%>
+        <% for (var j in data[i]) {%>
         <tr>
-            <td><%=data[i].dateTime%></td>
-            <td><%=data[i].name%></td>
-            <td data-role="<%=data[i].planId %>" data-time="<%=data[i].dateTime1 %>" class="td_active1"><a href="#" class="all_active1" data-type="text"><%=data[i].active%></a></td>
-            <td><%=data[i].cpc %></td>
-            <td><%=data[i].clickCount %></td>
-            <td><%=data[i].showCount %></td>
-            <td><%=data[i].spend %></td>
-            <td><%=data[i].total_btnClickCount %></td>
-            <td><%=data[i].total_btnShowCount %></td>
-            <td><%=data[i].total_btnSpend %></td>
+            <td><%=data[i][j].dateTime%></td>
+            <td><%=data[i][j].dian%></td>
+            <td><%=data[i][j].name%></td>
+            <td data-role="<%=data[i][j].planId %>" data-time="<%=data[i][j].dateTime1 %>" class="td_active1"><a href="#" class="all_active1" data-type="text"><%=data[i][j].active%></a></td>
+            <td><%=data[i][j].cpc %></td>
+            <td><%=data[i][j].api_count %></td>
+            <td><%=data[i][j].clickCount %></td>
+            <td><%=data[i][j].showCount %></td>
+            <td><%=data[i][j].spend %></td>
+            <td><%=data[i][j].total_btnClickCount %></td>
+            <td><%=data[i][j].total_btnShowCount %></td>
+            <td><%=data[i][j].total_btnSpend %></td>
+            <td><%=data[i][j].cpd %></td>
+            <td><%=data[i][j].download_total %></td>
         </tr>
+        <% } %>
         <% } %>
         </tbody>
     </table>
 </div>
-

@@ -4,6 +4,7 @@ const toastr = require('static/vendor/toastr.min');
 require('static/vendor/toastr.min.css');
 require('static/css/nprogress.css');
 const NProgress=require('static/vendor/nprogress');
+const store = require('static/js/store');
 
 const moduleExports = {
 
@@ -108,6 +109,11 @@ const moduleExports = {
       async = true;
     }
 
+    let token = "";
+    if(store.getUser()){
+      token = store.getUser().token;
+    }
+
     $.ajax({
       url: url,
       type: 'get',
@@ -117,6 +123,7 @@ const moduleExports = {
       beforeSend:function(){
         NProgress.start();
       },
+      headers:{'token':token,},
       complete: function() {
         NProgress.done();
       },
@@ -165,6 +172,7 @@ const moduleExports = {
       complete: function() {
         NProgress.done();
       },
+      headers:{'token':store.getUser().token,},
     })
       .done(function done(json) {
         if (json.status) {
@@ -210,6 +218,7 @@ const moduleExports = {
       async: async,
       dataType: 'json',
       data: data,
+      headers:{'token':store.getUser().token,},
       beforeSend:function(){
         NProgress.start();
       },
@@ -248,7 +257,6 @@ const moduleExports = {
   },
   formSubmit: function (url, datas, method='post') {
     var form = $('#dynamicForm');
-
     if (form.length <= 0) {
       form = $("<form>");
       form.attr('id', 'dynamicForm');
@@ -273,7 +281,7 @@ const moduleExports = {
         $_input.appendTo(form);
       }
     }
-
+    $('<input type="hidden" name="token" value="'+store.getUser().token+'">').appendTo(form);
     form.submit();
   },
 

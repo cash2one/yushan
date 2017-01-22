@@ -1,0 +1,37 @@
+<div id="page-wrapper">
+    <h1>新建账户</h1>
+    <form id="myForm">
+    <div class="top">
+        <p><span>名字<i style="color: red;">*</i>：</span></p>
+        <p><input type="text" class="name" name="name" data-rule-required="true"></p>
+        <p><span>媒体类型<i style="color: red;">*</i>：</span></p>
+        <p>
+            <select class="type1">
+            </select>
+            <select name="account_type" class="type2">
+            </select>
+        </p>
+        <p><span><span class="disan">第三方</span>账户<i style="color: red;">*</i>：</span></p>
+        <p><input type="text" class="three" name="account_name" data-rule-required="true"></p>
+        <p><span><span class="disan">第三方</span>账户密码<i style="color: red;">*</i>：</span></p>
+        <p><input type="text" class="threepass" name="account_password" data-rule-required="true"></p>
+        <p><span><span class="disan"></span>Token<i style="color: red;">*</i>：</span></p>
+        <p><input type="text" class="token" name="token" data-rule-required="true"></p>
+        <p><span>状态<i style="color: red;">*</i>：</span></p>
+        <p>
+            <select name="status" id="zt">
+                <option value="1">启用</option>
+                <option value="0">停用</option>
+            </select>
+        </p>
+        <p><span>返点<i style="color: red;">*</i>：</span></p>
+        <p><input type="text" class="fd" name="fd" data-rule-required="true"  data-rule-number="true"></p>
+        <p><span>显示类型<i style="color: red;">*</i>：</span></p>
+        <p>
+            <select name="view_type" id="xianshi">
+            </select>
+        </p>
+        <p><input type="submit" class="clk" value="提交" style="width:70px;padding:0px;text-align: center;color: #fff;background: #428bca;"></p>
+    </div>
+    </form>
+</div>
