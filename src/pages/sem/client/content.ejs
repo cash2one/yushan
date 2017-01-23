@@ -1,6 +1,36 @@
 <div id="page-wrapper">
-    <div class="panel-group" id="accordion">
+        <input type="text" class="fuzzy-search" placeholder="Search"/>
+        <div class="panel-group list" id="accordion">
 
-    </div>
+        </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        添加账户
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="hacker-list">
+                        <input type="text" placeholder="Search" class="search">
+                        <ul class="list">
 
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary com_mit">
+                        提交
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>

@@ -2,9 +2,6 @@
  * Created by wang on 2016/12/21.
  */
 /*eslint-disable */
-const sem = require('./sem.ejs');
-const jishu = require('./jishu.ejs');
-const kehu = require('./kehu.ejs');
 const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
 const getType = require('static/js/constant');

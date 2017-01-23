@@ -3,6 +3,7 @@
     <tr>
         <th><input type="checkbox" class="head_chek">全选</th>
         <th>APP名</th>
+        <th style="display: none;">隐藏1</th>
         <th>户名</th>
         <th>负责人</th>
         <th>Appid</th>
@@ -18,6 +19,7 @@
     <tr>
         <td><input type="checkbox" data-id="<%=data[i].id %>" name="check" class="body_chek"></td>
         <td class="name1"><%=data[i].name %></td>
+        <td class="yincang1" style="display: none;"><%=data[i].pinyin %></td>
         <td class="account_name"><%=data[i].account_name %></td>
         <td class="semname"><%=data[i].semname %></td>
         <td class="appid"><%=data[i].appid %></td>

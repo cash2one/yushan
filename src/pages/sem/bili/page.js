@@ -569,6 +569,9 @@ $(() => {
   $('.n1').attr('value', utils.getDateStr(0));
   $('.n2').attr('value', utils.getDateStr(-1));
   $('.dp').datepicker();
+  lin('all','');
+  console.log(pin);
+  legend($('.time3').val(), pin);
   $(document).on('click', '.del', function () {
     $(this).parent().remove();
   });

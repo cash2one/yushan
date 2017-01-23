@@ -142,7 +142,7 @@ function ajax(str,flag) {
       };
       legendData = ['消费'];
       // console.log(el);
-      lineChart.renderLine('main1', arr, selected, legendData, arr3);
+      lineChart.renderLine('main', arr, selected, legendData, arr3);
     });
   }
 }
@@ -158,7 +158,7 @@ function upload(str, flag) {
   utils.ajax(apiUrl.getApiUrl('getAccountAll'), {
     c1: str,
   }).done(function (el) {
-    // console.log(el);
+    console.log(el);
     if (el.mobileBalance === null) {
       el.mobileBalance = '无';
     }
@@ -276,8 +276,8 @@ $(() => {
     /* $('#main').show();
     $('#main1').hide();*/
     flag = 1;
-    $('#main1').hide();
-    $('#main').show();
+   /* $('#main1').hide();
+    $('#main').show();*/
     $('#dropdownMenu1').html('近两周总体数据 <span class="caret"></span>');
     ajax(currentAccount.appid, flag);
   });
@@ -285,8 +285,8 @@ $(() => {
     /* $('#main1').show();
     $('#main').hide();*/
     flag = 2;
-    $('#main').hide();
-    $('#main1').show();
+   /* $('#main').hide();
+    $('#main1').show();*/
     $('#dropdownMenu1').html('每周总消费趋势 <span class="caret"></span>');
     ajax(currentAccount.appid, flag);
   });

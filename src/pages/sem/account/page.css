@@ -30,3 +30,18 @@ button{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+/*
+table.tablesorter thead tr .tablesorter-header-inner{
+    background-image: url(./images/bg.gif);
+    background-size: 6px;
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+table.tablesorter thead tr .tablesorter-headerAsc .tablesorter-header-inner{
+    background-image: url(./images/asc.gif);
+}
+table.tablesorter thead tr .tablesorter-headerDesc .tablesorter-header-inner{
+    background-image: url(./images/desc.gif);
+}
+*/

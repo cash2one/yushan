@@ -14,7 +14,7 @@ const constant = require('static/js/constant');
 require('static/js/validator');
 require('static/vendor/md5');
 let currentAccount = store.getCurrentAccount();
-
+let all;
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
   window.location.reload();
@@ -35,7 +35,7 @@ function change(current,all){
 function media(){
   let data=constant.gettype(constant.mediaType);
   console.log(data);
-  let all=data;
+  all=data;
   let one=[];
   for(let i=0;i<data.length;i++){
     if(data[i].parent_id==null){
@@ -61,7 +61,7 @@ function view () {
   });*/
 }
 $(() => {
-  let all;
+
   media();
   view();
 

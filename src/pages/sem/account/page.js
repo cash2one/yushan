@@ -11,9 +11,11 @@ const store = require('static/js/store');
 const getType = require('static/js/constant');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
+require('static/vendor/jquery.tablesorter.min');
 require('static/vendor/list.min');
 require('static/js/validator');
 require('static/vendor/md5');
+const pinyinUtil = require('static/js/pinyinUtil');
 let currentAccount = store.getCurrentAccount();
 
 eventBus.on('account_change', function () {
@@ -29,14 +31,13 @@ function pu(data){
   });
 }
 $(() => {
-  $('.head_chek').change(function(){
+  $(document).on('change','.head_chek',function(){
     if($(this).prop('checked')){
       $('.body_chek').prop('checked',true);
     }else{
       $('.body_chek').prop('checked',false);
     }
-  })
-
+  });
   utils.ajax(apiUrl.getApiUrl('getAllHu'), {}).done(function (data) {
     for(let i=0;i<data.length;i++){
       if(data[i].account_status==1){
@@ -45,12 +46,14 @@ $(() => {
         data[i].statu='暂停'
       }
       data[i].type1=getType.getTypeName(getType.mediaType,data[i].account_type);
+      data[i].pinyin=pinyinUtil.getPinyin(data[i].name,'')+pinyinUtil.getFirstLetter(data[i].name).toLowerCase()
     }
     console.log(data);
 
     $('.contain').html(tb({data: data}));
+    $('#myTable').tablesorter();
     let options = {
-      valueNames: ['name1','account_name', 'semname', 'appid', 'api_count', 'type1', 'fd',
+      valueNames: ['name1','yincang1','account_name', 'semname', 'appid', 'api_count', 'type1', 'fd',
         'th-statu']
     };
     let userList = new List('users', options);

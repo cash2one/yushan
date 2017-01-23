@@ -74,23 +74,23 @@ const moduleExports = {
     var color2 = [];
     var color3 = [];
     if (el.total_pv < el.yestoday_total_pv) { // 点击量
-      $('.biao1-1').css('color', '#5d36b0').html(((el.total_pv / el.total_view) * 100).toFixed(1) + '%');
+      $('.biao1-1').css('color', '#5d36b0').html(el.pv_rate + '%');
       color1 = ['#00b39d', '#5d36b0', '#dcdcdc'];
       b = el.yestoday_total_pv;
       c = el.total_pv;
     } else {
-      $('.biao1-1').css('color', '#e32b36').html(((el.total_pv / el.total_view) * 100).toFixed(1) + '%');
+      $('.biao1-1').css('color', '#e32b36').html(el.pv_rate + '%');
       color1 = ['#00b39d', '#e32b36', '#dcdcdc'];
       b = el.total_pv;
       c = el.yestoday_total_pv;
     }
     if (el.total_count < el.yestoday_total_count) { // 下载量
-      $('.biao2-1').css('color', '#5d36b0').html(((el.total_count / el.total_view) * 100).toFixed(1) + '%');
+      $('.biao2-1').css('color', '#5d36b0').html(el.download_rate + '%');
       color2 = ['#00b39d', '#5d36b0', '#dcdcdc'];
       b1 = el.yestoday_total_count;
       c1 = el.total_count;
     } else {
-      $('.biao2-1').css('color', '#e32b36').html(((el.total_count / el.total_view) * 100).toFixed(1) + '%');
+      $('.biao2-1').css('color', '#e32b36').html(el.download_rate + '%');
       color2 = ['#00b39d', '#e32b36', '#dcdcdc'];
       b1 = el.total_count;
       c1 = el.yestoday_total_count;

@@ -95,6 +95,39 @@ function pos(date,type,active,jihuaid,all) {
   });
 }
 $(() => {
+/*  $('#myform').submit(function(e){
+
+   /!* utils.ajaxPost(apiUrl.getApiUrl('getCreateSem'),data).done(function (data) {
+      toastr.success('数据请求完成', '完成')
+    });
+*!/
+   e.preventDefault();
+    return false;
+
+  });*/
+  $('form').submit(function (event) {
+    var formData = new FormData($(this)[0]);
+    utils.ajaxFormFile(apiUrl.getApiUrl('UpActive'),formData).done(function (data) {
+      console.log(data);
+    })
+    event.preventDefault();
+  });
+/*  $('.upload').click(function(){
+    let data = $('#inputfile')[0].files[0];
+
+    // let data=new FormData($('#myForm')[0]);
+    // console.log(data);
+    // let n=new FormData($('#myform')[0]);
+    // console.log(n);
+    // var reader = new FileReader();
+    // let file=reader.readAsText(data);
+    var formData = new FormData();
+    formData.append('file', data);
+    utils.ajaxForm(apiUrl.getApiUrl('UpActive'),formData).done(function (data) {
+      console.log(data);
+    })
+
+  });*/
   $('#date1').attr('value', utils.getDateStr(-2));
   $('#date2').attr('value', utils.getDateStr(-1));
   $('#zhe').val('1');
@@ -114,8 +147,6 @@ $(() => {
     $('.jihua1').show();
   });
   $(document).on('click', '.tijiao', function () {
-
-
    /* if($(this).parents('th').attr('class').toString() == 'tou'){
         console.log('aaa')
       // if($(this).parents('th').find('a').attr('class').toString() == 'tou_liu'){
@@ -126,7 +157,6 @@ $(() => {
 
       // }
     }else{*/
-
       if ($(this).parents('span').attr('class').toString() == 'liu_cun') {
 
         const $tr = $(this).closest('tr');

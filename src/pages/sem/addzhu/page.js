@@ -24,16 +24,16 @@ eventBus.on('account_change', function () {
 });
 
 $(() => {
-    utils.ajax(apiUrl.getApiUrl('getAllHu'), {}).done(function (data) {
+    utils.ajax(apiUrl.getApiUrl('NoUserHu'), {}).done(function (data) {
       console.log(data);
       let all=store.getAccounts();
-      for(let i=0;i<all.length;i++){
+    /*  for(let i=0;i<all.length;i++){
         for(let j=0;j<data.length;j++){
           if(all[i].name==data[j].name){
             data.splice(j,1)
           }
         }
-      }
+      }*/
       $('.a').html(tb({data: data}));
     });
   utils.ajax(apiUrl.getApiUrl('getAllSem'), {}).done(function (data) {
@@ -47,21 +47,14 @@ $(() => {
   });
   $(document).on('click','.add',function(){
     let users=[];
-    let account=store.getAccounts();
     $('input:checkbox[name=check]:checked').each(function(){
       users.push($(this).parent().siblings('.sem').data('id'));
-      account.push({
-        name:$(this).parent().siblings('.sem').data('name'),
-        id:$(this).parent().siblings('.sem').data('id'),
-        appid:$(this).parent().siblings('.sem').data('appid'),
-      });
     });
-    store.setAccounts(account);
     utils.ajaxPost(apiUrl.getApiUrl('getUserAddHu'), {
       userid: $('#sem').val(),
       huid: JSON.stringify(users),
     }).done(function (data) {
-      // window.location.reload();
+      window.location.reload();
       console.log(data);
     });
   });

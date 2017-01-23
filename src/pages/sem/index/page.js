@@ -7,6 +7,7 @@ require('static/css/reset.css');
 require('./page.css');
 
 const tmp = require('./tb/table.ejs');
+const tmp1 = require('./tb/zu.ejs');
 
 const utils = require('utils');
 const apiUrl = require('static/js/api');
@@ -60,7 +61,22 @@ $(() => {
      $(".xuan1").show();
      });*/
   })
-
+  utils.ajax(apiUrl.getApiUrl('getSemZu'), {
+    // userid: store.getUser().id,
+  }).done(function (data) {
+    console.log(data);
+    $('.zu').html(tmp1({data: data}));
+  });
+  $(document).on('click','.nam',function(){
+    // console.log($(this).data('id'));
+    // console.log($(this).data('name'));
+    let zu={
+      group_id:$(this).data('id'),
+      group_name:$(this).data('name'),
+    };
+    store.setZu(zu);
+    window.location='/sem/shouyegroup/page.html';
+  });
   utils.ajax(apiUrl.getApiUrl('getNotice'), {
     appid: store.getUser().data.id,
   }).done(function (data) {

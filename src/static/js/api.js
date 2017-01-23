@@ -58,6 +58,7 @@ const moduleExports = {
   getType: '/sem/gettype',
   getCreateSem: '/sem/createsem',
   getAllHu: '/sem/getallhu',
+  NoUserHu: '/sem/nouserhu',
   getUserAddHu: '/sem/useraddhu',
   getChangePass: '/sem/changepass',
   getHuSemer: '/sem/husemer',
@@ -65,6 +66,8 @@ const moduleExports = {
   CreateHu: '/sem/createhu',
   UpStatus: '/sem/upstatus',
   AllKeHu: '/sem/allkehu',
+  UserDtHu: '/sem/userdthu',
+  UpActive: '/out/upactive',
 };
 
 module.exports = moduleExports;

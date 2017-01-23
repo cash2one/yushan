@@ -226,4 +226,7 @@ html,body{
     min-width: 1024px;
     overflow-x:auto;
 }
+h3 span{
+    cursor: pointer;
+}
 

@@ -47,8 +47,6 @@ $(() => {
     window.history.go(-1);
   });
   $(document).on('click','.add',function(){
-    // let sem=[];
-    // let role=[];
     let users=[];
     $('input:checkbox[name=check]:checked').each(function(){
       users.push({
@@ -56,8 +54,6 @@ $(() => {
         roleid:$(this).parent().siblings('span').find('.role').val(),
       });
     });
-    // console.log(sem);
-    // console.log(role);
     utils.ajaxPost(apiUrl.getApiUrl('getZuAddUser'), {
       users:JSON.stringify(users),
       // userid:sem,

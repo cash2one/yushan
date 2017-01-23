@@ -3,36 +3,29 @@
     <div class="panel-heading">
         <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion"
-               href="<%='#'+data[i].indexn %>" class="sem_name">
-                <span class="sem_name1"><%=data[i].name %></span>
+               href="<%='#'+data[i].xinxi.indexn %>" class="sem_name">
+                <span class="sem_name1"><%=data[i].xinxi.name %></span>
             </a>
         </h4>
     </div>
-    <div id="<%=data[i].indexn %>" class="panel-collapse collapse in">
+    <div id="<%=data[i].xinxi.indexn %>" class="panel-collapse collapse in">
         <div class="panel-body">
+            <p><button type="button" class="btn btn-danger btn-sm add"  data-toggle="modal" data-target="#myModal" data-ke="<%=data[i].xinxi.id %>" data-kename="<%=data[i].xinxi.allname %>">添加账户</button></p>
             <table class="table table-hover tablesorter table-striped">
                 <thead>
                 <tr>
-                    <th>APP名</th>
                     <th>户名</th>
-                    <th>API余额</th>
-                    <th>优化师</th>
-                    <th>状态</th>
                     <th>类型</th>
                     <th>删除</th>
                 </tr>
                 </thead>
                 <tbody class="list">
-                <% for (var j in el) {%>
+                <% for (var j in data[i].zhanghus) {%>
                 <tr>
-                    <td><%=el[j].name %></td>
-                    <td><%=el[j].account_name %></td>
-                    <td><%=el[j].api_count %></td>
-                    <td><%=el[j].semname %></td>
-                    <td><%=el[i].statu %></td>
-                    <td><%=el[j].type1 %></td>
+                    <td class="huname" data-huname="<%=data[i].zhanghus[j].huname %>"><%=data[i].zhanghus[j].huname %></td>
+                    <td><%=data[i].zhanghus[j].type1 %></td>
                     <td>
-                        <button type="button" class="btn btn-danger btn-sm hu-start" data-id="<%=el[j].id %>">删除</button>
+                        <button type="button" class="btn btn-danger btn-sm hu-delete" data-id="<%=data[i].zhanghus[j].huid %>" data-ke="<%=data[i].xinxi.id %>">删除</button>
                     </td>
                 </tr>
                 <% } %>
