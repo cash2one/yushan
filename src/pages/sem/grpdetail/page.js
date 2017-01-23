@@ -12,6 +12,7 @@ const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
+const getType = require('static/js/constant');
 
 let currentAccount = store.getCurrentAccount();
 let zu = store.getZu();
@@ -96,6 +97,9 @@ $(() => {
             data.splice(j,1)
           }
         }
+      }
+      for(let i=0;i<data.length;i++){
+        data[i].type1=getType.getTypeName(getType.userType,data[i].type);
       }
       $('.a').html(tb1({data: data}));
     });
