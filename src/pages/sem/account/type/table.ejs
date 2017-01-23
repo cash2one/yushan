@@ -17,7 +17,7 @@
     <tbody class="list">
     <% for (var i in data) {%>
     <tr>
-        <td><input type="checkbox" data-id="<%=data[i].id %>" name="check" class="body_chek"></td>
+        <td><input type="checkbox" data-id="<%=data[i].huid %>" name="check" class="body_chek"></td>
         <td class="name1"><%=data[i].name %></td>
         <td class="yincang1" style="display: none;"><%=data[i].pinyin %></td>
         <td class="account_name"><%=data[i].account_name %></td>
@@ -28,8 +28,8 @@
         <td class="fd"><%=data[i].fd_rate %></td>
         <td class="th-statu"><%=data[i].statu %></td>
         <td>
-            <button type="button" class="btn btn-warning btn-sm hu-start" data-id="<%=data[i].id %>" data-status="1">启用</button>
-            <button type="button" class="btn btn-warning btn-sm hu-stop" data-id="<%=data[i].id %>" data-status="0">停用</button>
+            <button type="button" class="btn btn-warning btn-sm hu-start" data-id="<%=data[i].huid %>" data-status="1">启用</button>
+            <button type="button" class="btn btn-warning btn-sm hu-stop" data-id="<%=data[i].huid %>" data-status="0">停用</button>
         </td>
     </tr>
     <% } %>
