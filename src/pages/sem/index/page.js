@@ -14,6 +14,7 @@ const apiUrl = require('static/js/api');
 
 const store = require('static/js/store');
 const pinyinUtil = require('static/js/pinyinUtil');
+const getType = require('static/js/constant');
 function ck() {
 
   var curr=store.getAccountByAppid($(this).parent().attr('title'));
@@ -60,13 +61,19 @@ $(() => {
      $(".xuan2").hide();
      $(".xuan1").show();
      });*/
-  })
-  utils.ajax(apiUrl.getApiUrl('getSemZu'), {
-    // userid: store.getUser().id,
-  }).done(function (data) {
-    console.log(data);
-    $('.zu').html(tmp1({data: data}));
   });
+ /* let who=getType.getTypeName(getType.userType,store.getUser().data.type);
+  if(who=='技术'){
+
+  }else{*/
+    utils.ajax(apiUrl.getApiUrl('getSemZu'), {
+      // userid: store.getUser().id,
+    }).done(function (data) {
+      console.log(data);
+      $('.zu').html(tmp1({data: data}));
+    });
+
+
   $(document).on('click','.nam',function(){
     // console.log($(this).data('id'));
     // console.log($(this).data('name'));
