@@ -74,7 +74,9 @@ function draw(d,n,days,series){
         let rev='';
         try{
           for(let i=0;i<params.length;i++){
-            rev+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:'+params[i].color+'"></span>'+params[i].data.name + '：' + params[i].data.value+'<br/>'
+            if(params[i].data){
+              rev+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:'+params[i].color+'"></span>'+params[i].data.name + '：' + params[i].data.value+'<br/>'
+            }
           }
         }catch (e){
           console.log(e);
