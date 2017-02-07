@@ -18,7 +18,8 @@ const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
-
+let record;
+let non=1;
 let currentAccount = store.getCurrentAccount();
 
 eventBus.on('account_change', function () {
@@ -29,6 +30,58 @@ eventBus.on('account_change', function () {
   var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
   sum('', currentAccount.appid, e, s)
 });
+function recon(cln){
+  let data=[];
+  if(cln=='全部'){
+
+    for(let i=0;i<record.length;i++){
+      data.push(record[i]);
+    }
+  }else if(cln=='ALL'){
+    for(let i=0;i<record.length;i++){
+      if(record[i].device=='all'){
+        data.push(record[i]);
+      }
+    }
+  }else if(cln=='安卓'){
+    for(let i=0;i<record.length;i++){
+      if(record[i].device=='android'){
+        data.push(record[i]);
+      }
+    }
+  }else if(cln=='IOS'){
+    for(let i=0;i<record.length;i++){
+      if(record[i].device=='ios'){
+        data.push(record[i]);
+      }
+    }
+  }
+
+  $('.tmp').html(tb({data: data}));
+  $('#table1').tablesorter();
+  var options = {
+    valueNames: ['time', 'down_sum', 'active_sum', 'liu_cun', 'down_rate', 'active_rate', 'down_cb', 'active_cb', 'some_cost', 'view', 'pv', 'pv_rate', 'pv_dan', 'page_active', 'btn_active', 'some_remainder', 're_point', 'shuoming', 'xitong', 'acsum', 'liucun_rate', 'liucun_cb']
+  };
+  var userList = new List('users', options);
+  $('.tou_liu').editable();
+  $('.beizhu').editable();
+  $('.liucun1').editable();
+  $('.page_active1').editable();
+  $('.btn_active1').editable();
+  $('.re_point1').editable();
+  $('.remark1').editable();
+  $('.ji_pageactive1').editable();
+
+  /*$('.m2').hide();
+   $('.m1').show();*/
+
+  /*$('.tmp').html(tb({data: data[0]}));
+  $('#table1').tablesorter();
+  var options = {
+    valueNames: ['time', 'xitong', 'acsum', 'down_sum', 'active_sum', 'liu_cun', 'down_rate', 'active_rate', 'liucun_rate', 'down_cb', 'active_cb', 'liucun_cb', 'some_cost', 'view', 'pv', 'pv_rate', 'pv_dan', 'page_active', 'btn_active', 'some_remainder', 're_point', 'shuoming']
+  };
+  var userList = new List('users', options);*/
+}
 
 function sum(zhe, appid, edate, sdate) {
   utils.ajax(apiUrl.getApiUrl('getRiBao'), {
@@ -38,16 +91,16 @@ function sum(zhe, appid, edate, sdate) {
     sdate: sdate,
   }).done(function (data) {
     console.log(data);
-   /* for(var i=0;i<data[0].length;i++){
-      data[0][i].active_rate=(data[0][i].active_rate*100).toFixed(2);
-    }*/
+    record=data[0];
     $('.tmp').html(tb({data: data[0]}));
     $('#table1').tablesorter();
     var options = {
       valueNames: ['time', 'xitong', 'acsum', 'down_sum', 'active_sum', 'liu_cun', 'down_rate', 'active_rate', 'liucun_rate', 'down_cb', 'active_cb', 'liucun_cb', 'some_cost', 'view', 'pv', 'pv_rate', 'pv_dan', 'page_active', 'btn_active', 'some_remainder', 're_point', 'shuoming']
     };
     var userList = new List('users', options);
-
+   /* for(var i=0;i<data[0].length;i++){
+      data[0][i].active_rate=(data[0][i].active_rate*100).toFixed(2);
+    }*/
     /****************表1结束*/
     var biao2 = [];
     for (var i = 0; i < data[1].length; i++) {
@@ -94,7 +147,23 @@ function pos(date,type,active,jihuaid,all) {
     console.log(data);
   });
 }
+
+/*function spread() {
+  if(non==1){
+
+  }else{
+    $('.zk').text('展开');
+    $('.m2').hide();
+    $('.m1').show();
+    non=1;
+  }
+}*/
 $(() => {
+  $('.filter1 button').click(function(){
+    // console.log($(this).text());
+    recon($(this).text());
+  });
+  $('.appid1').val(currentAccount.appid);
 /*  $('#myform').submit(function(e){
 
    /!* utils.ajaxPost(apiUrl.getApiUrl('getCreateSem'),data).done(function (data) {
@@ -105,12 +174,21 @@ $(() => {
     return false;
 
   });*/
-  $('form').submit(function (event) {
+  $('#myForm').submit(function (event) {
     var formData = new FormData($(this)[0]);
+    console.log(formData);
     utils.ajaxFormFile(apiUrl.getApiUrl('UpActive'),formData).done(function (data) {
       console.log(data);
     })
-    event.preventDefault();
+    // event.preventDefault();
+  });
+  $('#myForm1').submit(function (event) {
+    var formData = new FormData($(this)[0]);
+    console.log(formData);
+    utils.ajaxFormFile(apiUrl.getApiUrl('UpActive1'),formData).done(function (data) {
+      console.log(data);
+    })
+    // event.preventDefault();
   });
 /*  $('.upload').click(function(){
     let data = $('#inputfile')[0].files[0];
@@ -169,16 +247,6 @@ $(() => {
         $tr.find('.liucun_cb').text((xiaofei/liucun).toFixed(2));
 
       } else if ($(this).parents('span').attr('class').toString() == 'page_active') {
-        // pos(parseFloat($(this).parent().siblings('.editable-input').find('input').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'all', '', false,'','');
-        // let a=parseInt($(this).parents('td').siblings('.btn_active').find('a').text())+ parseInt($(this).parent().siblings('.editable-input').find('input').val());
-        // let b=(parseFloat($(this).parents('td').siblings('.acsum').text())/a).toFixed(2);
-        // let c=((a/parseFloat($(this).parents('td').siblings('.down_sum').text()))*100).toFixed(2)+"%";
-        // let d=((parseFloat($(this).parents('td').siblings('.liu_cun').find('a').text())/a)*100).toFixed(2)+"%";
-        // $(this).parents('td').siblings('.active_sum').text(a);
-        // $(this).parents('td').siblings('.active_cb').text(b);
-        // $(this).parents('td').siblings('.active_rate').text(c);
-        // $(this).parents('td').siblings('.liucun_rate').text(d);
-
 
       } else if ($(this).parents('span').attr('class').toString() == 'btn_active') {
         const $tr1 = $(this).closest('tr');
@@ -194,16 +262,6 @@ $(() => {
         $tr1.find('.liucun_rate').text(d);
 
       } else if ($(this).parents('span').attr('class').toString() == 're_point') {
-        // pos(parseFloat($(this).parent().siblings('.editable-input').find('input').val()), currentAccount.appid, '', $(this).parents('td').siblings('.time').text(), '', 'fandian', '',false,'','');
-        // let a=(parseFloat($(this).parents('td').siblings('.some_cost').text())/(parseFloat($(this).parent().siblings('.editable-input').find('input').val())+1)).toFixed(2);
-        // let b=(a/parseFloat($(this).parents('td').siblings('.down_sum').text())).toFixed(2);
-        // let c=(a/parseFloat($(this).parents('td').siblings('.liu_cun').find('a').text())).toFixed(2);
-        // let d=(a/parseFloat($(this).parents('td').siblings('.active_sum').text())).toFixed(2);
-        //
-        // $(this).parents('td').siblings('.acsum').text(a);
-        // $(this).parents('td').siblings('.down_cb').text(b);
-        // $(this).parents('td').siblings('.liucun_cb').text(c);
-        // $(this).parents('td').siblings('.active_cb').text(d);
 
       } else if ($(this).parents('span').attr('class').toString() == 'shuoming') {
         const $tr1 = $(this).closest('tr');
@@ -258,6 +316,8 @@ $(() => {
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
     sum('',currentAccount.appid, e, s)
+    $(this).text('展开');
+    non=1;
   });
  /* $('#zhe').change(function () {
     var arr1 = $('#date1').val().split('/');
@@ -266,7 +326,7 @@ $(() => {
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
     sum($(this).val(), currentAccount.appid, e, s)
   });*/
- let non=1;
+
  $('.zk').click(function(){
    if(non==1){
      $(this).text('合并');
@@ -292,5 +352,7 @@ $(() => {
       edate: e,
       sdate: s,
     })
-  })
+  });
+
+
 });

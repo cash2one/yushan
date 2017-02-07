@@ -67,7 +67,8 @@ const moduleExports = {
   UpStatus: '/sem/upstatus',
   AllKeHu: '/sem/allkehu',
   UserDtHu: '/sem/userdthu',
-  UpActive: '/out/upactive',
+  UpActive: '/out/upacall',
+  UpActive1: '/out/upacplan',
 };
 
 module.exports = moduleExports;

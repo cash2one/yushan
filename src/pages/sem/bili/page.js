@@ -72,13 +72,12 @@ function draw(d,n,days,series){
       formatter: function (params) {
         // console.log(params);
         let rev='';
-        try{
           for(let i=0;i<params.length;i++){
-            rev+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:'+params[i].color+'"></span>'+params[i].data.name + '：' + params[i].data.value+'<br/>'
+            if(params[i].data){
+              rev+='<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:'+params[i].color+'"></span>'+params[i].data.name + '：' + params[i].data.value+'<br/>';
+            }
           }
-        }catch (e){
-          console.log(e);
-        }
+
 
         return rev;
       }
@@ -198,6 +197,7 @@ function legend(logo, who) {
   let click = [];
   let spend = [];
   let acve = [];
+  let acvecb = [];
   let series = [];
   let cpd = [];
   let api = [];
@@ -225,6 +225,7 @@ function legend(logo, who) {
         who[i][j].cpd= who[i][j].cpd ? who[i][j].cpd.toFixed(2): 0 ;
         who[i][j].download_total= who[i][j].download_total ? who[i][j].download_total: 0 ;
         who[i][j].api_count= who[i][j].api_count ? who[i][j].api_count: 0 ;
+        // who[i][j].active_chengben= who[i][j].spend/who[i][j].active?(who[i][j].spend/who[i][j].active).toFixed(2): 0 ;
       }
     }
   }catch (e){
@@ -301,6 +302,18 @@ function legend(logo, who) {
 
       }
         break;
+      case '激活成本': {
+        acvecb = [];
+        for (let j = 0; j < who[i].length; j++) {
+          acvecb.push({
+            value: who[i][j].active_chengben,
+            name:who[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],acvecb);
+
+      }
+        break;
       case 'cpd': {
         cpd = [];
         for (let j = 0; j < who[i].length; j++) {
@@ -352,6 +365,7 @@ function legend1(logo, data) {
   let click = [];
   let spend = [];
   let acve = [];
+  let acvecb = [];
   let btnclick = [];
   let btnshow = [];
   let btnspend = [];
@@ -388,6 +402,7 @@ function legend1(logo, data) {
         data[i][j].cpd= data[i][j].cpd ? data[i][j].cpd.toFixed(2): 0 ;
         data[i][j].download_total= data[i][j].download_total ? data[i][j].download_total: 0 ;
         data[i][j].api_count= data[i][j].api_count ? data[i][j].api_count: 0 ;
+        // data[i][j].activecb= data[i][j].spend/data[i][j].active ? (data[i][j].spend/data[i][j].active).toFixed(2): 0 ;
         // data[i][j].total_btnSpend= data[i][j].total_btnSpend.toFixed(2);
       }
     }
@@ -459,6 +474,17 @@ function legend1(logo, data) {
           });
         }
         pu(series,n[i],acve);
+      }
+        break;
+      case '激活成本': {
+        acvecb = [];
+        for (let j = 0; j < data[i].length; j++) {
+          acvecb.push({
+            value: data[i][j].active_chengben,
+            name:data[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],acvecb);
       }
         break;
       case '按钮点击': {
@@ -554,14 +580,14 @@ $(() => {
     $('.tol').show();
     $('.tol1').hide();
     lin('all','');
-    console.log(pin);
+    // console.log(pin);
     legend($('.time3').val(), pin);
   });
   $('.li2').click(function () {
     $('.tol').hide();
     $('.tol1').show();
     lin('plan',$('.time4').val());
-    console.log(pin);
+    // console.log(pin);
     legend1($('.time5').val(), pin);
   });
   // let $cln=$('.trends');
@@ -570,7 +596,7 @@ $(() => {
   $('.n2').attr('value', utils.getDateStr(-1));
   $('.dp').datepicker();
   lin('all','');
-  console.log(pin);
+  // console.log(pin);
   legend($('.time3').val(), pin);
   $(document).on('click', '.del', function () {
     $(this).parent().remove();
@@ -585,7 +611,7 @@ $(() => {
     switch ($('.nav-li>.clink').text()) {
       case '本户': {
         lin('all','');
-        console.log(pin);
+        // console.log(pin);
         legend($('.time3').val(), pin);
       }
         break;
@@ -602,9 +628,9 @@ $(() => {
     legend($(this).val(), pin);
   });
   $(document).on('change','.time4',function(){
-    console.log($(this).val());
+    // console.log($(this).val());
     lin('plan',$(this).val());
-    console.log(pin);
+    // console.log(pin);
     legend1($('.time5').val(), pin);
   });
   $('.time5').change(function () {
@@ -621,7 +647,9 @@ $(() => {
 
       const $td = $(this).parents('td');
       const time = $td.data('time');
+      const spend = $td.data('spend');
       const record = parseFloat($td.find('.editable-input').find('input').val());
+      $(this).parents('td').siblings('.activecb').text((spend/record).toFixed(2));
       utils.ajax(apiUrl.getApiUrl('setHour'), {
         appid: currentAccount.appid,
         type:'all',
@@ -636,7 +664,9 @@ $(() => {
       const $td = $(this).parents('td');
       const time = $td.data('time');
       const role = $td.data('role');
+      const spend = $td.data('spend');
       const record = parseFloat($td.find('.editable-input').find('input').val());
+      $(this).parents('td').siblings('.activecb').text((spend/record).toFixed(2));
       utils.ajax(apiUrl.getApiUrl('setHour'), {
         appid: currentAccount.appid,
         type:'all',

@@ -12,7 +12,7 @@ const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
-
+const constant = require('static/js/constant');
 let currentAccount = store.getCurrentAccount();
 let zu = store.getZu();
 
@@ -34,7 +34,9 @@ function tol(){
       }else if(data[i].role_id==2){
         data[i].roles='组长';
       }
-
+      for(let j=0;j<data[i].hu.length;j++){
+        data[i].hu[j].type1=constant.getTypeName(constant.mediaType,data[i].hu[j].account_type);
+      }
     }
     console.log(data);
     $('#accordion').append(tb({data: data}));

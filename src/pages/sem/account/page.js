@@ -31,6 +31,14 @@ function pu(data){
   });
 }
 $(() => {
+  $(document).on('click','.some',function(){
+    let cu={};
+    cu.name=$(this).data('name');
+    cu.appid=$(this).data('appid');
+    cu.id=$(this).data('id');
+    store.setCurrentAccount(cu);
+    window.location = '/sem/gailan/page.html';
+  });
   $(document).on('change','.head_chek',function(){
     if($(this).prop('checked')){
       $('.body_chek').prop('checked',true);

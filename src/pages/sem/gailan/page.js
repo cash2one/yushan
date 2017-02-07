@@ -242,6 +242,7 @@ $(() => {
     utils.ajax(apiUrl.getApiUrl('getHuChangesem'), {
       huid: currentAccount.id,
       userid:$('#anser').val(),
+      olduser:store.getUser().data.id,
     }).done(function (data) {
       console.log(data);
     });

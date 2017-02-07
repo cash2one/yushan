@@ -8,6 +8,7 @@
             <th>时间点</th>
             <th>Name</th>
             <th>激活</th>
+            <th>激活成本</th>
             <th>CPC</th>
             <th>API余额</th>
             <th>点击</th>
@@ -27,7 +28,8 @@
             <td><%=data[i][j].dateTime%></td>
             <td><%=data[i][j].dian%></td>
             <td><%=data[i][j].name%></td>
-            <td data-role="<%=data[i][j].planId %>" data-time="<%=data[i][j].dateTime1 %>" class="td_active1"><a href="#" class="all_active1" data-type="text"><%=data[i][j].active%></a></td>
+            <td data-role="<%=data[i][j].planId %>" data-time="<%=data[i][j].dateTime1 %>"  data-spend="<%=data[i][j].spend %>" class="td_active1"><a href="#" class="all_active1" data-type="text"><%=data[i][j].active%></a></td>
+            <td class="activecb"><%=data[i][j].active_chengben %></td>
             <td><%=data[i][j].cpc %></td>
             <td><%=data[i][j].api_count %></td>
             <td><%=data[i][j].clickCount %></td>

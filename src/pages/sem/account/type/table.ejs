@@ -16,7 +16,7 @@
     </thead>
     <tbody class="list">
     <% for (var i in data) {%>
-    <tr>
+    <tr data-id="<%=data[i].huid %>" data-name="<%=data[i].name %>" data-appid="<%=data[i].appid %>" class="some">
         <td><input type="checkbox" data-id="<%=data[i].huid %>" name="check" class="body_chek"></td>
         <td class="name1"><%=data[i].name %></td>
         <td class="yincang1" style="display: none;"><%=data[i].pinyin %></td>

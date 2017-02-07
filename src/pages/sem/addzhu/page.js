@@ -26,7 +26,10 @@ eventBus.on('account_change', function () {
 $(() => {
     utils.ajax(apiUrl.getApiUrl('NoUserHu'), {}).done(function (data) {
       console.log(data);
-      let all=store.getAccounts();
+      // let all=store.getAccounts();
+      for(let i=0;i<data.length;i++){
+        data[i].type1=constant.getTypeName(constant.mediaType,data[i].account_type);
+      }
     /*  for(let i=0;i<all.length;i++){
         for(let j=0;j<data.length;j++){
           if(all[i].name==data[j].name){

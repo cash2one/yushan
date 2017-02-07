@@ -192,18 +192,6 @@ function ajx(y, m, d, str) {
     }
     $('#tb').html(tmp({ el: el }));
     $('#table1').tablesorter();
-    /*  if (us == '泰佛之家' || us == '貔貅') {
-
-     $(".active").hide()
-     $(".active_chengben").hide()
-     $(".btn_cost").hide()
-
-     } else {
-
-     $(".active").show();
-     $(".active_chengben").show();
-     $(".btn_cost").show();
-     }*/
     try {
       var options = {
         valueNames: ['jihua', 'cost', 'view', 'pv', 'down', 'down_chengben', 'activety', 'active_chengben', 'btn_cost','button_view','button_click']
