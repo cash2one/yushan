@@ -204,7 +204,7 @@ function ajx(usid) {
 
 $(() => {
   var appid=currentAccount.appid;
-  $('.hu').text(currentAccount.username);
+  $('.hu').text(currentAccount.name);
 
   utils.ajax(apiUrl.getApiUrl('getLink'), {
     appid: appid,

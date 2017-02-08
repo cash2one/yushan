@@ -28,6 +28,7 @@ const store = require('static/js/store');
 const utils = require('utils');
 const apiUrl = require('static/js/api');
 let pin = [];
+let zongdian;
 let currentAccount = store.getCurrentAccount();
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
@@ -190,8 +191,9 @@ function pu(series,name,data){
     },
   });
 }
-function legend(logo, who) {
+function legend(logo, who, chat) {
   console.log(who);
+  $('#dian').val('无');
   let max = who[0].length;
   let days = [];
   let datas = [];
@@ -235,8 +237,9 @@ function legend(logo, who) {
   for (let j = 0; j < who[1].length; j++) {
     days.push(utils.dateFormat(who[1][j].dateTime, 'hh'));
   }
+  zongdian=who;
   // for (let i = 0; i < who.length; i++) {
-    $('.tb').append(tb({data: who}));
+    $('.tb').html(tb({data: who}));
   // }
   $('#jiahua_table').tablesorter();
   $('.all_active').editable();
@@ -342,10 +345,11 @@ function legend(logo, who) {
     }
   }
 
-  draw('d1',n,days,series);
+  draw(chat,n,days,series);
 }
-function legend1(logo, data) {
+function legend1(logo, data,chat) {
   console.log(data);
+  $('#dian1').val('无');
   let max = data[0].length;
   let days = [];
   let datas = [];
@@ -400,7 +404,8 @@ function legend1(logo, data) {
     days.push(utils.dateFormat(data[1][j].dateTime, 'hh'));
   }
   // for (let i = 0; i < data.length; i++) {
-    $('.tb1').append(tb1({data: data}));
+  zongdian=data;
+    $('.tb1').html(tb1({data: data}));
   // }
   $('#zonglan_table').tablesorter();
   $('.all_active1').editable();
@@ -531,12 +536,64 @@ function legend1(logo, data) {
         break;
     }
   }
-  draw('d2',n,days,series);
+  draw(chat,n,days,series);
 }
+function dian(dian) {
+  let a=parseInt($('.time1').find("option:selected").attr('title'));
+  let b=parseInt($('.time2').find("option:selected").attr('title'));
+  let html='<option>无</option>';
+  for(let i=a;i<=b;i++){
+    if(i<10){
+      html+='<option>0'+i+'</option>';
+    }else{
+      html+='<option>'+i+'</option>';
+    }
 
+  }
+  $(dian).html(html);
+}
 $(() => {
   let dDate=utils.dateFormat(utils.getDateStr(-1), 'yyyy-MM-dd');
   // console.log(dDate);
+  //时间点筛选选择赋值
+  $('.time1,.time2').change(function(){
+    dian('#dian');
+    dian('#dian1');
+  });
+  dian('#dian');
+  dian('#dian1');
+  //时间点筛选
+  $('#dian').change(function(){
+    let data=[];
+    for (let i = 0; i < zongdian.length; i++) {
+      data[i]=[];
+      for (let j = 0; j < zongdian[i].length; j++) {
+        if($(this).val()==zongdian[i][j].dian){
+          data[i].push(zongdian[i][j]);
+        }
+      }
+    }
+    $('.tb').html(tb({data: data}));
+    $('#jiahua_table').tablesorter();
+    $('.all_active').editable();
+    console.log(data);
+  });
+  $('#dian1').change(function(){
+    let data=[];
+    for (let i = 0; i < zongdian.length; i++) {
+      data[i]=[];
+      for (let j = 0; j < zongdian[i].length; j++) {
+        if($(this).val()==zongdian[i][j].dian){
+          data[i].push(zongdian[i][j]);
+        }
+      }
+    }
+    $('.tb1').html(tb1({data: data}));
+    $('#zonglan_table').tablesorter();
+    $('.all_active1').editable();
+    console.log(data);
+  });
+  //计划左边选择赋值
   utils.ajaxAsync(apiUrl.getApiUrl('getGPlan'), {
     appid: currentAccount.appid,
     date: dDate,
@@ -547,6 +604,7 @@ $(() => {
       html+='<option value="'+data[i].campaignId+'">'+data[i].campaignName+'</option>';
     }
     $('.time4').html(html);
+    // $('.time4,.time41,.time42').html(html);
   });
   $('.nav-li span').click(function () {
     $(this).addClass('clink');
@@ -557,14 +615,18 @@ $(() => {
     $('.tol1').hide();
     lin('all','');
     console.log(pin);
-    legend($('.time3').val(), pin);
+    legend($('.time3').val(), pin,'d1');
+    legend($('.time31').val(), pin,'d11');
+    legend($('.time32').val(), pin,'d12');
   });
   $('.li2').click(function () {
     $('.tol').hide();
     $('.tol1').show();
     lin('plan',$('.time4').val());
     console.log(pin);
-    legend1($('.time5').val(), pin);
+    legend1($('.time5').val(), pin,'d2');
+    // legend1($('.time51').val(), pin,'d21');
+    // legend1($('.time52').val(), pin,'d22');
   });
   // let $cln=$('.trends');
   $('.date1').attr('value', utils.getDateStr(-1));
@@ -573,7 +635,9 @@ $(() => {
   $('.dp').datepicker();
   lin('all','');
   console.log(pin);
-  legend($('.time3').val(), pin);
+  legend($('.time3').val(), pin,'d1');
+  legend($('.time31').val(), pin,'d11');
+  legend($('.time32').val(), pin,'d12');
   $(document).on('click', '.del', function () {
     $(this).parent().remove();
   });
@@ -588,20 +652,27 @@ $(() => {
       case '本户': {
         lin('all','');
         console.log(pin);
-        legend($('.time3').val(), pin);
+        legend($('.time3').val(), pin,'d1');
+        legend($('.time31').val(), pin,'d11');
+        legend($('.time32').val(), pin,'d12');
       }
         break;
       case '计划': {
         lin('plan',$('.time4').val());
-        // console.log(pin);
-        legend1($('.time5').val(), pin);
+        legend1($('.time5').val(), pin,'d2');
       }
         break;
     }
 
   });
   $('.time3').change(function () {
-    legend($(this).val(), pin);
+    legend($(this).val(), pin,'d1');
+  });
+  $('.time31').change(function () {
+    legend($(this).val(), pin,'d11');
+  });
+  $('.time32').change(function () {
+    legend($(this).val(), pin,'d12');
   });
   $(document).on('change','.time4',function(){
     console.log($(this).val());

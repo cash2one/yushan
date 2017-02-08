@@ -1,56 +1,56 @@
 <div id="page-wrapper">
     <div style="width: 960px;">
         <select class="time1">
-            <option>00:00</option>
-            <option>01:00</option>
-            <option>02:00</option>
-            <option>03:00</option>
-            <option>04:00</option>
-            <option>05:00</option>
-            <option>06:00</option>
-            <option>07:00</option>
-            <option>08:00</option>
-            <option>09:00</option>
-            <option>10:00</option>
-            <option>11:00</option>
-            <option>12:00</option>
-            <option>13:00</option>
-            <option>14:00</option>
-            <option>15:00</option>
-            <option>16:00</option>
-            <option>17:00</option>
-            <option>18:00</option>
-            <option>19:00</option>
-            <option>20:00</option>
-            <option>21:00</option>
-            <option>22:00</option>
-            <option>23:00</option>
+            <option title="0">00:00</option>
+            <option title="1">01:00</option>
+            <option title="2">02:00</option>
+            <option title="3">03:00</option>
+            <option title="4">04:00</option>
+            <option title="5">05:00</option>
+            <option title="6">06:00</option>
+            <option title="7">07:00</option>
+            <option title="8">08:00</option>
+            <option title="9">09:00</option>
+            <option title="10">10:00</option>
+            <option title="11">11:00</option>
+            <option title="12">12:00</option>
+            <option title="13">13:00</option>
+            <option title="14">14:00</option>
+            <option title="15">15:00</option>
+            <option title="16">16:00</option>
+            <option title="17">17:00</option>
+            <option title="18">18:00</option>
+            <option title="19">19:00</option>
+            <option title="20">20:00</option>
+            <option title="21">21:00</option>
+            <option title="22">22:00</option>
+            <option title="23">23:00</option>
         </select>点至
         <select class="time2">
-            <option>00:00</option>
-            <option>01:00</option>
-            <option>02:00</option>
-            <option>03:00</option>
-            <option>04:00</option>
-            <option>05:00</option>
-            <option>06:00</option>
-            <option>07:00</option>
-            <option>08:00</option>
-            <option>09:00</option>
-            <option>10:00</option>
-            <option>11:00</option>
-            <option>12:00</option>
-            <option>13:00</option>
-            <option>14:00</option>
-            <option>15:00</option>
-            <option>16:00</option>
-            <option>17:00</option>
-            <option>18:00</option>
-            <option>19:00</option>
-            <option>20:00</option>
-            <option>21:00</option>
-            <option>22:00</option>
-            <option selected>23:00</option>
+            <option title="0">00:00</option>
+            <option title="1">01:00</option>
+            <option title="2">02:00</option>
+            <option title="3">03:00</option>
+            <option title="4">04:00</option>
+            <option title="5">05:00</option>
+            <option title="6">06:00</option>
+            <option title="7">07:00</option>
+            <option title="8">08:00</option>
+            <option title="9">09:00</option>
+            <option title="10">10:00</option>
+            <option title="11">11:00</option>
+            <option title="12">12:00</option>
+            <option title="13">13:00</option>
+            <option title="14">14:00</option>
+            <option title="15">15:00</option>
+            <option title="16">16:00</option>
+            <option title="17">17:00</option>
+            <option title="18">18:00</option>
+            <option title="19">19:00</option>
+            <option title="20">20:00</option>
+            <option title="21">21:00</option>
+            <option title="22">22:00</option>
+            <option title="23" selected>23:00</option>
         </select>点
         <li style="margin-left: 30px;margin-top: 20px;" class="trends">
             <span class="inx"></span>
@@ -75,6 +75,7 @@
     </div>
 
     <div class="tol">
+
         <div style="text-align: right;">
             <select class="time3">
                 <option>cpc</option>
@@ -89,11 +90,40 @@
             </select>
         </div>
 
-        <div id='d1' style="height:400px;width:100%;"></div>
+        <div id='d1' style="height:300px;width:100%;"></div>
+        <div style="text-align: right;">
+            <select class="time31">
+                <option>cpc</option>
+                <option>cpd</option>
+                <option>API余额</option>
+                <option>总下载</option>
+                <option>展现</option>
+                <option selected>点击</option>
+                <option>消费</option>
+                <option>激活</option>
+                <option>激活成本</option>
+            </select>
+        </div>
+        <div id='d11' style="height:300px;width:100%;"></div>
+        <div style="text-align: right;">
+            <select class="time32">
+                <option>cpc</option>
+                <option>cpd</option>
+                <option>API余额</option>
+                <option>总下载</option>
+                <option>展现</option>
+                <option>点击</option>
+                <option selected>消费</option>
+                <option>激活</option>
+                <option>激活成本</option>
+            </select>
+        </div>
+        <div id='d12' style="height:300px;width:100%;"></div>
+        <p class="filter1">
+            <label for="">时间点筛选：</label>
+            <select name="" id="dian"></select>
+        </p>
         <div class="tb">
-
-
-
 
         </div>
     </div>
@@ -118,11 +148,52 @@
             </select>
         </div>
 
-        <div id='d2' style="height:400px;width:100%;"></div>
+        <div id='d2' style="height:300px;width:100%;"></div>
+      <!--  <div class="clear">
+            <select class="time41" style="float:left;">
+
+            </select>
+            <select class="time51" style="float:right;">
+                <option>cpc</option>
+                <option>cpd</option>
+                <option>API余额</option>
+                <option>总下载</option>
+                <option>展现</option>
+                <option selected>点击</option>
+                <option>消费</option>
+                <option>激活</option>
+                <option>激活成本</option>
+                <option>按钮展现</option>
+                <option>按钮点击</option>
+                <option>按钮消费</option>
+            </select>
+        </div>
+        <div id='d21' style="height:300px;width:100%;"></div>
+        <div class="clear">
+            <select class="time42" style="float:left;">
+
+            </select>
+            <select class="time52" style="float:right;">
+                <option>cpc</option>
+                <option>cpd</option>
+                <option>API余额</option>
+                <option>总下载</option>
+                <option>展现</option>
+                <option>点击</option>
+                <option selected>消费</option>
+                <option>激活</option>
+                <option>激活成本</option>
+                <option>按钮展现</option>
+                <option>按钮点击</option>
+                <option>按钮消费</option>
+            </select>
+        </div>
+        <div id='d22' style="height:300px;width:100%;"></div>-->
+        <p class="filter1">
+            <label for="">时间点筛选：</label>
+            <select name="" id="dian1"></select>
+        </p>
         <div class="tb1">
-
-
-
         </div>
     </div>
 </div>

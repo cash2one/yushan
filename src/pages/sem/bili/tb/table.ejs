@@ -6,15 +6,15 @@
         <tr>
             <th>时间</th>
             <th>时间点</th>
+            <th>展现</th>
+            <th>点击</th>
+            <th>消费</th>
+            <th>总下载</th>
+            <th>CPD</th>
             <th>激活</th>
             <th>激活成本</th>
             <th>CPC</th>
             <th>API余额</th>
-            <th>点击</th>
-            <th>展现</th>
-            <th>消费</th>
-            <th>CPD</th>
-            <th>总下载</th>
         </tr>
         </thead>
         <tbody class="list">
@@ -23,15 +23,15 @@
         <tr>
             <td><%=data[i][j].dateTime%></td>
             <td><%=data[i][j].dian%></td>
+            <td><%=data[i][j].showCount %></td>
+            <td><%=data[i][j].clickCount %></td>
+            <td><%=data[i][j].spend %></td>
+            <td><%=data[i][j].download_total %></td>
+            <td><%=data[i][j].cpd %></td>
             <td data-time="<%=data[i][j].dateTime1 %>" data-spend="<%=data[i][j].spend %>" class="td_active"><a href="#" class="all_active" data-type="text"><%=data[i][j].active%></a></td>
             <td class="activecb"><%=data[i][j].active_chengben %></td>
             <td><%=data[i][j].cpc %></td>
             <td><%=data[i][j].api_count %></td>
-            <td><%=data[i][j].clickCount %></td>
-            <td><%=data[i][j].showCount %></td>
-            <td><%=data[i][j].spend %></td>
-            <td><%=data[i][j].cpd %></td>
-            <td><%=data[i][j].download_total %></td>
         </tr>
         <% } %>
         <% } %>

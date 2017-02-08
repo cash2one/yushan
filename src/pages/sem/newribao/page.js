@@ -9,7 +9,8 @@ require('static/vendor/jquery-ui.min');
 require('static/vendor/jquery.tablesorter.min');
 require('static/vendor/list.min');
 require('static/vendor/bootstrap-editable.min');
-
+const toastr = require('static/vendor/toastr.min');
+require('static/vendor/toastr.min.css');
 require('static/css/reset.css');
 require('static/css/jquery-ui.min.css');
 require('static/css/bootstrap-editable.css');
@@ -71,16 +72,8 @@ function recon(cln){
   $('.re_point1').editable();
   $('.remark1').editable();
   $('.ji_pageactive1').editable();
-
-  /*$('.m2').hide();
-   $('.m1').show();*/
-
-  /*$('.tmp').html(tb({data: data[0]}));
-  $('#table1').tablesorter();
-  var options = {
-    valueNames: ['time', 'xitong', 'acsum', 'down_sum', 'active_sum', 'liu_cun', 'down_rate', 'active_rate', 'liucun_rate', 'down_cb', 'active_cb', 'liucun_cb', 'some_cost', 'view', 'pv', 'pv_rate', 'pv_dan', 'page_active', 'btn_active', 'some_remainder', 're_point', 'shuoming']
-  };
-  var userList = new List('users', options);*/
+  $('.zk').text('展开');
+  non=1;
 }
 
 function sum(zhe, appid, edate, sdate) {
@@ -175,20 +168,34 @@ $(() => {
 
   });*/
   $('#myForm').submit(function (event) {
-    var formData = new FormData($(this)[0]);
-    console.log(formData);
-    utils.ajaxFormFile(apiUrl.getApiUrl('UpActive'),formData).done(function (data) {
-      console.log(data);
-    })
-    // event.preventDefault();
+
+    var fileVal = $('#inputfile').val();
+    if(!fileVal){
+      toastr.error('没有上传文件', '上传失败');
+    }else {
+      var formData = new FormData($(this)[0]);
+      console.log(formData);
+      utils.ajaxFormFile(apiUrl.getApiUrl('UpActive'),formData).done(function (data) {
+        console.log(data);
+        window.location.reload();
+      });
+    }
+
+    event.preventDefault();
   });
   $('#myForm1').submit(function (event) {
-    var formData = new FormData($(this)[0]);
-    console.log(formData);
-    utils.ajaxFormFile(apiUrl.getApiUrl('UpActive1'),formData).done(function (data) {
-      console.log(data);
-    })
-    // event.preventDefault();
+    var fileVal = $('#inputfile1').val();
+    if(!fileVal){
+      toastr.error('没有上传文件', '上传失败');
+    }else {
+      var formData = new FormData($(this)[0]);
+      console.log(formData);
+      utils.ajaxFormFile(apiUrl.getApiUrl('UpActive1'), formData).done(function (data) {
+        console.log(data);
+        window.location.reload();
+      });
+    }
+    event.preventDefault();
   });
 /*  $('.upload').click(function(){
     let data = $('#inputfile')[0].files[0];
@@ -316,7 +323,7 @@ $(() => {
     var s = arr1[2] + '-' + arr1[0] + '-' + arr1[1];
     var e = arr2[2] + '-' + arr2[0] + '-' + arr2[1];
     sum('',currentAccount.appid, e, s)
-    $(this).text('展开');
+    $('.zk').text('展开');
     non=1;
   });
  /* $('#zhe').change(function () {
