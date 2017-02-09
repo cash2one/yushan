@@ -1,3 +1,4 @@
+/*eslint-disable */
 const echarts = require('echarts/lib/echarts');
 // 引入柱状图
 require('echarts/lib/chart/pie');
@@ -73,7 +74,7 @@ const moduleExports = {
     var color1 = [];
     var color2 = [];
     var color3 = [];
-    if (el.total_pv < el.yestoday_total_pv) { // 点击量
+    if (parseInt(el.total_pv) < parseInt(el.yestoday_total_pv)) { // 点击量
       $('.biao1-1').css('color', '#5d36b0').html(el.pv_rate + '%');
       color1 = ['#00b39d', '#5d36b0', '#dcdcdc'];
       b = el.yestoday_total_pv;
@@ -84,7 +85,7 @@ const moduleExports = {
       b = el.total_pv;
       c = el.yestoday_total_pv;
     }
-    if (el.total_count < el.yestoday_total_count) { // 下载量
+    if (parseInt(el.total_count) < parseInt(el.yestoday_total_count)) { // 下载量
       $('.biao2-1').css('color', '#5d36b0').html(el.download_rate + '%');
       color2 = ['#00b39d', '#5d36b0', '#dcdcdc'];
       b1 = el.yestoday_total_count;
@@ -95,7 +96,7 @@ const moduleExports = {
       b1 = el.total_count;
       c1 = el.yestoday_total_count;
     }
-    if (el.active_rate < el.yestoday_active_rate) { // 激活量
+    if (parseInt(el.active_rate) < parseInt(el.yestoday_active_rate)) { // 激活量
       $('.biao3-1').css('color', '#5d36b0').html(((el.active_rate / el.total_view) * 100).toFixed(1) + '%');
       color3 = ['#00b39d', '#5d36b0', '#dcdcdc'];
       b2 = el.yestoday_active_rate;
@@ -147,6 +148,7 @@ const moduleExports = {
       value: a - b2,
       name: 'c',
     };
+    console.log(op1);
     console.log(op2);
     console.log(op3);
 
