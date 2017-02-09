@@ -61,7 +61,7 @@ function recon(cln){
   $('.tmp').html(tb({data: data}));
   $('#table1').tablesorter();
   var options = {
-    valueNames: ['time', 'down_sum', 'active_sum', 'liu_cun', 'down_rate', 'active_rate', 'down_cb', 'active_cb', 'some_cost', 'view', 'pv', 'pv_rate', 'pv_dan', 'page_active', 'btn_active', 'some_remainder', 're_point', 'shuoming', 'xitong', 'acsum', 'liucun_rate', 'liucun_cb']
+    valueNames: ['time', 'down_sum', 'active_sum', 'liu_cun', 'down_rate', 'active_rate','active_true_rate', 'down_cb', 'active_cb', 'some_cost', 'view', 'pv', 'pv_rate', 'pv_dan', 'page_active', 'btn_active', 'some_remainder', 're_point', 'shuoming', 'xitong', 'acsum', 'liucun_rate', 'liucun_cb']
   };
   var userList = new List('users', options);
   $('.tou_liu').editable();
@@ -88,7 +88,7 @@ function sum(zhe, appid, edate, sdate) {
     $('.tmp').html(tb({data: data[0]}));
     $('#table1').tablesorter();
     var options = {
-      valueNames: ['time', 'xitong', 'acsum', 'down_sum', 'active_sum', 'liu_cun', 'down_rate', 'active_rate', 'liucun_rate', 'down_cb', 'active_cb', 'liucun_cb', 'some_cost', 'view', 'pv', 'pv_rate', 'pv_dan', 'page_active', 'btn_active', 'some_remainder', 're_point', 'shuoming']
+      valueNames: ['time', 'xitong', 'acsum', 'down_sum', 'active_sum', 'liu_cun', 'down_rate', 'active_rate', 'active_true_rate','liucun_rate', 'down_cb', 'active_cb', 'liucun_cb', 'some_cost', 'view', 'pv', 'pv_rate', 'pv_dan', 'page_active', 'btn_active', 'some_remainder', 're_point', 'shuoming']
     };
     var userList = new List('users', options);
    /* for(var i=0;i<data[0].length;i++){
@@ -185,9 +185,11 @@ $(() => {
   });
   $('#myForm1').submit(function (event) {
     var fileVal = $('#inputfile1').val();
+
     if(!fileVal){
       toastr.error('没有上传文件', '上传失败');
     }else {
+
       var formData = new FormData($(this)[0]);
       console.log(formData);
       utils.ajaxFormFile(apiUrl.getApiUrl('UpActive1'), formData).done(function (data) {

@@ -31,7 +31,7 @@ function pu(data){
   });
 }
 $(() => {
-  $(document).on('click','.some',function(){
+  $(document).on('click','.name1,.account_name',function(){
     let cu={};
     cu.name=$(this).data('name');
     cu.appid=$(this).data('appid');

@@ -15,6 +15,7 @@ require('static/vendor/jquery.tablesorter.min');
 require('static/vendor/list.min');
 
 require('static/css/reset.css');
+
 require('static/css/jquery-ui.min.css');
 require('./page.css');
 

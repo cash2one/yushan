@@ -94,6 +94,10 @@ $(() => {
       console.log(dataArr);
       utils.ajaxPost(apiUrl.getApiUrl('CreateHu'),dataArr).done(function (data) {
         console.log(data);
+        $('.zhao').show();
+        setTimeout(function(){
+          $('.zhao').fadeOut();
+        },2000);
       });
 
       return false;
