@@ -12,7 +12,7 @@ const apiUrl = require('static/js/api');
 const getType = require('static/js/constant');
 
 let currentAccount = store.getCurrentAccount();
-
+let type;
 eventBus.on('account_change', function () {
   currentAccount = store.getCurrentAccount();
   $('.appid').val(currentAccount.appid);
@@ -25,7 +25,9 @@ function tol(){
     appid: currentAccount.appid,
   }).done(function (data) {
     console.log(data);
+    type=data[0].account_type;
     data[0].account_type=getType.getTypeName(getType.mediaType,data[0].account_type);
+
     if(data[0].account_status==1){
       $('.zt').val('启用');
     }else if(data[0].account_status==0){
@@ -44,17 +46,23 @@ function tol(){
 };
 
 $(() => {
+  let n;
   $('.appid').val(currentAccount.appid);
   $('.name').val(currentAccount.username);
   $('button').click(function(){
+    if($('.zt').val()=='启用'){
+      n=1;
+    }else if($('.zt').val()=='暂停'){
+      n=0;
+    }
     utils.ajaxPost(apiUrl.getApiUrl('getZhXX'), {
       name: $('.name').val(),
       appid: $('.appid').val(),
-      type: $('.leixing').val(),
+      type: type,
       account_name: $('.three').val(),
       account_password: $('.threepass').val(),
       account_appid: $('.token').val(),
-      account_status: $('.zt').val(),
+      account_status: n,
       fd_rate: $('.fd').val(),
     }).done(function (data) {
       console.log(data);
