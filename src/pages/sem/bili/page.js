@@ -88,11 +88,13 @@ function draw(d,n,days,series){
     },
     grid: {
       show: true,
+      top:10,
       borderWidth: '1',
       borderColor: 'black'
     },
     legend: {
-      orient: 'horizontal',
+      x: 'right',
+      orient: 'vertical',
       data: n,
     },
     toolbox: {
@@ -202,6 +204,7 @@ function legend(logo, who, chat) {
   let click = [];
   let spend = [];
   let acve = [];
+  let acvecb = [];
   let series = [];
   let cpd = [];
   let api = [];
@@ -303,7 +306,17 @@ function legend(logo, who, chat) {
           });
         }
         pu(series,n[i],acve);
-
+      }
+        break;
+      case '激活成本': {
+        acvecb = [];
+        for (let j = 0; j < who[i].length; j++) {
+          acvecb.push({
+            value: who[i][j].active_chengben,
+            name:who[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],acvecb);
       }
         break;
       case 'cpd': {
@@ -358,6 +371,7 @@ function legend1(logo, data,chat) {
   let click = [];
   let spend = [];
   let acve = [];
+  let acvecb = [];
   let btnclick = [];
   let btnshow = [];
   let btnspend = [];
@@ -477,6 +491,17 @@ function legend1(logo, data,chat) {
           });
         }
         pu(series,n[i],btnclick);
+      }
+        break;
+      case '激活成本': {
+        acvecb = [];
+        for (let j = 0; j < data[i].length; j++) {
+          acvecb.push({
+            value: data[i][j].active_chengben,
+            name:data[i][j].dateTime,
+          });
+        }
+        pu(series,n[i],acvecb);
       }
         break;
       case '按钮展现': {
@@ -694,7 +719,9 @@ $(() => {
 
       const $td = $(this).parents('td');
       const time = $td.data('time');
+      const spend = $td.data('spend');
       const record = parseFloat($td.find('.editable-input').find('input').val());
+      $(this).parents('td').siblings('.activecb').text((spend/record).toFixed(2));
       utils.ajax(apiUrl.getApiUrl('setHour'), {
         appid: currentAccount.appid,
         type:'all',
@@ -709,7 +736,9 @@ $(() => {
       const $td = $(this).parents('td');
       const time = $td.data('time');
       const role = $td.data('role');
+      const spend = $td.data('spend');
       const record = parseFloat($td.find('.editable-input').find('input').val());
+      $(this).parents('td').siblings('.activecb').text((spend/record).toFixed(2));
       utils.ajax(apiUrl.getApiUrl('setHour'), {
         appid: currentAccount.appid,
         type:'all',
