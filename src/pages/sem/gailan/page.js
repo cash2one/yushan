@@ -20,7 +20,7 @@ const pieChart = require('./charts/pie');
 
 const apiUrl = require('static/js/api');
 let flag = 1;
-
+let user_id;
 const eventBus = require('static/js/eventBus');
 const store = require('static/js/store');
 let currentAccount = store.getCurrentAccount();
@@ -216,6 +216,7 @@ function upload(str, flag) {
     huid:currentAccount.id,
   }).done(function (data) {
     console.log(data);
+    user_id=data.user_id;
     $('.expose').text(data.name);
   });
 
@@ -242,9 +243,10 @@ $(() => {
     utils.ajax(apiUrl.getApiUrl('getHuChangesem'), {
       huid: currentAccount.id,
       userid:$('#anser').val(),
-      olduser:store.getUser().data.id,
+      olduser:user_id,
     }).done(function (data) {
       console.log(data);
+      user_id=$('#anser').val();
     });
   });
   $('.abolish').click(function(){
