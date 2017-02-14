@@ -49,7 +49,7 @@ $(() => {
   let n;
   $('.appid').val(currentAccount.appid);
   $('.name').val(currentAccount.username);
-  $('button').click(function(){
+  $('.uped').click(function(){
     if($('.zt').val()=='启用'){
       n=1;
     }else if($('.zt').val()=='暂停'){
@@ -66,6 +66,22 @@ $(() => {
       fd_rate: $('.fd').val(),
     }).done(function (data) {
       console.log(data);
+    });
+  });
+  $('.jiance').click(function(){
+    if($('.zt').val()=='启用'){
+      n=1;
+    }else if($('.zt').val()=='暂停'){
+      n=0;
+    }
+    utils.ajax(apiUrl.getApiUrl('ceshi'), {
+      appid: $('.appid').val(),
+    }).done(function (data) {
+      console.log(data);
+      // if(data.status=='failed'){
+        $("#page-wrapper").append("<div class='alert alert-warning'>"+data.message+"</div>");
+
+      // }
     });
   });
   tol();

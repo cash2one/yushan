@@ -69,6 +69,7 @@ const moduleExports = {
   UserDtHu: '/sem/userdthu',
   UpActive: '/out/upacall',
   UpActive1: '/out/upacplan',
+  ceshi: '/sem/ceshi',
 };
 
 module.exports = moduleExports;
