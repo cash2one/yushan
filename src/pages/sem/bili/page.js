@@ -237,8 +237,14 @@ function legend(logo, who, chat) {
   }catch (e){
     console.log(e.name + ": " + e.message);
   }
-  for (let j = 0; j < who[1].length; j++) {
-    days.push(utils.dateFormat(who[1][j].dateTime, 'hh'));
+  if(who.length==1){
+    for (let j = 0; j < who[0].length; j++) {
+      days.push(utils.dateFormat(who[0][j].dateTime, 'hh'));
+    }
+  }else{
+    for (let j = 0; j < who[1].length; j++) {
+      days.push(utils.dateFormat(who[1][j].dateTime, 'hh'));
+    }
   }
   zongdian=who;
   // for (let i = 0; i < who.length; i++) {
@@ -414,9 +420,16 @@ function legend1(logo, data,chat) {
   }catch (e){
     console.log(e.name + ": " + e.message);
   }
-  for (let j = 0; j < data[1].length; j++) {
-    days.push(utils.dateFormat(data[1][j].dateTime, 'hh'));
+  if(data.length==1){
+    for (let j = 0; j < data[0].length; j++) {
+      days.push(utils.dateFormat(data[0][j].dateTime, 'hh'));
+    }
+  }else{
+    for (let j = 0; j < data[1].length; j++) {
+      days.push(utils.dateFormat(data[1][j].dateTime, 'hh'));
+    }
   }
+
   // for (let i = 0; i < data.length; i++) {
   zongdian=data;
     $('.tb1').html(tb1({data: data}));
@@ -721,7 +734,12 @@ $(() => {
       const time = $td.data('time');
       const spend = $td.data('spend');
       const record = parseFloat($td.find('.editable-input').find('input').val());
-      $(this).parents('td').siblings('.activecb').text((spend/record).toFixed(2));
+      if(record=='' || record==0){
+        $(this).parents('td').siblings('.activecb').text('0');
+      }else{
+        $(this).parents('td').siblings('.activecb').text((spend/record).toFixed(2));
+      }
+
       utils.ajax(apiUrl.getApiUrl('setHour'), {
         appid: currentAccount.appid,
         type:'all',
@@ -738,7 +756,12 @@ $(() => {
       const role = $td.data('role');
       const spend = $td.data('spend');
       const record = parseFloat($td.find('.editable-input').find('input').val());
-      $(this).parents('td').siblings('.activecb').text((spend/record).toFixed(2));
+      if(record=='' || record==0){
+        $(this).parents('td').siblings('.activecb').text('0');
+      }else{
+        $(this).parents('td').siblings('.activecb').text((spend/record).toFixed(2));
+      }
+
       utils.ajax(apiUrl.getApiUrl('setHour'), {
         appid: currentAccount.appid,
         type:'all',

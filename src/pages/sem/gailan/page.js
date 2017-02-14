@@ -162,6 +162,9 @@ function upload(str, flag) {
     if (el.mobileBalance === null) {
       el.mobileBalance = '无';
     }
+    if(el.msg != 'success'){
+      $("#page-wrapper").prepend("<div class='alert alert-warning'>"+el.msg+"</div>");
+    }
     $('.apie1 span').text(el.mobileBalance);
     //            $('.ui-b2').text(el.activeRate);
     //            $('.ui-b1').text(el.downloadRate);
