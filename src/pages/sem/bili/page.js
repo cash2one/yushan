@@ -168,7 +168,7 @@ function draw(d,n,days,series){
     series: series,
   };
   myChart.setOption(option);
-  window.onresize = myChart.resize;
+  // window.onresize = myChart.resize;
 }
 function pu(series,name,data){
   series.push({
